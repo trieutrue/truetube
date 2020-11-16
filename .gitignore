@@ -26,7 +26,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-bundle.js
-bundle.js.map
+bundle.js*
 .DS_Store
 npm-debug.log
