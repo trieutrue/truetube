@@ -42,7 +42,10 @@ class SessionForm extends React.Component {
   render() {
     const { formType, errors } = this.props
     const headerText = formType === 'signin' ? 'Sign in' : 'Sign up'
-    const btnText = formType === 'signin' ? 'Create account' : 'Sign in instead'
+    const demoUserBtn = formType === 'signin' ? (
+    <button onClick={this.handleDemoUser}>Demo User</button>
+    ) : null;
+
     const formLink = formType === 'signin' ? 'signup' : 'signin'
     const errorsLi = errors ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null
 
@@ -68,6 +71,7 @@ class SessionForm extends React.Component {
         </label>
       </>
     )
+
     return (
       <div className="session-form">
         <h2>{headerText}</h2>
@@ -96,7 +100,7 @@ class SessionForm extends React.Component {
         </form>
         <Link className="btn" to={`/${formLink}`}>{btnText}</Link>
 
-        <button onClick={this.handleDemoUser}>Demo User</button>
+        {demoUserBtn}
       </div>
     )
   }

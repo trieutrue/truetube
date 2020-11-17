@@ -7,8 +7,8 @@ export default ({ currentUser, logout }) => {
     <>
       <img src="" alt="Notification"/>
       <ul id="users-drop-menu">
-        <h4>{currentUser.email}</h4>
-        <li><Link to="/">Create a channel</Link></li>
+        <h4>{currentUser.channelName}</h4>
+        <li><Link to="/">Your channel</Link></li>
         <li onClick={logout}>Sign Out</li>
       </ul>
     </>
