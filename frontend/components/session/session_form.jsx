@@ -25,41 +25,46 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    debugger;
     const { formType, errors } = this.props
     const headerText = formType === 'signin' ? 'Sign in' : 'Sign up'
+    const btnText = formType === 'signin' ? 'Create account' : 'Sign in instead'
+    const formLink = formType === 'signin' ? 'signup' : 'signin'
     const errorsLi = errors ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null
 
     const signupFields = formType === 'signin' ? null : (
       <>
-        <label>Channel Name:
+        {/* <label>Channel Name:
             <input
             type="text"
             onChange={this.handleInput('channelName')}
             value={this.state.channelName} />
-        </label>
+        </label> */}
         <label>First Name:
             <input
             type="text"
-            onChange={this.handleInput('password')}
-            value={this.state.password} />
+            onChange={this.handleInput('firstName')}
+            value={this.state.firstName} />
         </label>
         <label>Last Name:
             <input
             type="text"
-            onChange={this.handleInput('password')}
-            value={this.state.password} />
+            onChange={this.handleInput('lastName')}
+            value={this.state.lastName} />
         </label>
       </>
     )
     return (
       <div className="session-form">
-        <h2>{headerText}!</h2>
+        <h2>{headerText}</h2>
+        <h4>to continue to WeTube</h4>
 
         <ul>
           {errorsLi}
         </ul>
 
         <form>
+          {signupFields}
           <label>Email:
             <input
               type="text"
@@ -74,8 +79,7 @@ class SessionForm extends React.Component {
           </label>
           <button onClick={this.handleSubmit}>{headerText}</button>
         </form>
-
-        <Link className="btn" to={`/${formType}`}></Link>
+        <Link className="btn" to={`/${formLink}`}>{btnText}</Link>
       </div>
     )
   }

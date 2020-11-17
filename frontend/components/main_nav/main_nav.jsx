@@ -15,7 +15,7 @@ export default ({ currentUser, logout }) => {
   ) : (
     <>
       <img src="" alt="Settings" />
-      <Link className="sign-in-btn" to="/login">Sign In</Link>
+      <Link className="sign-in-btn" to="/signin">Sign In</Link>
     </>
   )
 
