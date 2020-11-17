@@ -10,6 +10,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemoUser = this.handleDemoUser(this)
   };
 
   handleInput(type) {
@@ -24,6 +25,16 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
   }
 
+  handleDemoUser(e) {
+    e.preventDefault();
+    const user = {
+      'email': "someemail@email.com",
+      "password": "password"
+    }
+
+    this.props.processForm(user)
+  }
+
   render() {
     debugger;
     const { formType, errors } = this.props
@@ -34,12 +45,12 @@ class SessionForm extends React.Component {
 
     const signupFields = formType === 'signin' ? null : (
       <>
-        {/* <label>Channel Name:
+        <label>Channel Name:
             <input
             type="text"
             onChange={this.handleInput('channelName')}
             value={this.state.channelName} />
-        </label> */}
+        </label>
         <label>First Name:
             <input
             type="text"
@@ -65,6 +76,7 @@ class SessionForm extends React.Component {
 
         <form>
           {signupFields}
+
           <label>Email:
             <input
               type="text"
@@ -80,6 +92,8 @@ class SessionForm extends React.Component {
           <button onClick={this.handleSubmit}>{headerText}</button>
         </form>
         <Link className="btn" to={`/${formLink}`}>{btnText}</Link>
+
+        <button onClick={this.handleDemoUser}>Demo User</button>
       </div>
     )
   }
