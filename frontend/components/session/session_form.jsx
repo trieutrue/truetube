@@ -10,10 +10,14 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleDemoUser = this.handleDemoUser(this)
+    this.handleDemoUser = this.handleDemoUser.bind(this)
   };
 
   handleInput(type) {
+    if (typeof this.state[type] === "undefined") {
+      this.state[type] = ""
+    }
+
     return (e) => {
       this.setState({ [type]: e.target.value })
     }
@@ -28,7 +32,7 @@ class SessionForm extends React.Component {
   handleDemoUser(e) {
     e.preventDefault();
     const user = {
-      'email': "someemail@email.com",
+      'email': "demouser@gmail.com",
       "password": "password"
     }
 
@@ -36,7 +40,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    debugger;
     const { formType, errors } = this.props
     const headerText = formType === 'signin' ? 'Sign in' : 'Sign up'
     const btnText = formType === 'signin' ? 'Create account' : 'Sign in instead'
@@ -74,7 +77,7 @@ class SessionForm extends React.Component {
           {errorsLi}
         </ul>
 
-        <form>
+        <form onSubmit={this.handleSubmit}>
           {signupFields}
 
           <label>Email:
@@ -89,7 +92,7 @@ class SessionForm extends React.Component {
               onChange={this.handleInput('password')}
               value={this.state.password} />
           </label>
-          <button onClick={this.handleSubmit}>{headerText}</button>
+          <button>{headerText}</button>
         </form>
         <Link className="btn" to={`/${formLink}`}>{btnText}</Link>
 

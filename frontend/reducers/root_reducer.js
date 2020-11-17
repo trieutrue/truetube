@@ -5,9 +5,11 @@ import sessionReducer from './session_reducer';
 
 
 
-export default combineReducers({
+const rootReducer = combineReducers({
   entities: entitiesReducer,
   session: sessionReducer,
   errors: errorsReducer
 })
+
+export default rootReducer
 
