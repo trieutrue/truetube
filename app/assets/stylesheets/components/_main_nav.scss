@@ -4,14 +4,84 @@
   height: 58px;
   justify-content: space-between;
   padding: 0 16px;
+
+  .left-nav {
+    display: flex;
+
+    .guide-icon {
+      color: $dark-gray;
+      margin: auto 16px auto 0;
+      padding: 16px;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+    }
+    .logo-icon {
+      color: $red;
+      width: 30px;
+      height: 30px;
+      margin: auto 0;
+      cursor: pointer;
+    }
+  }
+
+  #search-bar-form {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid blue;
+    width: 728px;
+    height: 32px;
+    margin: auto 0;
+    padding: 0 20px;
+  }
+
+  .right-nav {
+    margin: auto 0;
+  }
+
+  .right-nav > ul {
+    display: flex;
+    width: 204px;
+    height: 40px;
+    justify-content: space-between;
+    border: 1px red solid;
+    
+    li {
+      margin: auto 0;
+      padding: 5px;
+    }
+  }
+
+  #video-dropdown-btn,
+  #apps-dropdown-btn {
+
+    .video-drop-menu {
+      display: none;
+    }
+  }
+  
+
+  
+  
+  #user-dropdown-btn {
+
+    .users-drop-menu {
+      // display: none;
+    }
+  }
 }
 
-#search-bar-form {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid blue;
-  width: 728px;
-  height: 32px;
-  margin: auto;
-  padding: 0 20px;
+svg:not(:root).svg-inline--fa {
+  overflow: visible;
+  width: 18px;
+  height: 18px;
+}
+
+#signin-btn {
+  border: 1px green solid;
+  cursor: pointer;
+}
+
+.signin-btn {
+  margin: auto
 }

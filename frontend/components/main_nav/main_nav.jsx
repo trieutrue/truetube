@@ -1,42 +1,71 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { 
+  faBars, 
+  faUserCircle,
+  faBell,
+  faVideo,
+  faEllipsisV,
+  faTh
+} from '@fortawesome/free-solid-svg-icons';
 
 
 export default ({ currentUser, logout }) => {
   const loggedInDisplay = currentUser ? (
     <>
-      Notification
-      <ul id="users-drop-menu">
-        <h4>{currentUser.channelName}</h4>
-        <li><Link to="/">Your channel</Link></li>
-        <li onClick={logout}>Sign Out</li>
-      </ul>
+      <li>
+        <FontAwesomeIcon icon={faBell} className="bell-icon" />
+      </li>
+      <li id="user-dropdown-btn">
+        <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+        <ul class="users-drop-menu">
+          <h4>{currentUser.channelName}</h4>
+          <li><Link to="/">Your channel</Link></li>
+          <li onClick={logout}>Sign Out</li>
+        </ul>
+      </li>
     </>
   ) : (
-    <>
-      <img src="" alt="Settings" />
-      <Link className="sign-in-btn" to="/signin">Sign In</Link>
+    <> 
+      <li>
+        <FontAwesomeIcon icon={faEllipsisV} className="settings-icon"/>
+      </li>
+      <li id="signin-btn">
+        <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+        <Link to="/signin" className="signin-btn">Sign In</Link>
+      </li>
     </>
   )
 
   return (
     <nav className='main-nav'>
-      <div className="left-display">
-        <i>Hamburger Icon</i>
-        <h1>WeTube</h1>
-      </div>
+      <nav className="left-nav">
+        <FontAwesomeIcon icon={faBars} className="guide-icon"/>
+        <FontAwesomeIcon icon={faYoutube} className="logo-icon"/>
+      </nav>
+
       <div id="search-bar-form">
         <input type="text" id="search-box" />
         <i>Search Glass</i>
       </div>
-      <div className='right-display'>
-        <ul id="video-drop-menu">
-          <li><Link to="/">Upload Video</Link></li> {/* link to upload modal */}
-          <li><Link to="/">Go live</Link></li>
+
+      <nav className='right-nav'>
+        <ul>
+          <li id="video-dropdown-btn">
+            <FontAwesomeIcon icon={faVideo} className="video-icon" />
+            <ul class="video-drop-menu">
+              <li><Link to="/">Upload Video</Link></li> {/* link to upload modal */}
+              <li><Link to="/">Go live</Link></li>
+            </ul>
+          </li>
+          <li id="apps-dropdown-btn">
+            <FontAwesomeIcon icon={faTh} className="apps-icon" />
+          </li>
+          {loggedInDisplay}
         </ul>
-        {/* <i className="fas fa-th">WeTube Apps</i> need to npm install fontawesome */} 
-        {loggedInDisplay}
-      </div>
+      </nav>
     </nav>
   );
 }
