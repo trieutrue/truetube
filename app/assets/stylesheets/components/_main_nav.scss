@@ -1,0 +1,17 @@
+.main-nav {
+  display: flex;
+  border-bottom: 1px solid $light-gray;
+  height: 58px;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+#search-bar-form {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+  width: 728px;
+  height: 32px;
+  margin: auto;
+  padding: 0 20px;
+}

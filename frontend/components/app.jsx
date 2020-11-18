@@ -10,8 +10,8 @@ import {
 const App = () => (
   <>
     <header>
-      <h1>WeTube</h1>
       <MainNavContainer />
+      {/* <SideNavContainer /> */}
     </header>
     <AuthRoute path="/signin" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />
