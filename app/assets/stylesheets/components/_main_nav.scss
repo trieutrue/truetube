@@ -73,8 +73,8 @@
 
     svg {
       overflow: visible;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
     }
   }
 
@@ -82,8 +82,34 @@
   #apps-dropdown-btn {
 
     .video-drop-menu {
-      // position: absolute;
-      display: none;
+      position: absolute;
+      flex-direction: column;
+      border: 1px $light-gray solid;
+      border-top: none;
+      width: 180px;
+      height: auto;
+      top: 87%;
+      background-color: $pure-white;
+
+      li {
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        // border-bottom: 1px solid $light-gray;
+        height: 40px;
+        margin: 5px 0;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        padding: 0 15px;
+      }
+
+      li:hover {
+        background-color: $super-light-gray;
+      }
+      // display: none;
     }
   }
   
@@ -93,13 +119,64 @@
   #user-dropdown-btn {
     padding: 1px 6px;
     .users-drop-menu {
-        position: absolute;
-        left: 78%;
-        border: 1px black solid;
-        flex-direction: column;
-        width: 300px;
+      position: absolute;
+      left: 78%;
+      border: 1px $light-gray solid;
+      border-top: none;
+      flex-direction: column;
+      width: 300px;
+      height: auto;
+      background-color: $pure-white;
+      color: $user-menu;
 
-      display: none;
+      .header {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid $light-gray;
+        font-size: 16px;
+        font-weight: 500;
+        width: 300px;
+        height: 82px;
+        cursor: auto;
+        color: black;
+
+        svg {
+          padding: 12px;
+          width: 40px;
+          height: 40px;
+          cursor: auto;
+        }
+        
+        h4 {
+          padding-left: 10px;
+        }
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        cursor: pointer;
+        border-bottom: 1px $light-gray solid;
+        height: 40px;
+        padding: 0 12px;
+        
+        svg {
+          width: 25px;
+          height: 25px;
+          margin-right: 12px;
+        }
+      } 
+
+      li:hover {
+        background-color: $super-light-gray;
+      }
+
+      li:last-child {
+        border-bottom: none;
+      }
+
+      // display: none;
     }
   }
 }
@@ -127,3 +204,17 @@
   }
 }
 
+// svg:not(:root).svg-inline--fa {
+//   overflow: visible;
+//   width: 1.5em;
+// }
+
+// // svg:not(:root).svg-inline--fa {
+// //   overflow: visible;
+// //   width: 1.5em;
+
+// // }
+
+// li > .settings-icon {
+//   width: 1em;
+// }

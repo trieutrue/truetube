@@ -9,7 +9,11 @@ import {
   faVideo,
   faEllipsisV,
   faTh,
-  faSearch
+  faSearch,
+  faPortrait,
+  faSignOutAlt,
+  faFileVideo,
+  faRss
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -22,9 +26,18 @@ export default ({ currentUser, logout }) => {
       <li id="user-dropdown-btn">
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
         <ul className="users-drop-menu">
-          <h4>{currentUser.channelName}</h4>
-          <li><Link to="/">Your channel</Link></li>
-          <li onClick={logout}>Sign Out</li>
+          <div className="header">
+            <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+            <h4>{currentUser.channelName}</h4>
+          </div>
+          <li>
+            <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
+            <Link to="/">Your channel</Link>
+          </li>
+          <li onClick={logout}>
+            <FontAwesomeIcon icon={faSignOutAlt} className="signout-icon" />
+            Sign Out
+          </li>
         </ul>
       </li>
     </>
@@ -64,8 +77,14 @@ export default ({ currentUser, logout }) => {
           <li id="video-dropdown-btn">
             <FontAwesomeIcon icon={faVideo} className="video-icon" />
             <ul className="video-drop-menu">
-              <li><Link to="/">Upload Video</Link></li> {/* link to upload modal */}
-              <li><Link to="/">Go live</Link></li>
+              <li>
+                <FontAwesomeIcon icon={faFileVideo} className="upload-icon" />
+                <Link to="/">Upload Video</Link>
+              </li> 
+              <li>
+                <FontAwesomeIcon icon={faRss} className="live-icon" />
+                <Link to="/">Go live</Link>
+              </li>
             </ul>
           </li>
           <li id="apps-dropdown-btn">
