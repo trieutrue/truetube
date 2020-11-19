@@ -16,12 +16,24 @@ import {
   faRss
 } from '@fortawesome/free-solid-svg-icons';
 
-const handleClick = e => {
-  if (e.currentTarget.lastElementChild.style.display === "none") {
-    e.currentTarget.lastElementChild.style.display = "block"
+
+
+const handleDropMenu = e => {
+  e.stopPropagation()
+  e.preventDefault();
+  const dropMenu = e.currentTarget.lastElementChild
+  debugger
+  if (dropMenu.style.display === "none") {
+    dropMenu.style.display = "block"
   } else {
-    e.currentTarget.lastElementChild.style.display = "none"
+    dropMenu.style.display = "none"
   }
+
+  return document.addEventListener("click", (event) => {
+    debugger
+    // if (event.target === )
+    dropMenu.style.display = "none"
+  });
 }
 
 export default ({ currentUser, logout }) => {
@@ -30,22 +42,23 @@ export default ({ currentUser, logout }) => {
       <li>
         <FontAwesomeIcon icon={faBell} className="bell-icon" />
       </li>
-      <li id="user-dropdown-btn" onClick={handleClick}>
+      
+      <li id="user-dropdown-btn" onClick={handleDropMenu}>
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-        <ul className="users-drop-menu">
-          <div className="header">
-            <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-            <h4>{currentUser.channelName}</h4>
-          </div>
-          <li>
-            <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
-            <Link to="/">Your channel</Link>
-          </li>
-          <li onClick={logout}>
-            <FontAwesomeIcon icon={faSignOutAlt} className="signout-icon" />
-            Sign Out
-          </li>
-        </ul>
+            <ul className="users-drop-menu">
+              <div className="header">
+                <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+                <h4>{currentUser.channelName}</h4>
+              </div>
+              <li>
+                <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
+                <Link to="/">Your channel</Link>
+              </li>
+              <li onClick={logout}>
+                <FontAwesomeIcon icon={faSignOutAlt} className="signout-icon" />
+                Sign Out
+              </li>
+            </ul>
       </li>
     </>
   ) : (
@@ -81,12 +94,12 @@ export default ({ currentUser, logout }) => {
 
       <nav className='right-nav'>
         <ul>
-          <li id="video-dropdown-btn" onClick={handleClick}>
+          <li id="video-dropdown-btn" onClick={handleDropMenu}>
             <FontAwesomeIcon icon={faVideo} className="video-icon" />
             <ul className="video-drop-menu">
               <li>
                 <FontAwesomeIcon icon={faFileVideo} className="upload-icon" />
-                <Link to="/">Upload Video</Link>
+                <Link to="/">Upload video</Link>
               </li> 
               <li>
                 <FontAwesomeIcon icon={faRss} className="live-icon" />
@@ -94,15 +107,19 @@ export default ({ currentUser, logout }) => {
               </li>
             </ul>
           </li>
+
           <li id="apps-dropdown-btn">
             <FontAwesomeIcon icon={faTh} className="apps-icon" />
           </li>
+
           {loggedInDisplay}
         </ul>
       </nav>
     </nav>
   );
 }
+
+
 
 
 //have a ul? with 

@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDemoUser = this.handleDemoUser.bind(this)
+    this.toggleErrors = this.toggleErrors.bind(this)
   };
 
   handleInput(type) {
@@ -39,6 +40,17 @@ class SessionForm extends React.Component {
     }
 
     this.props.processForm(user)
+  }
+
+  toggleErrors(e) {
+    debugger
+    if (this.props.errors) {
+      for(let i = 0; i < e.target.children.length; i++) {
+        if (e.target.children[i].tagName === "INPUT") {
+          e.target.children[i].className = "error"
+        }
+      }
+    }
   }
 
   render() {
@@ -84,7 +96,7 @@ class SessionForm extends React.Component {
           <h4>to continue to WeTube</h4>
         </header>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit, this.toggleErrors}>
           {signupFields}
           <input
             type="text"
