@@ -20,7 +20,7 @@ export default ({ currentUser, logout }) => {
       </li>
       <li id="user-dropdown-btn">
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-        <ul class="users-drop-menu">
+        <ul classNme="users-drop-menu">
           <h4>{currentUser.channelName}</h4>
           <li><Link to="/">Your channel</Link></li>
           <li onClick={logout}>Sign Out</li>
@@ -33,8 +33,10 @@ export default ({ currentUser, logout }) => {
         <FontAwesomeIcon icon={faEllipsisV} className="settings-icon"/>
       </li>
       <li id="signin-btn">
-        <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-        <Link to="/signin" className="signin-btn">Sign In</Link>
+        <Link to="/signin" className="signin-btn">
+          <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+          <strong>SIGN IN</strong>
+        </Link>
       </li>
     </>
   )
@@ -43,7 +45,10 @@ export default ({ currentUser, logout }) => {
     <nav className='main-nav'>
       <nav className="left-nav">
         <FontAwesomeIcon icon={faBars} className="guide-icon"/>
-        <FontAwesomeIcon icon={faYoutube} className="logo-icon"/>
+        <Link to="/" className="home-btn">
+          <FontAwesomeIcon icon={faYoutube} className="logo-icon"/>
+          WeTube
+        </Link>
       </nav>
 
       <div id="search-bar-form">
@@ -55,7 +60,7 @@ export default ({ currentUser, logout }) => {
         <ul>
           <li id="video-dropdown-btn">
             <FontAwesomeIcon icon={faVideo} className="video-icon" />
-            <ul class="video-drop-menu">
+            <ul className="video-drop-menu">
               <li><Link to="/">Upload Video</Link></li> {/* link to upload modal */}
               <li><Link to="/">Go live</Link></li>
             </ul>

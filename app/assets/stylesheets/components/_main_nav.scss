@@ -1,12 +1,14 @@
 .main-nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid $light-gray;
   height: 58px;
-  justify-content: space-between;
   padding: 0 16px;
 
   .left-nav {
     display: flex;
+    align-items: center;
 
     .guide-icon {
       color: $dark-gray;
@@ -16,12 +18,20 @@
       width: 20px;
       cursor: pointer;
     }
-    .logo-icon {
-      color: $red;
-      width: 30px;
-      height: 30px;
-      margin: auto 0;
+
+    .home-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       cursor: pointer;
+      font-size: 22px;
+      font-weight: 500;
+      
+      .logo-icon {
+        color: $red;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 
@@ -41,14 +51,14 @@
 
   .right-nav > ul {
     display: flex;
-    width: 204px;
+    width: 250px;
     height: 40px;
     justify-content: space-between;
-    border: 1px red solid;
+    // border: 1px red solid;
     
     li {
       margin: auto 0;
-      padding: 5px;
+      // padding: 5px;
     }
   }
 
@@ -66,7 +76,7 @@
   #user-dropdown-btn {
 
     .users-drop-menu {
-      // display: none;
+      display: none;
     }
   }
 }
@@ -75,13 +85,33 @@ svg:not(:root).svg-inline--fa {
   overflow: visible;
   width: 18px;
   height: 18px;
-}
-
-#signin-btn {
-  border: 1px green solid;
+  color: $dark-gray;
   cursor: pointer;
 }
 
 .signin-btn {
-  margin: auto
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px $blue solid;
+  border-radius: 2px;
+  color: $blue;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 450;
+  width: 104px;
+  height: 40px;
+  text-align: center;
+
+  :first-child {
+    color: $blue;
+    width: 60px;
+    height: 60px;
+  }
+
+  :last-child {
+    margin: 0 5px;
+  }
 }
+
