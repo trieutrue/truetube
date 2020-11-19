@@ -8,7 +8,8 @@ import {
   faBell,
   faVideo,
   faEllipsisV,
-  faTh
+  faTh,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -20,7 +21,7 @@ export default ({ currentUser, logout }) => {
       </li>
       <li id="user-dropdown-btn">
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-        <ul classNme="users-drop-menu">
+        <ul className="users-drop-menu">
           <h4>{currentUser.channelName}</h4>
           <li><Link to="/">Your channel</Link></li>
           <li onClick={logout}>Sign Out</li>
@@ -52,8 +53,10 @@ export default ({ currentUser, logout }) => {
       </nav>
 
       <div id="search-bar-form">
-        <input type="text" id="search-box" />
-        <i>Search Glass</i>
+        <input type="text" 
+          id="search-box" 
+          placeholder="Search"/>
+        <FontAwesomeIcon icon={faSearch} className="search-icon" />
       </div>
 
       <nav className='right-nav'>

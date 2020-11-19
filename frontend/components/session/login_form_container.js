@@ -2,8 +2,7 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import SessionForm from './session_form';
 
-const mStP = (state, ownProps) => {
-  debugger
+const mStP = (state, ownProps) => {  
   return {
     errors: state.errors.session,
     formType: 'signin'
