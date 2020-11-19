@@ -1,0 +1,21 @@
+html {
+  position: relative;
+  height: 100%
+}
+
+body {
+  font-family: $roboto;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: $pure-white;
+  height: 1000px;
+}
+
+svg {
+  cursor: pointer;
+  color: $dark-gray;
+}
+
+// li:hover {
+//   background-color: $super-light-gray;
+// }

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,9 +12,15 @@ class SessionForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleDemoUser = this.handleDemoUser.bind(this)
+    this.toggleErrors = this.toggleErrors.bind(this)
   };
 
   handleInput(type) {
+    if (typeof this.state[type] === "undefined") {
+      this.state[type] = ""
+    }
+
     return (e) => {
       this.setState({ [type]: e.target.value })
     }
@@ -24,58 +32,92 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
   }
 
+  handleDemoUser(e) {
+    e.preventDefault();
+    const user = {
+      'email': "demouser@gmail.com",
+      "password": "password"
+    }
+
+    this.props.processForm(user)
+  }
+
+  toggleErrors(e) {
+    debugger
+    if (this.props.errors) {
+      for(let i = 0; i < e.target.children.length; i++) {
+        if (e.target.children[i].tagName === "INPUT") {
+          e.target.children[i].className = "error"
+        }
+      }
+    }
+  }
+
   render() {
     const { formType, errors } = this.props
-    const headerText = formType === 'signin' ? 'Sign in' : 'Sign up'
     const errorsLi = errors ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null
+    const headerText = formType === 'signin' ? 'Sign in' : 'Create your WeTube Account'
+    const btnText = formType === 'signin' ? 'Create account' : 'Sign in instead'
+    const formLink = formType === 'signin' ? 'signup' : 'signin'
+    // const formLink = formType === 'signin' ? <button onClick={this.handleDemoUser}>Demo User</button> : 'signin'
 
     const signupFields = formType === 'signin' ? null : (
       <>
-        <label>Channel Name:
-            <input
-            type="text"
-            onChange={this.handleInput('channelName')}
-            value={this.state.channelName} />
-        </label>
-        <label>First Name:
-            <input
-            type="text"
-            onChange={this.handleInput('password')}
-            value={this.state.password} />
-        </label>
-        <label>Last Name:
-            <input
-            type="text"
-            onChange={this.handleInput('password')}
-            value={this.state.password} />
-        </label>
+        <input
+        type="text"
+        onChange={this.handleInput('channelName')}
+        value={this.state.channelName} 
+        placeholder="Channel Name"/>
+
+      <div className="row">
+        <input
+        type="text"
+        onChange={this.handleInput('firstName')}
+        value={this.state.firstName} 
+        placeholder="First name"/>
+
+        <input
+        type="text"
+        onChange={this.handleInput('lastName')}
+        value={this.state.lastName} 
+        placeholder="Last name"/>
+      </div>
       </>
     )
+    
     return (
-      <div className="session-form">
-        <h2>{headerText}!</h2>
+      <div className={`${formType}-session-form`}>
+        <header>
+          <Link to="/" className="home-btn">
+            <FontAwesomeIcon icon={faYoutube} className="logo-icon" />
+            WeTube
+          </Link>
+          <h2>{headerText}</h2>
+          <h4>to continue to WeTube</h4>
+        </header>
 
-        <ul>
-          {errorsLi}
-        </ul>
+        <form onSubmit={this.handleSubmit, this.toggleErrors}>
+          {signupFields}
+          <input
+            type="text"
+            onChange={this.handleInput('email')}
+            value={this.state.email} 
+            placeholder="Email"
+            />
 
-        <form>
-          <label>Email:
-            <input
-              type="text"
-              onChange={this.handleInput('email')}
-              value={this.state.email} />
-          </label>
-          <label>Password:
             <input
               type="password"
               onChange={this.handleInput('password')}
-              value={this.state.password} />
-          </label>
-          <button onClick={this.handleSubmit}>{headerText}</button>
+              value={this.state.password} 
+              placeholder="Password"/>
+
+          <div className='row'>
+            <Link className="btn" to={`/${formLink}`}>{btnText}</Link>
+            <button>Next</button>
+          </div>
         </form>
 
-        <Link className="btn" to={`/${formType}`}></Link>
+        {formType === 'signin' ? <button onClick={this.handleDemoUser}>Sign in as demo user</button> : null}
       </div>
     )
   }

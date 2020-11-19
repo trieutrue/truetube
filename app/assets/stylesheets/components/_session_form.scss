@@ -1,0 +1,191 @@
+.signin-session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 100px auto;
+  height: 504px;
+  width: 450px;
+  background: $pure-white;
+  border: 1px $login-gray solid;
+  border-radius: 10px;
+
+  .home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    
+    .logo-icon {
+      color: $red;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // justify-content: center;
+    align-items: center;
+
+    h2 {
+      font-size: 22px;
+    }
+  
+    h4 {
+      margin-top: 15px;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $login-gray;
+    width: 368px;
+    height: 56px;
+    margin: 15px 0;
+    padding: 0 15px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .error {
+    border-color: red;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a {
+      color: $form-blue;
+      font-weight: 500;
+    }
+
+    button {
+      background-color: $form-blue;
+      border-radius: 5px;
+      color: $pure-white;
+      font-weight: 500;
+      width: 88px;
+      height: 36px;
+      text-align: center;
+    }
+  }
+
+  button {
+    background-color: $form-blue;
+    border-radius: 5px;
+    color: $pure-white;
+    font-weight: 500;
+    width: 150px;
+    height: 36px;
+    text-align: center;
+  }
+}
+
+
+.signup-session-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: 90px auto 0;
+  width: 750px;
+  height: 594px;
+  background: $pure-white;
+  border: 1px $login-gray solid;
+  border-radius: 10px;
+  padding-left: 32px;
+
+  .home-btn {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    margin-top: -30px;
+    
+    .logo-icon {
+      color: $red;
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin-bottom: -30px;
+
+    h2 {
+      font-size: 22px;
+      font-weight: 500;
+    }
+  
+    h4 {
+      margin-top: 15px;
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+
+  input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid $login-gray;
+    width: 368px;
+    height: 56px;
+    margin: 15px 0;
+    padding: 0 15px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .error {
+    border-color: red;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      width: 180px;
+      margin: 0px 0;
+    }
+
+    a {
+      color: $form-blue;
+      font-weight: 500;
+    }
+
+    button {
+      background-color: $form-blue;
+      border-radius: 5px;
+      color: $pure-white;
+      font-weight: 500;
+      width: 88px;
+      height: 36px;
+      text-align: center;
+    }
+  }
+
+}
+
+.error {
+  border-color: red;
+}
