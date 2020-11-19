@@ -109,7 +109,7 @@
       li:hover {
         background-color: $super-light-gray;
       }
-      // display: none;
+      display: none;
     }
   }
   
@@ -204,10 +204,10 @@
   }
 }
 
-// svg:not(:root).svg-inline--fa {
-//   overflow: visible;
-//   width: 1.5em;
-// }
+svg:not(:root).svg-inline--fa {
+  overflow: visible;
+  width: 1.5em;
+}
 
 // // svg:not(:root).svg-inline--fa {
 // //   overflow: visible;

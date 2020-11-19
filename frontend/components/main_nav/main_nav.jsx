@@ -16,6 +16,13 @@ import {
   faRss
 } from '@fortawesome/free-solid-svg-icons';
 
+const handleClick = e => {
+  if (e.currentTarget.lastElementChild.style.display === "none") {
+    e.currentTarget.lastElementChild.style.display = "block"
+  } else {
+    e.currentTarget.lastElementChild.style.display = "none"
+  }
+}
 
 export default ({ currentUser, logout }) => {
   const loggedInDisplay = currentUser ? (
@@ -23,7 +30,7 @@ export default ({ currentUser, logout }) => {
       <li>
         <FontAwesomeIcon icon={faBell} className="bell-icon" />
       </li>
-      <li id="user-dropdown-btn">
+      <li id="user-dropdown-btn" onClick={handleClick}>
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
         <ul className="users-drop-menu">
           <div className="header">
@@ -74,7 +81,7 @@ export default ({ currentUser, logout }) => {
 
       <nav className='right-nav'>
         <ul>
-          <li id="video-dropdown-btn">
+          <li id="video-dropdown-btn" onClick={handleClick}>
             <FontAwesomeIcon icon={faVideo} className="video-icon" />
             <ul className="video-drop-menu">
               <li>
