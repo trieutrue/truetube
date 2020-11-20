@@ -6,11 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(
-  channel_name: 'Demo User', 
-  first_name: 'Demo', 
-  last_name: 'User', 
-  email: 'demouser@gmail.com',
-  password_digest: BCrypt::Password.create('password'),
-  session_token: SecureRandom.base64
-)
+
+require 'faker'
+require ''
+require ''
+
+
+ActiveRecord::Base.transaction do
+  Video.destroy_all
+  User.destroy_all
+
+  #Demo User
+  User.create!(
+    channel_name: 'Demo User', 
+    first_name: 'Demo', 
+    last_name: 'User', 
+    email: 'demouser@gmail.com',
+    password_digest: BCrypt::Password.create('password'),
+    session_token: SecureRandom.base64
+  )
+
+  
+
+end

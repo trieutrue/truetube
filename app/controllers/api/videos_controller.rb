@@ -29,8 +29,9 @@ class Api::VideosController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     @video = Video.find_by(id: params[:id])
+    debugger
     if @video && @video.uploader_id == current_user.id
       @video.delete
       render json: {message: "Sucess"}
