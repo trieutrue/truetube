@@ -33,9 +33,9 @@ class Api::VideosController < ApplicationController
     @video = Video.find_by(id: params[:id])
     if @video && @video.uploader_id == current_user.id
       @video.delete
-      render json: {messages: "Sucess"}
+      render json: {message: "Sucess"}
     else
-      render json: {messages: "Failure"}
+      render json: {message: "Failure"}
     end
   end
   
