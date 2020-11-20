@@ -8,7 +8,7 @@ body {
   font-size: 14px;
   box-sizing: border-box;
   background-color: $pure-white;
-  height: 1000px;
+  // height: 1000px;
 }
 
 svg {
@@ -19,3 +19,8 @@ svg {
 // li:hover {
 //   background-color: $super-light-gray;
 // }
+
+#root {
+  display: flex;
+  justify-content: flex-start;
+}

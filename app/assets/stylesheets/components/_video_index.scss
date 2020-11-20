@@ -1,0 +1,18 @@
+.video-index {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  border: 1px red solid;
+  height: 100vh;
+  margin-top: 58px;
+  margin-left: 72px;
+  padding: 0 24px;
+
+
+  li { 
+    width: 315px;
+    height: 270px;
+    border: 1px solid green;
+    margin-bottom: 40px;
+  }
+}

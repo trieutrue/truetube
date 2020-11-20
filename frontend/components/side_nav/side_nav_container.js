@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import MainNav from './main_nav';
-import { logout } from '../../actions/session_actions'
+import SideNav from './side_nav';
+
 
 const mSTP = state => {
   const currentUser = state.entities.users[state.session.id]
@@ -9,10 +9,4 @@ const mSTP = state => {
   };
 };
 
-const mDTP = dispatch => {
-  return {
-    logout: () => dispatch(logout())
-  };
-};
-
-export default connect(mSTP, mDTP)(MainNav)
+export default connect(mSTP)(SideNav)

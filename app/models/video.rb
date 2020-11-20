@@ -13,7 +13,7 @@ class Video < ApplicationRecord
   validates :title, :uploader_id, presence: true
   validate :ensure_submission, :ensure_file_type
 
-  has_one_attached :submission
+  has_one_attached :submission, dependent: :destroy
   belongs_to :uploader, class_name: :User
 
   def ensure_submission
