@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatVideoShowDate } from '../../../util/date_util'
 
 const VideoNav = ({ video, user }) => {
 
@@ -10,7 +11,7 @@ const VideoNav = ({ video, user }) => {
             <div className="left-row">
               <p>123K views</p>
               <i>•</i>
-              <p>{video.createdAt}</p>
+              <p>{formatVideoShowDate(video.createdAt)}</p>
             </div>
 
             <div className="right-row">
