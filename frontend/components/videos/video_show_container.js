@@ -3,8 +3,11 @@ import { fetchVideo } from '../../actions/video_actions';
 import VideoShow from './video_show';
 
 const mSTP = (state, ownProps) => {
+  const videoId = ownProps.match.params.videoId
+  const video = state.videos[videoId]
   return {
-    video: state.videos[ownProps.match.params.reportId]
+    video: video,
+    user: state.users[video.uploaderId]
   }
 }
 

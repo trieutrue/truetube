@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //Testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  debugger
   window.fetchVideos = VideoAPIUtil.fetchVideos;
   window.fetchVideo = VideoAPIUtil.fetchVideo;
   window.uploadVideo = VideoAPIUtil.uploadVideo;

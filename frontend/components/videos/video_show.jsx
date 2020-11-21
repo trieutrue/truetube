@@ -1,4 +1,5 @@
 import React from 'react';
+import VideoNavContainer from '../nav/video_nav/video_nav_container'
 
 export default class VideoShow extends React.Component {
   componentDidMount() {
@@ -6,13 +7,11 @@ export default class VideoShow extends React.Component {
   }
 
   render() {
-    const { title, description, uploaderId, createdAt, videoUrl } = this.props.video;
+    const { video, user } = this.props;
     return (
       <>
-        <video src={videoUrl}>
-          
-
-        </video>
+        <video src={video.videoUrl}></video>
+        <VideoNavContainer video={video} user={user}/>
       </>
     )
   }

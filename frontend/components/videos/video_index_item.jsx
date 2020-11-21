@@ -10,6 +10,7 @@ const VideoIndexItem = ({ video }) => {
       <p>channel name</p>
       <div className="row">
         <p>123K views</p>
+        <i>•</i>
         <p>{video.createdAt}</p>
       </div>
     </li>
