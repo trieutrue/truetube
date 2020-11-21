@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
-import MainNavContainer from './main_nav/main_nav_container';
+import MainNavContainer from './nav/main_nav/main_nav_container';
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import VideoIndexContainer from './videos/video_index_container';
 import VideoShowContainer from './videos/video_show_container';
 import SideNavContainer from './nav/side_nav/side_nav_container';
+import ChannelShowContainer from './channels/channel_show_container';
 import {
   AuthRoute,
   ProtectedRoute
@@ -20,6 +21,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/signin" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route path="/channels/:userId" component={ChannelShowContainer} />
       <Route path="/videos/:videoId" component={VideoShowContainer} /> 
       <Route path="/" component={MainNavContainer} />
     </Switch>

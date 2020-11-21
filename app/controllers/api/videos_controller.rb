@@ -1,6 +1,8 @@
 class Api::VideosController < ApplicationController
   def index
-    @videos = Video.all
+    # if 
+    # @videos = User.find_by(id: params[:userId]).videos
+    @videos = Video.all.includes(:uploader)
     render :index
   end
 

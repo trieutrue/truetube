@@ -5,9 +5,10 @@ export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
 export const REMOVE_VIDEO = "REMOVE_VIDEO";
 export const RECEIVE_VIDEO_ERRORS = "RECEIVE_VIDEO_ERRORS"
 
-const receiveVideos = videos => ({
+const receiveVideos = ({ videos, users }) => ({
   type: RECEIVE_VIDEOS,
-  videos
+  videos,
+  users
 })
 
 const receiveVideo = video => ({
@@ -27,12 +28,15 @@ const receiveErrors = errors => ({
 
 export const fetchVideos = () => dispatch => {
   return VideoAPIUtil.fetchVideos()
-    .then(videos => dispatch(receiveVideos(videos)))
+    .then(payload => {
+      debugger
+      return dispatch(receiveVideos(payload))
+    })
 }
 
 export const fetchVideo = videoId => dispatch => {
   return VideoAPIUtil.fetchVideo(videoId)
-    .then(video => dispatch(receiveVideo(video)))
+    .then(payload => dispatch(receiveVideo(payload)))
 }
 
 export const uploadVideo = videoData => dispatch => {

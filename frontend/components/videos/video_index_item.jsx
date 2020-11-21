@@ -1,13 +1,13 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 
-const VideoIndexItem = ({ video }) => {
+const VideoIndexItem = ({ video, user}) => {
   return (
     <li>
-      <video src={video.videoUrl} className="vid-thumbnail" control></video>
+      <video src={video.videoUrl} className="vid-thumbnail" ></video>
       <p>{video.title}</p>
       {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
-      <p>channel name</p>
+      <p>{user.channelName}</p>
       <div className="row">
         <p>123K views</p>
         <i>•</i>

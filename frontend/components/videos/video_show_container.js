@@ -5,6 +5,7 @@ import VideoShow from './video_show';
 const mSTP = (state, ownProps) => {
   const videoId = ownProps.match.params.videoId
   const video = state.videos[videoId]
+  debugger
   return {
     video: video,
     user: state.users[video.uploaderId]

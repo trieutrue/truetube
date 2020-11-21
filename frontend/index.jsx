@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as VideoAPIUtil from './util/video_api_util';
+import * as DateUtil from './util/date_util';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,9 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
   //Testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchVideos = VideoAPIUtil.fetchVideos;
-  window.fetchVideo = VideoAPIUtil.fetchVideo;
   window.uploadVideo = VideoAPIUtil.uploadVideo;
   window.updateVideo = VideoAPIUtil.updateVideo;
-  window.deleteVideo = VideoAPIUtil.deleteVideo;
+  window.formatDate = DateUtil.formatVideoShowDate;
+  window.diffDates = DateUtil.formatVideoIndexDate;
 })

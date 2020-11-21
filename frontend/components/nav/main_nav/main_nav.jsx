@@ -19,7 +19,6 @@ import {
 
 
 const handleDropMenu = e => {
-  debugger
   e.stopPropagation()
   e.preventDefault();
   const dropMenu = e.currentTarget.lastElementChild
@@ -30,7 +29,6 @@ const handleDropMenu = e => {
   }
 
   return document.addEventListener("click", (event) => {
-    // if (event.target === )
     dropMenu.style.display = "none"
   });
 }

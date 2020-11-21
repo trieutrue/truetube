@@ -7,9 +7,9 @@ export default class VideoIndex extends React.Component {
   }
 
   render() {
-    const indexItems = this.props.videos.map(video => {
-      debugger
-      return <VideoIndexItem video={video} />
+    const { videos, users } = this.props;
+    const indexItems = videos.map(video => {
+      return <VideoIndexItem video={video} user={users[video.uploaderId]} />
     })
     return (
       <>
@@ -50,7 +50,6 @@ export default class VideoIndex extends React.Component {
           {indexItems}
           {indexItems}
           {indexItems}
-
         </ul>
       </>
     )
