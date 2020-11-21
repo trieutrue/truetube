@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { 
@@ -33,7 +33,9 @@ const handleDropMenu = e => {
   });
 }
 
-export default ({ currentUser, logout }) => {
+const MainNav = ({ currentUser, logout, location }) => {
+  debugger
+  if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
   const loggedInDisplay = currentUser ? (
     <>
       <li>
@@ -116,7 +118,6 @@ export default ({ currentUser, logout }) => {
   );
 }
 
-
-
+export default withRouter(MainNav)
 
 //have a ul? with 

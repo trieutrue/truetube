@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
+import { formatVideoIndexDate } from '../../util/date_util'
 
 const VideoIndexItem = ({ video, user}) => {
   return (
@@ -12,7 +13,7 @@ const VideoIndexItem = ({ video, user}) => {
         <div className="row">
           <p>123K views</p>
           <i>•</i>
-          <p>{video.createdAt}</p>
+          <p>{formatVideoIndexDate(video.createdAt, Date.now())}</p>
         </div>
       </Link>
     </li>

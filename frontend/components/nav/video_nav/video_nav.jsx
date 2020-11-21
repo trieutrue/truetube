@@ -34,10 +34,9 @@ const VideoNav = ({ video, user }) => {
             </div>
           </div>
 
-          <div className="right-row">
-            <button className="subscribe-btn">SUBSCRIBE</button>
-          </div>
 
+          <button className="subscribe-btn">SUBSCRIBE</button>
+          <p>{video.description}</p>
         </div>
       </div>
 

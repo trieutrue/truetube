@@ -6,7 +6,6 @@ const mSTP = (state, ownProps) => {
   const videoId = parseInt(ownProps.match.params.videoId)
   const video = state.entities.videos[videoId] || {};
   const user = state.entities.users[video.uploaderId] || {};
-  debugger
   return {
     video: video,
     user: user

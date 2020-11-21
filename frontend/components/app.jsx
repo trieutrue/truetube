@@ -1,5 +1,7 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
+
+
 import MainNavContainer from './nav/main_nav/main_nav_container';
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
@@ -14,22 +16,24 @@ import {
 
 const App = () => (
   <>
-    {/* <header>
-      {<MainNavContainer />}
+    <header>
+      <Route path="/" component={MainNavContainer} />
       {<SideNavContainer />}
-    </header> */}
+    </header>
+
+
     <Switch>
       <AuthRoute exact path="/signin" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route path="/channels/:userId" component={ChannelShowContainer} />
       <Route path="/videos/:videoId" component={VideoShowContainer} /> 
-      <Route path="/" component={MainNavContainer} />
+      <Route path="/" component={VideoIndexContainer} />
     </Switch>
     
-    <Route path="/" component={SideNavContainer} />
+    {/* <Route path="/" component={SideNavContainer} />
     <section>
       <Route path="/" component={VideoIndexContainer} />
-    </section>
+    </section> */}
     
   </>
 );
