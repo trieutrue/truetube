@@ -4,7 +4,8 @@ import MainNavContainer from './main_nav/main_nav_container';
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import VideoIndexContainer from './videos/video_index_container';
-import SideNavContainer from './side_nav/side_nav_container'
+import VideoShowContainer from './videos/video_show_container';
+import SideNavContainer from './nav/side_nav/side_nav_container';
 import {
   AuthRoute,
   ProtectedRoute
@@ -17,14 +18,15 @@ const App = () => (
       {<SideNavContainer />}
     </header> */}
     <Switch>
-      <AuthRoute path="/signin" component={LoginFormContainer} />
-      <AuthRoute path="/signup" component={SignupFormContainer} />
+      <AuthRoute exact path="/signin" component={LoginFormContainer} />
+      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route path="/videos/:videoId" component={VideoShowContainer} /> 
       <Route path="/" component={MainNavContainer} />
     </Switch>
     
-    <SideNavContainer />
+    <Route path="/" component={SideNavContainer} />
     <section>
-      <VideoIndexContainer />
+      <Route path="/" component={VideoIndexContainer} />
     </section>
     
   </>

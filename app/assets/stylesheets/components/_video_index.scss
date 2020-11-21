@@ -1,18 +1,30 @@
 .video-index {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: auto;
   border: 1px red solid;
-  height: 100vh;
+  height: 100%;
   margin-top: 58px;
   margin-left: 72px;
-  padding: 0 24px;
+  padding: 15px 24px;
+  z-index: 0;
 
 
   li { 
+    display: flex;
+    flex-direction: column;
     width: 315px;
     height: 270px;
     border: 1px solid green;
+    margin-right: auto;
     margin-bottom: 40px;
+    padding: 0 5px;
+
+  }
+
+  .vid-thumbnail {
+    width: 275px;
+    height: 155px;
+    margin: 0 auto;
   }
 }

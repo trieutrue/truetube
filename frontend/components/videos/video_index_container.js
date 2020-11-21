@@ -3,9 +3,9 @@ import VideoIndex from './video_index';
 import { fetchVideos } from '../../actions/video_actions';
 
 const mSTP = state => {
-  debugger
   return {
-    videos: Object.values(state.entities.videos)
+    videos: Object.values(state.entities.videos),
+    users: state.entities.users
   }
 }
 

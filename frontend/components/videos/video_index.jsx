@@ -1,5 +1,5 @@
 import React from 'react';
-// import VideoIndexItem from './video_index_item';
+import VideoIndexItem from './video_index_item';
 
 export default class VideoIndex extends React.Component {
   componentDidMount() {
@@ -7,14 +7,50 @@ export default class VideoIndex extends React.Component {
   }
 
   render() {
-    const indexItems = this.props.videos.map(video => (
-      <li key={`video${video.id}`}>{video.title}</li>
-    ))
+    const indexItems = this.props.videos.map(video => {
+      debugger
+      return <VideoIndexItem video={video} />
+    })
     return (
       <>
         <ul className="video-index">
-          <li>hello world</li>
           {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+          {indexItems}
+
         </ul>
       </>
     )
