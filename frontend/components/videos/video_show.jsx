@@ -10,7 +10,7 @@ export default class VideoShow extends React.Component {
     const { video, user } = this.props;
     return (
       <>
-        <video src={video.videoUrl}></video>
+        <video src={video.videoUrl} controls></video>
         <VideoNav video={video} user={user}/>
       </>
     )

@@ -25,7 +25,7 @@ const App = () => (
     <Switch>
       <AuthRoute exact path="/signin" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route path="/channels/:userId" component={ChannelShowContainer} />
+      <Route path="/channel/:userId" component={ChannelShowContainer} />
       <Route path="/videos/:videoId" component={VideoShowContainer} /> 
       <Route path="/" component={VideoIndexContainer} />
     </Switch>
