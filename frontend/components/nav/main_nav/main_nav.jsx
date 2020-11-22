@@ -59,7 +59,7 @@ class MainNav extends React.Component {
           <li>
             <FontAwesomeIcon icon={faEllipsisV} className="settings-icon" />
           </li>
-          <li id="signin-btn">
+          <li>
             <Link to="/signin" className="signin-btn">
               <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
               <strong>SIGN IN</strong>

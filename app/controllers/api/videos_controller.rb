@@ -26,6 +26,7 @@ class Api::VideosController < ApplicationController
     @video = Video.find_by(id: params[:id])
 
     if @video && current_user.id == @video.uploader_id
+      @video.update(video_params)
       render :show
     else
       render json: @video.errors.full_messages
@@ -35,7 +36,7 @@ class Api::VideosController < ApplicationController
   def destroy
     @video = Video.find_by(id: params[:id]) 
     if @video && @video.uploader_id == current_user.id
-      @video.delete
+      @video.destroy!
       render json: {message: "Sucess"}
     else
       render json: {message: "Failure"}

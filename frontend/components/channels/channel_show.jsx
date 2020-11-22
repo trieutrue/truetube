@@ -6,6 +6,12 @@ import {
 } from 'react-router-dom';
 import VideoIndexContainer from '../videos/video_index_container';
 export default class ChannelShow extends React.Component {
+  componentDidMount() {
+    debugger
+    const { userId } = this.props.match.params
+    this.props.fetchUser(userId)
+  }
+
   componentDidUpdate(prevProps) {
     debugger
     if (prevProps.location.pathname !== this.props.location.pathname) return console.log("You did it")
@@ -14,6 +20,7 @@ export default class ChannelShow extends React.Component {
   render() {
     debugger
     const { user } = this.props
+    if (!user) return null;
     return (
       <>
         <header className="channel-header">
