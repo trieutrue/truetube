@@ -6,7 +6,7 @@
   end
   json.users do
     json.set! video.uploader_id do
-      json.extract! video.uploader, :channel_name
+      json.extract! video.uploader, :id, :channel_name
     end
   end
 end

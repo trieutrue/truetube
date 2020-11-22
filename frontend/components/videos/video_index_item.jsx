@@ -2,22 +2,30 @@ import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { formatVideoIndexDate } from '../../util/date_util'
 
-const VideoIndexItem = ({ video, user, location }) => {
-  const editBtns = (location.pathname === `/channel/${user.id}/videos` && video.uploaderId === currentUser.id) ? (
-    <>
-      <button className="update-btn"></button>
-      <button className="delete-btn"></button>
-    </>
-  ) : (
-    null
-  )
+const VideoIndexItem = ({ video, user, location, currentUser, openModal }) => {
+  let editBtns; 
+  debugger
+  if (location.pathname === `/channel/${user.id}/videos` && 
+    video.uploaderId === currentUser.id) {
+      debugger
+      editBtns = (
+      <>
+        <button className="update-btn" onClick={() => openModal('upload')}>Update</button>
+        <button className="delete-btn" onClick={}>Delete</button>
+      </>
+      )
+    } else editBtns = null
+  
 
 
   
   return (
     <li>
       <Link to={`/videos/${video.id}`} >  
-        <video src={video.videoUrl} className="vid-thumbnail" ></video>
+        <video className="vid-thumbnail" >
+          <source src={video.videoUrl} tpe="video/mp4" />
+          Sorry, your browser doesn't support embedded videos.
+        </video>
         <p>{video.title}</p>
         {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
         {location.pathname.split("/").includes("channel") ? null : <p>{user.channelName}</p> }

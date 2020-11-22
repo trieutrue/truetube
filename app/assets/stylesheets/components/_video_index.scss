@@ -21,11 +21,16 @@
     margin-bottom: 40px;
     padding: 0 5px;
 
+    button {
+      background-color: blue;
+      width: 40px;
+      height: 20px;
+    }
   }
 
   .vid-thumbnail {
-    width: 275px;
-    height: 155px;
+    width: 300px;
+    height: 169px;
     margin: 0 auto;
   }
 }

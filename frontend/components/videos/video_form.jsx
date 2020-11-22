@@ -35,6 +35,7 @@ export default class VideoForm extends React.Component {
         <h2>{formType}</h2>
         <form onSubmit={this.handleSubmit}>
           <input type="file" 
+            accept="video/*"
             onChange={this.handleFile} />
           <input type="text"
             value={this.state.title}
