@@ -27,13 +27,12 @@ const handleDropMenu = e => {
   } else {
     dropMenu.style.display = "none"
   }
-
   return document.addEventListener("click", (event) => {
     dropMenu.style.display = "none"
   });
 }
 
-const MainNav = ({ currentUser, logout, location }) => {
+const MainNav = ({ currentUser, logout, openModal, location }) => {
   debugger
   if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
   const loggedInDisplay = currentUser ? (
@@ -44,7 +43,7 @@ const MainNav = ({ currentUser, logout, location }) => {
       
       <li id="user-dropdown-btn" onClick={handleDropMenu}>
         <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
-            <ul className="users-drop-menu">
+            <ul className="users-drop-menu" onClick={e => e.stopPropagation()}>
               <div className="header">
                 <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
                 <h4>{currentUser.channelName}</h4>
@@ -77,7 +76,9 @@ const MainNav = ({ currentUser, logout, location }) => {
   return (
     <nav className='main-nav'>
       <nav className="left-nav">
-        <FontAwesomeIcon icon={faBars} className="guide-icon"/>
+        <button onClick={() => openModal('sidenav')}>
+          <FontAwesomeIcon icon={faBars} className="guide-icon"/>
+        </button>
         <Link to="/" className="home-btn">
           <FontAwesomeIcon icon={faYoutube} className="logo-icon"/>
           WeTube
@@ -96,7 +97,7 @@ const MainNav = ({ currentUser, logout, location }) => {
           <li id="video-dropdown-btn" onClick={handleDropMenu}>
             <FontAwesomeIcon icon={faVideo} className="video-icon" />
             <ul className="video-drop-menu">
-              <li>
+              <li onClick={() => openModal('upload')}>
                 <FontAwesomeIcon icon={faFileVideo} className="upload-icon" />
                 <Link to="/">Upload video</Link>
               </li> 
@@ -117,6 +118,7 @@ const MainNav = ({ currentUser, logout, location }) => {
     </nav>
   );
 }
+
 
 export default withRouter(MainNav)
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom';
 
-
+import Modal from './modal/modal'
 import MainNavContainer from './nav/main_nav/main_nav_container';
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
@@ -17,8 +17,9 @@ import {
 const App = () => (
   <>
     <header>
+      <Route path="/" component={Modal} />
       <Route path="/" component={MainNavContainer} />
-      {<SideNavContainer />}
+      <Route path="/" component={SideNavContainer} />
     </header>
 
 

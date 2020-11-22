@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
-const SideNav = () => {
+const SideNav = ({ location }) => {
+  debugger
+  if (location.pathname.split("/").includes("videos")) return null
   return (
     <nav id="side-nav">
       <p>Side Nav</p>
@@ -8,4 +11,4 @@ const SideNav = () => {
   )
 }
 
-export default SideNav
+export default withRouter(SideNav);

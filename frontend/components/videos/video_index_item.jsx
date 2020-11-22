@@ -6,7 +6,7 @@ const VideoIndexItem = ({ video, user, location }) => {
   const editBtns = (location.pathname === `/channel/${user.id}/videos` && video.uploaderId === currentUser.id) ? (
     <>
       <button className="update-btn"></button>
-      <button className="delete-btn"></button> < { /* fix me */}
+      <button className="delete-btn"></button>
     </>
   ) : (
     null
