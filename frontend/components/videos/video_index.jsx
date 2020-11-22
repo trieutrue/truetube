@@ -32,34 +32,6 @@ export default class VideoIndex extends React.Component {
           {indexItems}
           {indexItems}
           {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
         </ul>
       </>
     )

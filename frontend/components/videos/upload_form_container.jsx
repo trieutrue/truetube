@@ -6,6 +6,12 @@ import VideoForm from './video_form';
 
 const mSTP = state => {
   return {
+    videoData: {
+      title: "",
+      description: "",
+      submissionFile: null,
+      submissionUrl: null
+    },
     errors: state.errors.video,
     formType: 'upload'
   }

@@ -12,11 +12,12 @@ class Api::VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
+    @video = current_user.videos.new(video_params)
 
     if @video.save
       render :show
     else
+      debugger
       render json: @video.errors.full_messages, status: 422
     end
   end
