@@ -10,14 +10,14 @@ class Api::VideosController < ApplicationController
     @video = Video.find(params[:id])
     render :show
   end
-
+  
   def create
+    debugger
     @video = current_user.videos.new(video_params)
 
     if @video.save
       render :show
     else
-      debugger
       render json: @video.errors.full_messages, status: 422
     end
   end

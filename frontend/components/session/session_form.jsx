@@ -96,7 +96,7 @@ class SessionForm extends React.Component {
           <h4>to continue to WeTube</h4>
         </header>
 
-        <form onSubmit={this.handleSubmit, this.toggleErrors}>
+        <form onSubmit={this.handleSubmit}>
           {signupFields}
           <input
             type="text"

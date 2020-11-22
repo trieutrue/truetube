@@ -39,12 +39,9 @@ export const fetchVideo = videoId => dispatch => {
 }
 
 export const uploadVideo = videoData => dispatch => {
-  debugger
   return VideoAPIUtil.uploadVideo(videoData).then(
     video => dispatch(receiveVideo(video)),
-    errors => {
-      debugger
-      return dispatch(receiveErrors(errors.responseJSON))}
+    errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }
 

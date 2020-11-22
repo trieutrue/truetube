@@ -7,22 +7,27 @@ export default class VideoIndex extends React.Component {
   }
 
   render() {
-    const { videos, users, location, currentUser, openModal } = this.props;
+    const { videos, users, location, currentUser, openModal, deleteVideo } = this.props;
     const indexItems = videos.map(video => {
       return <VideoIndexItem video={video} 
-        openModal={openModal}
         className="video-container"
+        deleteVideo={deleteVideo}
+        openModal={openModal}
         currentUser={currentUser}
         user={users[video.uploaderId]} 
         location={location} />
     })
 
     const editIndex = (
-      <>
         <ul className="edit-index">
-
+          {indexItems}
         </ul>
-      </>
+    )
+
+    const defaultIndex = (
+      <ul className="video-index">
+        {indexItems}
+      </ul>
     )
 
 
