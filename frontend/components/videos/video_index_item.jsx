@@ -25,9 +25,8 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
           Sorry, your browser doesn't support embedded videos.
         </video>
         <div className="video-info">
-          <Link to={`/channel/${user.id}/featured`}>
-            <div className="profile-icon"></div>
-          </Link>
+          {location.pathname.split("/").includes("channel") ?
+            null : <Link to={`/channel/${user.id}/featured`}><div className="profile-icon"></div></Link>}
           <div>
             <p className="video-title">{video.title}</p>
             {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}

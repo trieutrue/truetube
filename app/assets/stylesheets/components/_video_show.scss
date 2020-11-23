@@ -1,0 +1,100 @@
+.video-container {
+  margin-left: 5%;
+  margin-top: 58px;
+  padding: 24px 24px 24px 0;
+  width: 66%;
+  .screen {
+    width: 100%;
+  }
+
+  .video-nav {
+    padding: 20px 0 8px;
+  }
+
+  h1 {
+    font-size: 18px;
+  }
+
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    color: $dark-gray;
+  }
+
+  .row {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray;
+  }
+
+  .left-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .right-row {
+    width: 367px;
+    font-weight: 500;
+
+    .likes {
+      border-bottom: 3px solid $dark-gray;
+      display: flex;
+      justify-content: space-between;
+      width: 140px;
+      padding: 4px;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 376px;
+
+      li {
+        display: flex;
+        align-items: center;
+      }
+    }
+    svg {
+      height: 25px;
+      width: 25px;
+      padding-right: 8px;
+    }
+  }
+
+  .info-box {
+
+    .profile-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 23px;
+      margin-right: 18px;
+    }
+
+    h6 {
+      font-weight: 500;
+    }
+
+    .row {
+      padding-top: 0;
+      border-bottom: none;
+    }
+
+    .description {
+      padding-left: 62px;
+      padding-right: 274px;
+    }
+  }
+}
+
+button.subscribe-btn {
+  background-color: $dark-red;
+  width: 108px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 2px;
+}

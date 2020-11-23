@@ -17,7 +17,7 @@ class SideNav extends React.Component {
     return currentUser ? (
       <>
         <li><RiVideoLine />Watch later</li>
-        <li><AiFillLike />Liked videos</li>
+        <li><MD.MdThumbUp />Liked videos</li>
       </>
     ) : (
       <>
