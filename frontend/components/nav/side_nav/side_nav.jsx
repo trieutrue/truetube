@@ -16,8 +16,8 @@ class SideNav extends React.Component {
     const { currentUser } = this.props
     return currentUser ? (
       <>
-        <li><RiVideoLine /></li>
-        <li><AiFillLike /></li>
+        <li><RiVideoLine />Watch later</li>
+        <li><AiFillLike />Liked videos</li>
       </>
     ) : (
       <>
@@ -55,12 +55,12 @@ class SideNav extends React.Component {
         <footer>
           <ul className="link-footer">
             <a href="https://github.com/ttran193/wetube" target="_blank">
-              <li onClick="location.href = 'https://github.com/ttran193/wetube';">
+              <li>
                 <FaGithubSquare />Github
               </li>
             </a>
             <a href="https://www.linkedin.com/in/trieu-tran-52339a167/" target="_blank">
-              <li onClick="location.href = 'https://www.linkedin.com/in/trieu-tran-52339a167/';">
+              <li>
                 <FaLinkedin />LinkedIn
               </li>
             </a>

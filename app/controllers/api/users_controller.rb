@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     render :show
   end
 
@@ -21,7 +21,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(id: params[:id])
 
     if @user && current_user.id == @user.id
       @user.update(user_params)

@@ -13,7 +13,8 @@ export default (state = {}, action) => {
     case RECEIVE_USERS:
       return Object.assign({}, state, action.users);
     case RECEIVE_USER:
-      return newState[action.user.id] = action.user;
+      newState[action.user.id] = action.user;
+      return newState
     case REMOVE_USER:
       delete newState[action.userId]
       return newState

@@ -11,6 +11,7 @@ export default class VideoIndex extends React.Component {
     const indexItems = videos.map(video => {
       return <VideoIndexItem video={video} 
         className="video-container"
+        key={`video${video.id}`}
         deleteVideo={deleteVideo}
         openModal={openModal}
         currentUser={currentUser}
@@ -34,13 +35,6 @@ export default class VideoIndex extends React.Component {
     return ( //for homepage
       <>
         <ul className="video-index">
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
-          {indexItems}
           {indexItems}
         </ul>
       </>
