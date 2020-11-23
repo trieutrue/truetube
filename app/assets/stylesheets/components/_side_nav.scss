@@ -1,7 +1,114 @@
 #side-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
-  top: 58px;
+  top: 46px;
+  padding: 0;
   width: 240px;
   height: 100vh;
-  border: 1px solid purple;
+  z-index: 8;
+  background: $pure-white;
+
+  * {
+    padding: 12px 0;
+  }
+
+  .side-header {
+    padding-top: 0px;
+  }
+
+  svg {
+    height: 21px;
+    width: 21px;
+  }
+
+  li {
+    display: flex;
+    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: $pure-white;
+    width: 240px;
+    height: 40px;
+    padding: 10px 24px;
+  }
+
+  li > svg {
+    padding: 4px;
+    padding-right: 24px;
+
+    .signin-btn {
+      padding-right: 0;
+    }
+  }
+
+  li:hover {
+    background-color: $smoke-white;
+  }
+
+  .signin-li {
+    height: 124px;
+    border-top: 1px solid $gray;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 12px;
+  } 
+
+  .signin-li > .signin-btn {
+    padding: 0;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 34px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .link-footer {
+      border-top: 1px solid $gray;
+      border-bottom: 1px solid $gray;
+
+      a {
+        
+      }
+    }
+
+    .info-footer {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      font-weight: 500;
+
+      li {
+        border: 1px 0 solid $gray;
+        display: flex;
+        margin-top: 20px;
+      }
+    }
+
+    h6 {
+      margin-left: 20px;
+    }
+  }
+}
+
+.side-header {
+  ul {
+    border-bottom: 1px $gray solid;
+  }
+
+  :first-child {
+    padding-top: 5px;
+  }
+}
+
+
+.no-hover {
+  pointer-events: none;
 }
