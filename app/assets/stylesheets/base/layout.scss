@@ -28,3 +28,15 @@ svg {
 // * {
 //   box-sizing: border-box;
 // }
+
+
+.profile-icon {
+  height: 35px;
+  width: 35px;
+  background: orange;
+  border-radius: 18px;
+}
+
+.row {
+  display: flex;
+}

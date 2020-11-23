@@ -21,16 +21,24 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
     <li>
       <Link to={`/videos/${video.id}`} >  
         <video className="vid-thumbnail" >
-          <source src={video.videoUrl} tpe="video/mp4" />
+          <source src={video.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>
-        <p>{video.title}</p>
-        {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
-        {location.pathname.split("/").includes("channel") ? null : <p>{user.channelName}</p> }
-        <div className="row">
-          <p>123K views</p>
-          <i>•</i>
-          <p>{formatVideoIndexDate(video.createdAt, Date.now())}</p>
+        <div className="video-info">
+          <Link to={`/channel/${user.id}/featured`}>
+            <div className="profile-icon"></div>
+          </Link>
+          <div>
+            <p className="video-title">{video.title}</p>
+            {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
+            {location.pathname.split("/").includes("channel") ? 
+              null : <Link to={`/channel/${user.id}/featured`}><p>{user.channelName}</p></Link> }
+            <div className="row">
+              <p>123K views</p>
+              <i className="dot">•</i>
+              <p>{formatVideoIndexDate(video.createdAt, Date.now())}</p>
+            </div>
+          </div>
         </div>
         {editBtns}
       </Link>

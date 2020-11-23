@@ -2,10 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   width: auto;
-  border: 1px red solid;
   height: 100%;
   margin-top: 58px;
-  margin-left: 72px;
+  margin-left: 240px;
   padding: 15px 24px;
   z-index: 0;
   background-color: $lightest-gray;
@@ -16,8 +15,6 @@
     flex-direction: column;
     width: 315px;
     height: 270px;
-    border: 1px solid green;
-    margin-right: auto;
     margin-bottom: 40px;
     padding: 0 5px;
 
@@ -33,4 +30,22 @@
     height: 169px;
     margin: 0 auto;
   }
+
+  .profile-icon {
+    margin-right: 12px;
+  }
+}
+
+.video-title {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.dot {
+  margin: 0 4px;
+}
+
+.video-info {
+  display: flex;
+  margin-top: 12px;
 }
