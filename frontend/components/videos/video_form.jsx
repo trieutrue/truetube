@@ -29,9 +29,10 @@ export default class VideoForm extends React.Component {
   }
 
   render() {
-    const { formType, errors } = this.props;
+    const { errors } = this.props;
     const { title, description } = this.state;
-    const headerText = formType === "upload" ? "Upload file" : title
+    const headerText = title ? title : "Upload file"
+    const isComplete = title ? false : true;
     return (
       <>
         <div className="form-header">
@@ -41,20 +42,24 @@ export default class VideoForm extends React.Component {
 
         <form onSubmit={this.handleSubmit} className="video-form">
           {this.state.submissionFile ? (
-            <>
-              <input type="text"
-                value = {this.state.title}
-                onChange={this.handleInput("title")}
-                placeholder="Add a title that describes your video" />
+            <div className="info-section">
+              <label>Title (required)
+                <input type="text"
+                  value = {title}
+                  onChange={this.handleInput("title")}
+                  placeholder="Add a title that describes your video" />
+              </label>
 
-              <textarea value={this.state.description}
-                onChange={this.handleInput("description")}
-                placeholder="Tell viewers about your video">
-              </textarea>
-              <button>Next</button>
-            </>
+              <label>Description
+                <textarea value={description}
+                  onChange={this.handleInput("description")}
+                  placeholder="Tell viewers about your video">
+                </textarea>
+              </label>
+              <button disabled={isComplete} class="save-btn">SAVE</button>
+            </div>
           ) : (
-            <>
+            <div className="upload-section">
               <input type="file" 
                 accept="video/*"
                 id="actual-btn"
@@ -66,8 +71,8 @@ export default class VideoForm extends React.Component {
                 </div>
                 <h5>Drag and drop video file to upload</h5>
                 <h6>Your videos will be private until you publish them.</h6>
-              <label for="actual-btn">SELECT FILE</label>
-            </>
+              <label for="actual-btn" class="blue-btn">SELECT FILE</label>
+            </div>
           ) }
         </form>
       </>

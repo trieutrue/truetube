@@ -37,10 +37,17 @@
 }
 
 .video-form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 16%;
+
+  .upload-section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 16%;
+  }
+
+  .info-secton {
+    
+  }
 
   .upload-icon {
     width: 75px;
@@ -48,15 +55,27 @@
     color: $user-menu;
   }
 
-  label {
+  .blue-btn {
     background-color: $blue;
     color: $pure-white;
-    border-radius: 1px;
-    padding: 2px 4px;
+    border-radius: 2px;
     cursor: pointer;
     width: 20%;
     text-align: center;
     padding: 10px 0;
+  }
+
+  .save-btn {
+    background-color: $blue;
+    color: $pure-white;
+    border-radius: 2px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 16px;
+  }
+
+  .save-btn:disabled {
+    background-color: $user-menu;
   }
 
   .upload-background {
