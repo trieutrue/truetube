@@ -20,7 +20,8 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :videos, foreign_key: :uploader_id
+  has_many :videos, foreign_key: :uploader_id, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)

@@ -13,6 +13,7 @@ class Video < ApplicationRecord
   validates :title, :uploader_id, presence: true
   validate :ensure_submission
 
+  has_many :comments, dependent: :destroy
   has_one_attached :submission, dependent: :destroy
   belongs_to :uploader, class_name: :User
 
