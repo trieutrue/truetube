@@ -22,7 +22,7 @@ const Modal = ({ modal, closeModal, loggedIn, location }) => {
         <Redirect to="/signin" />
       )
     case 'sidenav':
-      debugger
+      // debugger
       return location.pathname.split("/").includes("videos") ? (
           <div className="modal-background" onClick={closeModal}>
             <div className="side-nav-modal-child" onClick={e => e.stopPropagation()}>

@@ -34,7 +34,7 @@ class SideNav extends React.Component {
 
   render() {
     const { location } = this.props
-    if (location.pathname.split("/").includes("videos")) return null
+    // if (location.pathname.split("/").includes("videos"))
 
     return (
       <nav id="side-nav">

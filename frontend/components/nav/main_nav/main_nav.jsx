@@ -19,7 +19,7 @@ import {
 
 
 const handleDropMenu = e => {
-  e.stopPropagation()
+  e.stopPropagation();
   e.preventDefault();
   const dropMenu = e.currentTarget.lastElementChild
   if (dropMenu.style.display === "none") {
@@ -42,7 +42,7 @@ class MainNav extends React.Component {
 
   loggedInDisplay() {
     const { currentUser } = this.props
-    debugger
+    // debugger
     return currentUser ? (
       <>
         <li>
@@ -109,12 +109,12 @@ class MainNav extends React.Component {
   render(){
     const {  openModal, location } = this.props;
     if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
-    debugger
+    // debugger
    
     return (
       <nav className='main-nav'>
         <nav className="left-nav">
-          <button onClick={() => openModal('sidenav')}>
+          <button id="guide-btn">
             <FontAwesomeIcon icon={faBars} className="guide-icon"/>
           </button>
           <Link to="/" className="home-btn">
@@ -134,7 +134,17 @@ class MainNav extends React.Component {
           <ul>
             <li id="video-dropdown-btn" onClick={handleDropMenu}>
               <FontAwesomeIcon icon={faVideo} className="video-icon" />
-              {this.videoDropMenu()}
+              {/* {this.videoDropMenu()} */}
+              <ul className="video-drop-menu">
+                <li onClick={() => openModal('upload')}>
+                  <FontAwesomeIcon icon={faFileVideo} className="upload-icon" />
+                  <Link to="/">Upload video</Link>
+                </li>
+                <li>
+                  <FontAwesomeIcon icon={faRss} className="live-icon" />
+                  <Link to="/">Go live</Link>
+                </li>
+              </ul>
             </li>
     
               <li id="apps-dropdown-btn">

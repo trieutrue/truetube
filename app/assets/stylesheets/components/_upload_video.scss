@@ -14,4 +14,71 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: $pure-white;
+  width: 962px;
+  height: 90%;
+  border-radius: 6px;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid $light-gray;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.video-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 16%;
+
+  .upload-icon {
+    width: 75px;
+    height: 75px;
+    color: $user-menu;
+  }
+
+  label {
+    background-color: $blue;
+    color: $pure-white;
+    border-radius: 1px;
+    padding: 2px 4px;
+    cursor: pointer;
+    width: 20%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .upload-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    width: 140px;
+    height: 140px;
+    border-radius: 70px;
+    background-color: $smoke-white;
+    margin-bottom: 25px;
+  }
+
+  h5 {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+
+  h6 {
+    font-size: 13px;
+    margin-bottom: 30px;
+    color: $dark-gray;
+  }
 }

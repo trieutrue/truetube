@@ -5,7 +5,7 @@ import ChannelShow from './channel_show';
 
 const mSTP = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.id]
-  debugger
+  // debugger
   return {
     videos: state.entities.videos,
     currentUser: currentUser,

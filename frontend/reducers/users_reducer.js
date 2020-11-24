@@ -7,7 +7,8 @@ export default (state = {}, action) => {
   let newState = {...state}
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return newState[action.currentUser.id] = action.currentUser;
+      newState[action.currentUser.id] = action.currentUser;
+      return newState
     case RECEIVE_VIDEOS:
       return Object.assign({}, state, action.users);
     case RECEIVE_USERS:
