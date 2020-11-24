@@ -8,23 +8,20 @@
 
 
 require 'faker'
-require ''
-require ''
-
+require 'date'
 
 ActiveRecord::Base.transaction do
   Video.destroy_all
   User.destroy_all
 
-  #Demo User
-  User.create!(
-    channel_name: 'Demo User', 
-    first_name: 'Demo', 
-    last_name: 'User', 
-    email: 'demouser@gmail.com',
-    password_digest: BCrypt::Password.create('password'),
-    session_token: SecureRandom.base64
-  )
+  puts 'creating users...'
+  demo_user =User.create!(channel_name: 'Demo User', first_name: 'Demo', last_name: 'User', email: 'demouser@gmail.com', password: 'password')
+  jon = User.create!(channel_name: 'jonlol', first_name: 'Jon', last_name: 'Tran', email: 'jontran@wemail.com', password: 'password')
+  sara = User.create!(channel_name: '', first_name: '', last_name: 'User', email: 'demouser@gmail.com', password: 'password')
+  User.create!(channel_name: '', first_name: '', last_name: 'User', email: 'demouser@gmail.com', password: 'password')
+  User.create!(channel_name: '', first_name: '', last_name: 'User', email: 'demouser@gmail.com', password: 'password')
+
+
 
   
 

@@ -16,7 +16,12 @@ export default class VideoForm extends React.Component {
   }
 
   handleFile(e) {
-    this.setState({ submissionFile: e.currentTarget.files[0] })
+    const file = e.currentTarget.files[0]
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      this.setState({submissionFile: file, submissionUrl: fileReader.result})
+    }
+    if (file) fileReader.readAsDataURLURL(file) 
   }
 
   handleSubmit(e) {
