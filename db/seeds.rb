@@ -52,7 +52,7 @@ ActiveRecord::Base.transaction do
     "https://we-tube-seed.s3.amazonaws.com/lights.mp4",
     "https://we-tube-seed.s3.amazonaws.com/mixkit-crowds-of-people-cross-a-street-junction-4401.mp4",
     "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/telephone.mp4" 
+    "https://we-tube-seed.s3.amazonaws.com/telephone.mp4", 
     "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
     "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
     "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
