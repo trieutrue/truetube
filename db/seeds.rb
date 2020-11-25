@@ -72,7 +72,7 @@ ActiveRecord::Base.transaction do
 
     submission = open(url)
     p "uploading video..."
-    video.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
+    video.submission.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
     video.save!
   end
 end
