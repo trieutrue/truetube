@@ -9,6 +9,7 @@
 
 require 'faker'
 require 'date'
+require 'open-uri'
 
 ActiveRecord::Base.transaction do
   #View.destroy_all
@@ -38,40 +39,41 @@ ActiveRecord::Base.transaction do
   end
 
   videoUrls = [
-    "https://we-tube-seed.s3.amazonaws.com/Audio_bands_Feed.mov",
-    "https://we-tube-seed.s3.amazonaws.com/autonomous-grand-piano.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/beach.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/cat-family.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4"
+    # "https://we-tube-seed.s3.amazonaws.com/Audio_bands_Feed.mov",
+    # "https://we-tube-seed.s3.amazonaws.com/autonomous-grand-piano.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/beach.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/cat-family.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4",
     "https://we-tube-seed.s3.amazonaws.com/Dogs+Digging.mp4", #second smallest
-    "https://we-tube-seed.s3.amazonaws.com/fall-road.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/jellyfish.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/fall-road.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/jellyfish.mp4",
     "https://we-tube-seed.s3.amazonaws.com/kid-on-electric-kit.mp4", #fourth smallest
-    "https://we-tube-seed.s3.amazonaws.com/kitten-vs-tape.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/kitten-vs-tape.mp4",
     "https://we-tube-seed.s3.amazonaws.com/lights.mp4", #third smallest
-    "https://we-tube-seed.s3.amazonaws.com/mixkit-crowds-of-people-cross-a-street-junction-4401.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/telephone.mp4", #smallest
-    "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/wind-chimes.mp4"
+    # "https://we-tube-seed.s3.amazonaws.com/mixkit-crowds-of-people-cross-a-street-junction-4401.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/telephone.mp4" #smallest
+    # "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
+    # "https://we-tube-seed.s3.amazonaws.com/wind-chimes.mp4"
   ]
   
 
   p 'creating content...'
 
   videos = videoUrls.map do |url, idx|
-    video = Video.create!(
+    creator = content_creators.sample
+    video = Video.new(
       title: Faker::TvShows::BreakingBad.episode,
       description: Faker::TvShows::VentureBros.quote,
-      uploader_id: content_creators.sample 
+      uploader_id: creator.id
     )
 
     submission = open(url)
     p "uploading vid#{idx + 1}..."
-    video.attach(submission)
-    video
+    video.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
+    video.save!
   end
   
   p 'creating users..'
@@ -107,7 +109,7 @@ ActiveRecord::Base.transaction do
   
   
   p 'creating viewers...'
-  1000000
+  # 1000000
   #create views instances
 end
 
