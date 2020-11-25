@@ -25,7 +25,11 @@ class Api::CommentsController < ApplicationController
       @comment = Comment.all
     end
 
-    @comment.save ? render :show :render json: @comment.errors.full_messages, status: 422
+    if @comment.save 
+      render :show 
+    else
+      :render json: @comment.errors.full_messages, status: 422
+    end
   end
 
   def update
