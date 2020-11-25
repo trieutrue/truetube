@@ -4,7 +4,6 @@ import { logout } from '../../../actions/session_actions'
 import { openModal } from '../../../actions/modal_actions';
 
 const mSTP = state => {
-  debugger
   const currentUser = state.entities.users[state.session.id]
   return {
     currentUser: currentUser

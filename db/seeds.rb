@@ -62,7 +62,7 @@ ActiveRecord::Base.transaction do
 
   p 'creating content...'
 
-  videos = videoUrls.map do |url, idx|
+  videos = videoUrls.map do |url|
     creator = content_creators.sample
     video = Video.new(
       title: Faker::TvShows::BreakingBad.episode,
@@ -71,47 +71,47 @@ ActiveRecord::Base.transaction do
     )
 
     submission = open(url)
-    p "uploading vid#{idx + 1}..."
-    video.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
+    p "uploading video..."
+    video.submission.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
     video.save!
   end
-  
+
   p 'creating users..'
-  
-  # users = []
-  
-  # 1337.times do |n|
-  #   channel_name = Faker::Internet.username(specifier: 5..8)
-  #   first_name = Faker::Name.first_name
-  #   last_name = Faker::Name.last_name
-  #   email = Faker::Internet.email(name: "#{first_name} #{last_name}", separators: '_')
-  #   user = User.create!(
-  #     channel_name: channel_name, 
-  #     irst_name: first_name, 
-  #     last_name: last_name, 
-  #     email: email, 
-  #     password: 'password' 
-  #     )
-      
-  #     users << user
-  # end
     
+  users = []
+  
+  1337.times do |n|
+    channel_name = Faker::Internet.username(specifier: 5..8)
+    first_name = Faker::Name.first_name
+    last_name = Faker::Name.last_name
+    email = Faker::Internet.email(name: "#{first_name} #{last_name}", separators: '_')
+    user = User.create!(
+      channel_name: channel_name, 
+      irst_name: first_name, 
+      last_name: last_name, 
+      email: email, 
+      password: 'password' 
+      )
+      
+      users << user
+  end
+      
   p 'creating comments...'
-  # 1,000.times do |n|
-  #   #create comment instance
-  #   body = Faker::
-  #   comment = Comment.create!(
-  #     body: body,
-  #     author_id: users.sample,
-  #     video_id: videos.sample
-  #   )
-  # end
+  1,000.times do |n|
+    body = Faker::
+    comment = Comment.create!(
+      body: body,
+      author_id: users.sample.id,
+      video_id: videos.sample.id
+    )
+  end
+end
+
   
   
-  p 'creating viewers...'
+  # p 'creating viewers...'
   # 1000000
   #create views instances
-end
 
 
 
