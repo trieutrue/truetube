@@ -1,8 +1,9 @@
-export const fetchVideos = () => {
+export const fetchVideos = videoId => {
   return $.ajax({
     method: 'GET',
     url: `/api/videos`,
     contentType: 'application/json',
+    data: videoId
   })
 }
 

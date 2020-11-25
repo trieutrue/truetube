@@ -3,7 +3,9 @@ import VideoIndexItem from './video_index_item';
 
 export default class VideoIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchVideos()
+    const { fetchVideos, match } = this.props
+    debugger
+    fetchVideos(match.params.userId)
   }
 
   render() {
