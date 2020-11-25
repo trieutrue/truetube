@@ -3,6 +3,7 @@ import VideoIndexItem from './video_index_item';
 
 export default class VideoIndex extends React.Component {
   componentDidMount() {
+    debugger
     this.props.fetchVideos()
   }
 

@@ -74,20 +74,21 @@ ActiveRecord::Base.transaction do
     p "uploading video..."
     video.submission.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
     video.save!
+    video
   end
 
   p 'creating users..'
     
   users = []
   
-  1337.times do |n|
+  337.times do |n|
     channel_name = Faker::Internet.username(specifier: 5..8)
     first_name = Faker::Name.first_name
     last_name = Faker::Name.last_name
     email = Faker::Internet.email(name: "#{first_name} #{last_name}", separators: '_')
     user = User.create!(
       channel_name: channel_name, 
-      irst_name: first_name, 
+      first_name: first_name, 
       last_name: last_name, 
       email: email, 
       password: 'password' 
@@ -96,14 +97,23 @@ ActiveRecord::Base.transaction do
       users << user
   end
       
+
   p 'creating comments...'
-  1,000.times do |n|
-    body = Faker::
+
+  comments = []
+
+  30.times do |n|
+    parent_comment_id = comments.sample.id if n == rand(1..30)
+
+    body = Faker::TvShows::NewGirl.quote
     comment = Comment.create!(
       body: body,
       author_id: users.sample.id,
-      video_id: videos.sample.id
+      video_id: videos.sample.id,
+      parent_comment_id: parent_comment_id
     )
+
+    comments << comment
   end
 end
 

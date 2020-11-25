@@ -3,9 +3,12 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import { formatVideoIndexDate } from '../../util/date_util'
 
 const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteVideo }) => {
+  if (!video) return null;
   let editBtns; 
+  debugger
   if (location.pathname === `/channel/${user.id}/videos` && 
-    video.uploaderId === currentUser.id) {
+    currentUser && video.uploaderId === currentUser.id) {
+      debugger
       editBtns = (
       <>
         <button className="update-btn" onClick={() => openModal('edit')}>Update</button>

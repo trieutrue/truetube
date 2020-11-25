@@ -27,6 +27,7 @@ const receiveErrors = errors => ({
 })
 
 export const fetchVideos = () => dispatch => {
+  debugger
   return VideoAPIUtil.fetchVideos()
     .then(payload => dispatch(receiveVideos(payload)))
 }
