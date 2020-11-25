@@ -42,7 +42,7 @@ ActiveRecord::Base.transaction do
     "https://we-tube-seed.s3.amazonaws.com/autonomous-grand-piano.mp4",
     "https://we-tube-seed.s3.amazonaws.com/beach.mp4",
     "https://we-tube-seed.s3.amazonaws.com/cat-family.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4"
+    "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4",
     "https://we-tube-seed.s3.amazonaws.com/Dogs+Digging.mp4", #second smallest
     "https://we-tube-seed.s3.amazonaws.com/fall-road.mp4",
     "https://we-tube-seed.s3.amazonaws.com/jellyfish.mp4",
