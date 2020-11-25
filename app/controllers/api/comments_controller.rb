@@ -26,6 +26,8 @@ class Api::CommentsController < ApplicationController
       @comment = Comment.all
     end
 
+    @comment.author_id = current_user.id
+    
     if @comment.save 
       render :show 
     else
