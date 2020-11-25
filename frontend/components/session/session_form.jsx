@@ -44,7 +44,6 @@ class SessionForm extends React.Component {
 
   toggleErrors(e) {
     if (this.props.errors) {
-      // debugger
       for(let i = 0; i < e.target.children.length; i++) {
         if (e.target.children[i].tagName === "INPUT") {
           e.target.children[i].className = "error"

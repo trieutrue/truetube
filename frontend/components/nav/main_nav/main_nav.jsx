@@ -42,7 +42,6 @@ class MainNav extends React.Component {
 
   loggedInDisplay() {
     const { currentUser } = this.props
-    // debugger
     return currentUser ? (
       <>
         <li>
@@ -109,7 +108,6 @@ class MainNav extends React.Component {
   render(){
     const {  openModal, location } = this.props;
     if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
-    // debugger
    
     return (
       <nav className='main-nav'>

@@ -26,7 +26,7 @@ export const formatVideoIndexDate = (dateFrom, dateTo) => {
   const prevDate = new Date(dateFrom);
   
   const diffInTime = currentDate.getTime() - prevDate.getTime();
-  // debugger
+
   if (diffInTime / (1000 * 60) < 60 ) {
     return `${Math.floor(diffInTime / (1000 * 60))} minutes ago`
   } 

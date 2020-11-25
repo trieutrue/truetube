@@ -65,7 +65,7 @@ ActiveRecord::Base.transaction do
     video = Video.create!(
       title: Faker::TvShows::BreakingBad.episode,
       description: Faker::TvShows::VentureBros.quote,
-      uploader_id: content_creators.sample 
+      uploader_id: content_creators.sample.id
     )
 
     submission = open(url)

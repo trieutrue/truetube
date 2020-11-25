@@ -11,9 +11,7 @@ const mStP = (state, ownProps) => {
 
 const mDtP = (dispatch, ownProps) => {
   return {
-    processForm: formUser => {
-      // debugger
-      return dispatch(login(formUser))}
+    processForm: formUser => dispatch(login(formUser))
   };
 };
 

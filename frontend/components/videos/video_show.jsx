@@ -22,7 +22,6 @@ export default class VideoShow extends React.Component {
 
   render() {
     const { video, user } = this.props;
-    // debugger
     if (!video) return null;
     return (
       <div className="video-container">
