@@ -62,7 +62,7 @@ ActiveRecord::Base.transaction do
 
   p 'creating content...'
 
-  videos = videoUrls.map do |url, idx|
+  videos = videoUrls.map do |url|
     creator = content_creators.sample
     video = Video.new(
       title: Faker::TvShows::BreakingBad.episode,
@@ -71,7 +71,7 @@ ActiveRecord::Base.transaction do
     )
 
     submission = open(url)
-    p "uploading vid#{idx + 1}..."
+    p "uploading video..."
     video.attach(io: submission, filename: "#{creator.email}_#{rand(1..1000)}" )
     video.save!
   end
