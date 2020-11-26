@@ -13,8 +13,7 @@
 class Comment < ApplicationRecord
   validates :body, :author_id, :video_id, presence: true
 
+  has_many :replies, foreign_key: :parent_comment_id, class_name: :Comment
   belongs_to :author, class_name: :User
   belongs_to :video
-
-  
 end

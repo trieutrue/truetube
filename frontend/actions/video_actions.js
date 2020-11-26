@@ -11,9 +11,10 @@ const receiveVideos = ({ videos, users }) => ({
   users
 })
 
-const receiveVideo = video => ({
+const receiveVideo = ({ video, user }) => ({
   type: RECEIVE_VIDEO,
-  video
+  video,
+  user
 })
 
 const removeVideo = videoId => ({
@@ -27,7 +28,6 @@ const receiveErrors = errors => ({
 })
 
 export const fetchVideos = () => dispatch => {
-  debugger
   return VideoAPIUtil.fetchVideos()
     .then(payload => dispatch(receiveVideos(payload)))
 }

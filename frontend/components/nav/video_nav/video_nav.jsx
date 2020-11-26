@@ -5,7 +5,6 @@ import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
 
 const VideoNav = ({ video, user }) => {
-
   return (
     <>
       <div className="video-nav">

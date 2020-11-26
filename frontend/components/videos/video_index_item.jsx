@@ -4,11 +4,9 @@ import { formatVideoIndexDate } from '../../util/date_util'
 
 const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteVideo }) => {
   if (!video) return null;
-  let editBtns; 
-  debugger
+  let editBtns;
   if (location.pathname === `/channel/${user.id}/videos` && 
     currentUser && video.uploaderId === currentUser.id) {
-      debugger
       editBtns = (
       <>
         <button className="update-btn" onClick={() => openModal('edit')}>Update</button>

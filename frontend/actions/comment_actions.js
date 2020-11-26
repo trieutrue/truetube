@@ -5,9 +5,10 @@ export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 
-const receiveComments = comments => ({
+const receiveComments = ({ comments, users }) => ({
   type: RECEIVE_COMMENTS,
-  comments
+  comments,
+  users
 })
 
 const receiveComment = comment => ({
@@ -27,7 +28,7 @@ const receiveErrors = errors => ({
 
 export const fetchVideoComments = videoId => dispatch => {
   return CommentAPIUtil.fetchVideoComments(videoId).then(
-    comments => dispatch(receiveComments(comments))
+    response => dispatch(receiveComments(response))
   )
 }
 

@@ -47,7 +47,7 @@ export default class CommentIndex extends React.Component {
     } = this.props
 
     const listItems = comments.map(comment => {
-      if (comment.parentCommentId) continue;
+      // if (comment.parentCommentId) continue;
 
       return (
         <CommentIndexItem 
@@ -59,13 +59,14 @@ export default class CommentIndex extends React.Component {
           updateComment={updateComment}
           deleteComment={deleteComment}
           currentUser={currentUser}
+          key={`comment${comment.id}`}
         />
       )
     })
 
 
     return (
-      <>
+      <div className="comments-container">
         <h3>3,735 Comments placeholder</h3>
         <form onSubmit={this.handleVideoComment}> {/* onClick={ensure_login} */}
         <div className="row">
@@ -85,7 +86,7 @@ export default class CommentIndex extends React.Component {
         <ul>
           {listItems}
         </ul>
-      </>
+      </div>
     );
   }
 }
