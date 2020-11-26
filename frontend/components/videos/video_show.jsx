@@ -32,9 +32,9 @@ export default class VideoShow extends React.Component {
             Sorry, your browser doesn't support embedded videos.
           </video>
           <VideoNav video={video} user={user}/>
+          <CommentIndexContainer match={match}/>
         </div>
 
-        <CommentIndexContainer match={match}/>
       </>
 
     )

@@ -32,8 +32,8 @@ export default class CommentIndex extends React.Component {
   handleVideoComment(e) {
     e.preventDefault();
     const { video, createVideoComment } = this.props
-    createVideoComment(video.id, this.state)
     this.setState({ body: "" })
+    createVideoComment(video.id, this.state)
   }
 
   render() {
@@ -48,7 +48,7 @@ export default class CommentIndex extends React.Component {
     } = this.props
 
     const listItems = comments.map(comment => {
-      // if (comment.parentCommentId) continue;
+      // if (comment.parentCommentId) { next };
 
       return (
         <CommentIndexItem 
@@ -65,12 +65,13 @@ export default class CommentIndex extends React.Component {
       )
     })
 
+    const disabled = this.state.body ? false : true
 
     return (
       <div className="comments-container">
         <h3>3,735 Comments placeholder</h3>
         <form onSubmit={this.handleVideoComment}> {/* onClick={ensure_login} */}
-        <div className="row">
+        <div className="row body-input">
           <div className="profile-icon">{}</div>
           <input type="text" 
             value={this.state.body} 
@@ -78,9 +79,9 @@ export default class CommentIndex extends React.Component {
             // onClick={this.renderBtns}
             placeholder="Add a public comment..."/>
         </div>
-          <div className="btn-container">
-            <button>CANCEL</button>
-            <button className="blue-btn">COMMENT</button>
+          <div className="btn-container"> 
+            {/* <button>CANCEL</button>  refactor to have a click handler*/ }
+            <button className="blue-btn" disabled={disabled}>COMMENT</button>
           </div>
         </form>
 

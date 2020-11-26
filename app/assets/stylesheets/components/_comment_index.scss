@@ -1,0 +1,59 @@
+.comments-container {
+
+  h3 {
+    font-size: 16px;
+    margin: 30px 0 20px;
+  }
+
+  form {
+    .body-input {
+      justify-content: flex-start;
+      margin-bottom: 10px;
+
+      input {
+        border-bottom: 1px solid $light-gray;
+        width: 100%;  
+
+        &:focus {
+          border-bottom: 2px solid black;
+        }
+      }
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: flex-end;
+
+      .blue-btn {
+        background-color: $blue;
+        color: $pure-white;
+        border-radius: 2px;
+        cursor: pointer;
+        text-align: center;
+        margin-left: 5px;
+        padding: 10px;
+
+        &:disabled {
+          background-color: $user-menu;
+        }
+      }
+    }
+
+  }
+
+  li {
+    display: flex;
+    margin: 30px 0;
+
+    .channel-name {
+      font-weight: 500;
+    }
+
+    .comment-dropdown {
+      display: none;
+    }
+  }
+
+
+
+}
