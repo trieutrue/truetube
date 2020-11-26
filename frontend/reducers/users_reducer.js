@@ -13,7 +13,6 @@ export default (state = {}, action) => {
     case RECEIVE_USERS:
       return Object.assign({}, state, action.users);
     case RECEIVE_USER:
-      debugger
       newState[action.user.id] = action.user;
       return newState
     case REMOVE_USER:

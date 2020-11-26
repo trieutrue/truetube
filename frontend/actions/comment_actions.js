@@ -46,9 +46,7 @@ export const fetchComment = commentId => dispatch => {
 
 export const createVideoComment = (videoId, comment) => {
   return CommentAPIUtil.createVideoComment(videoId, comment).then(
-    comment => {
-      debugger
-      return dispatch(receiveComment(comment))}, 
+    comment => dispatch(receiveComment(comment)), 
     errors => dispatch(receiveErrors(errors.responeJSON))
   )
 }

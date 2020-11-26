@@ -22,9 +22,7 @@ const mDTP = dispatch => {
   return {
     fetchVideoComments: videoId => dispatch(fetchVideoComments(videoId)),
     fetchChildComments: commentId => dispatch(fetchChildComments(commentId)),
-    createVideoComment: (videoId, comment) => {
-      debugger
-      return dispatch(createVideoComment(videoId, comment))},
+    createVideoComment: (videoId, comment) => dispatch(createVideoComment(videoId, comment)),
     createChildComment: (commentId, comment) => dispatch(createChildComment(commentId, comment)),
     updateComment: comment => dispatch(updateComment(comment)),
     deleteComment: commentId => dispatch(deleteComment(commentId))

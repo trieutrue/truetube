@@ -50,7 +50,6 @@ export default class CommentIndexItem extends React.Component {
   handleCancel(e) {
     e.preventDefault();
     e.stopPropagation();
-    debugger
     this.setState({ hidden: true, body: this.prevState.body })
   }
   
@@ -71,7 +70,6 @@ export default class CommentIndexItem extends React.Component {
     const { parent, comments, users, currentUser } = this.props
     // if (!parent) return null;
     const displayed = parent.authorId !== currentUser.id
-    debugger
     const edited = parent.createdAt !== parent.updatedAt ? <span>(edited)</span> : null
     return (
       <>

@@ -1,6 +1,5 @@
 class Api::VideosController < ApplicationController
   def index
-    debugger
     if params[:id]
       @videos = User.find_by(id: params[:userId]).videos
     else
