@@ -10,11 +10,13 @@ const receiveUsers = users => ({
   users
 })
 
-const receiveUser = ({ user, videos }) => ({
+const receiveUser = ({ user, videos }) => {
+  debugger 
+  return {
   type: RECEIVE_USER,
   user,
   videos
-})
+}}
 
 const removeUser = userId => ({
   type: REMOVE_USER,
@@ -33,7 +35,9 @@ export const fetchUsers = () => dispatch => {
 
 export const fetchUser = userId => dispatch => {
   return UserAPIUtil.fetchUser(userId)
-    .then(payload => dispatch(receiveUser(payload)))
+    .then(payload => {
+      debugger
+      return dispatch(receiveUser(payload))})
 }
 
 export const editUser = user => dispatch => {

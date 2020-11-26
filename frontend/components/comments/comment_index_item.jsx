@@ -3,8 +3,7 @@ import React from 'react';
 export default class CommentIndexItem extends React.Component {
   componentDidMount() {
     const {fetchChildComments, parent } = this.props
-    debugger
-    fetchChildComments(parent.id)
+    if (parent.replyIds.length) { fetchChildComments(parent.id) }
   }
 
   render() {

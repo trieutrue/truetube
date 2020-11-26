@@ -33,6 +33,7 @@ export default class CommentIndex extends React.Component {
     e.preventDefault();
     const { video, createVideoComment } = this.props
     createVideoComment(video.id, this.state)
+    this.setState({ body: "" })
   }
 
   render() {

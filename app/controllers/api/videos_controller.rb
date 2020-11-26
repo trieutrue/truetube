@@ -1,8 +1,12 @@
 class Api::VideosController < ApplicationController
   def index
-    # if 
-    # @videos = User.find_by(id: params[:userId]).videos
-    @videos = Video.all.includes(:uploader)
+    debugger
+    if params[:id]
+      @videos = User.find_by(id: params[:userId]).videos
+    else
+      @videos = Video.all.includes(:uploader, :comments)
+    end
+
     render :index
   end
 

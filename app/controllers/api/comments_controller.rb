@@ -4,7 +4,7 @@ class Api::CommentsController < ApplicationController
     when params[:video_id]
       @comments = Video.find(params[:video_id]).comments
     when params[:comment_id]
-      @comments = Comment.find(params[:comment_id]).comments
+      @comments = Comment.find(params[:comment_id]).replies
     else
       @comments = Comment.all
     end
