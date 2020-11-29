@@ -10,6 +10,7 @@ const mapStateToProps = state => {
 
 
 const Auth = ({ loggedIn, path, exact, component: Component }) => {
+  debugger
   return (
     <Route
       path={path}

@@ -1,3 +1,4 @@
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import {
   RECEIVE_VIDEOS,
@@ -17,6 +18,8 @@ const videosReducer = (state = {}, action) => {
       delete newState[action.videoId]
       return newState;
     case RECEIVE_USER:
+      return Object.assign({}, state, action.videos)
+    case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, action.videos)
     default:
       return state;

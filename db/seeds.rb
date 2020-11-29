@@ -39,24 +39,24 @@ ActiveRecord::Base.transaction do
   end
 
   videoUrls = [
-    # "https://we-tube-seed.s3.amazonaws.com/Audio_bands_Feed.mov",
-    # "https://we-tube-seed.s3.amazonaws.com/autonomous-grand-piano.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/beach.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/cat-family.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/Audio_bands_Feed.mov",
+    "https://we-tube-seed.s3.amazonaws.com/autonomous-grand-piano.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/beach.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/cat-family.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/Creatures+Underwater.mp4",
     "https://we-tube-seed.s3.amazonaws.com/Dogs+Digging.mp4", #second smallest
-    # "https://we-tube-seed.s3.amazonaws.com/fall-road.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/jellyfish.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/fall-road.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/jellyfish.mp4",
     "https://we-tube-seed.s3.amazonaws.com/kid-on-electric-kit.mp4", #fourth smallest
-    # "https://we-tube-seed.s3.amazonaws.com/kitten-vs-tape.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/kitten-vs-tape.mp4",
     "https://we-tube-seed.s3.amazonaws.com/lights.mp4", #third smallest
-    # "https://we-tube-seed.s3.amazonaws.com/mixkit-crowds-of-people-cross-a-street-junction-4401.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/mixkit-crowds-of-people-cross-a-street-junction-4401.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
     "https://we-tube-seed.s3.amazonaws.com/telephone.mp4" #smallest
-    # "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
-    # "https://we-tube-seed.s3.amazonaws.com/wind-chimes.mp4"
+    "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
+    "https://we-tube-seed.s3.amazonaws.com/wind-chimes.mp4"
   ]
   
 

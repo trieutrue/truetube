@@ -52,6 +52,16 @@
     .comment-dropdown {
       display: none;
     }
+
+    .comment-body {
+      resize: none;
+      width: 110vh;
+    }
+
+    .comment-options svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
 
