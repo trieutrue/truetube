@@ -18,10 +18,11 @@ export default class VideoForm extends React.Component {
   handleFile(e) {
     const file = e.currentTarget.files[0]
     const fileReader = new FileReader();
+    const title = file.name.split(".")[0]
     fileReader.onloadend = () => {
-      this.setState({submissionFile: file, submissionUrl: fileReader.result})
+      this.setState({submissionFile: file, submissionUrl: fileReader.result, title })
     }
-    if (file) fileReader.readAsDataURLURL(file) 
+    if (file) fileReader.readAsDataURL(file) 
   }
 
   handleSubmit(e) {
@@ -29,39 +30,59 @@ export default class VideoForm extends React.Component {
     const videoData = new FormData();
     videoData.append("video[title]", this.state.title)
     videoData.append("video[description]", this.state.description)
-    videoData.append("video[submission]", this.state.submissionFile)
+    if (this.state.submissionFile) videoData.append("video[submission]", this.state.submissionFile)
     this.props.processForm(videoData)
   }
 
   render() {
     const { errors } = this.props;
-    const { title, description } = this.state;
+    const { title, description, submissionUrl, submissionFile } = this.state;
     const headerText = title ? title : "Upload file"
     const isComplete = title ? false : true;
+    const hidden = submissionFile ? false : true
+    const preview = submissionUrl ? ( 
+      <div className="video-container column">
+        <video controls>
+          <source src={submissionUrl}/>
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+
+        <p>Filename</p>
+        <p>{submissionFile.name}</p>
+      </div>
+    ) : ( null )
+
     return (
       <>
-        <div className="form-header">
-          <h2>{headerText}</h2>
-          <MD.MdClose />
-        </div>
-
         <form onSubmit={this.handleSubmit} className="video-form">
+          <div className="form-header">
+            <h2>{headerText}</h2>
+            <MD.MdClose />
+          </div>
+          
           {this.state.submissionFile ? (
             <div className="info-section">
-              <label>Title (required)
-                <input type="text"
-                  value = {title}
-                  onChange={this.handleInput("title")}
-                  placeholder="Add a title that describes your video" />
-              </label>
 
-              <label>Description
-                <textarea value={description}
-                  onChange={this.handleInput("description")}
-                  placeholder="Tell viewers about your video">
-                </textarea>
-              </label>
-              <button disabled={isComplete} class="save-btn">SAVE</button>
+              <div className="info-container column">
+                <h2>Details</h2>
+                <label className="title-field">Title (required)
+                  <input type="text"
+                    value = {title}
+                    onChange={this.handleInput("title")}
+                    placeholder="Add a title that describes your video" />
+                </label>
+
+                <label className="description-field">Description
+                  <textarea value={description}
+                    onChange={this.handleInput("description")}
+                    placeholder="Tell viewers about your video">
+                  </textarea>
+                </label>
+              </div>
+
+
+              {preview}
+
             </div>
           ) : (
             <div className="upload-section">
@@ -79,6 +100,9 @@ export default class VideoForm extends React.Component {
               <label for="actual-btn" class="blue-btn">SELECT FILE</label>
             </div>
           ) }
+          <div hidden={hidden} className="flex-end">
+            <button hidden={hidden} disabled={isComplete} class="save-btn">SAVE</button>
+          </div>
         </form>
       </>
     )
