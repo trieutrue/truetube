@@ -55,6 +55,11 @@
     align-items: flex-start;
     flex-direction: column;
     margin-top: 12px;
+    cursor: inherit;
+
+    &:hover {
+      background-color: $pure-white;
+    }
   } 
 
   .signin-li > .signin-btn {
@@ -81,10 +86,15 @@
       justify-content: flex-start;
       font-weight: 500;
 
+      
       li {
         border: 1px 0 solid $gray;
         display: flex;
         margin-top: 20px;
+
+        &:hover{
+          background-color: $pure-white;
+        }
       }
     }
 
@@ -102,9 +112,4 @@
   :first-child {
     padding-top: 5px;
   }
-}
-
-
-.no-hover {
-  pointer-events: none;
 }

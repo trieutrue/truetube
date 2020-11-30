@@ -40,7 +40,9 @@ class SideNav extends React.Component {
       <nav id="side-nav">
         <header className="side-header">
           <ul>
-            <li><TiHome />Home</li>
+            <Link to="/">
+              <li><TiHome />Home</li>
+            </Link>
             <li><ImFire />Trending</li>
             <li><MD.MdSubscriptions />Subscriptions</li>
           </ul>
@@ -67,8 +69,13 @@ class SideNav extends React.Component {
           </ul>
 
           <ul className="info-footer no-hover"> 
-            <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
-            <li>Terms Privacy Policy & Safety <br />How WeTube works <br />Test new features</li>
+            <a href="https://github.com/ttran193/wetube" target="_blank">
+              <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
+            </a>
+            
+            <a href="https://www.linkedin.com/in/trieu-tran-52339a167/" target="_blank">
+              <li>Terms Privacy Policy & Safety <br />How WeTube works <br />Test new features</li>
+            </a>
           </ul>
           <h6>© 2020 WeTube</h6>
         </footer>
