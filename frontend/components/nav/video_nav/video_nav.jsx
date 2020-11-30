@@ -33,7 +33,7 @@ const VideoNav = ({ video, user }) => {
       <div className="info-box">
         <div className="row">
           <div className="left-row">
-            <Link to={`/channel/${user.id}/featured`}><div className="profile-icon"></div></Link>
+            <Link to={`/channel/${user.id}/featured`}><div className="profile-icon">{user.channelName[0]}</div></Link>
             <div className="column">
               <Link to={`/channel/${user.id}/featured`}><h6>{user.channelName}</h6></Link>
               <p>660K subscribers</p>

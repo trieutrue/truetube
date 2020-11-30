@@ -1,5 +1,6 @@
 import React from 'react';
 import CommentIndexItem from './comment_index_item';
+import { FaUserCircle } from 'react-icons/fa'
 
 export default class CommentIndex extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ export default class CommentIndex extends React.Component {
 
     this.handleBody = this.handleBody.bind(this)
     this.handleVideoComment = this.handleVideoComment.bind(this)
+    this.profileIcon = this.profileIcon.bind(this)
   }
 
   componentDidMount() {
@@ -25,6 +27,11 @@ export default class CommentIndex extends React.Component {
     )
   }
 
+  profileIcon() {
+    const { currentUser } = this.props
+    return currentUser ? 
+      <div className="profile-icon">{currentUser.channelName[0]}</div> : <FaUserCircle />
+  }
   handleBody(e) {
     this.setState({ body: e.currentTarget.value})
   }
@@ -72,7 +79,7 @@ export default class CommentIndex extends React.Component {
         <h3>3,735 Comments placeholder</h3>
         <form onSubmit={this.handleVideoComment}> {/* onClick={ensure_login} */}
         <div className="row body-input">
-          <div className="profile-icon">{}</div>
+          {this.profileIcon()}
           <input type="text" 
             value={this.state.body} 
             onChange={this.handleBody}

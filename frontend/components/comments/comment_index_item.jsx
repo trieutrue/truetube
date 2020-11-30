@@ -92,7 +92,7 @@ export default class CommentIndexItem extends React.Component {
     return (
       <>
         <li>
-          <div className="profile-icon"></div>
+          <div className="profile-icon">{users[parent.authorId].channelName[0]}</div>
           <div className="column">
             <h5 className="channel-name">{users[parent.authorId].channelName} {edited}</h5>
             <div className="row">

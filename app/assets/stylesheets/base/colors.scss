@@ -39,4 +39,31 @@ $blue: #0057C8;
 $form-blue: #2376E5;
 
 //login-border
-$login-gray: #D8DADE
+$login-gray: #D8DADE;
+
+
+//PROFILE ICON COLORS
+$p-red: #BD371A;
+$p-orange: #ED6C1F;
+$p-green: #6A9E40;
+$p-dark-green: #356823;
+$p-blue: #168ACF;
+$p-teal: #1698A5;
+$p-periwinkle: #5D6DBE;
+$p-purple: #7927A0;
+$p-magenta: #C01D5C;
+$p-brown: #8B6E64;
+
+$profile-colors: (
+  $p-red, 
+  $p-orange, 
+  $p-green, 
+  $p-dark-green, 
+  $p-blue, 
+  $p-teal, 
+  $p-periwinkle, 
+  $p-purple, 
+  $p-magenta, 
+  $p-brown
+)
+
