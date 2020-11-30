@@ -7,7 +7,6 @@ import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { 
   faBars, 
   faUserCircle,
-  faVideo,
   faSearch,
   faPortrait,
   faSignOutAlt,

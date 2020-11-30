@@ -1,21 +1,43 @@
 #side-nav, .side-nav-modal-child  {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: fixed;
-  top: 46px;
-  padding: 0;
+  top: -6px;
   width: 240px;
-  height: 100vh;
+  height: 101vh;
   z-index: 8;
   background: $pure-white;
 
-  * {
-    padding: 12px 0;
+  .left-nav {
+    display: flex;
+    padding: 15px 15px 0;
+
+    .guide-icon {
+      margin: auto 16px auto 0;
+      padding: 9px;
+      height: 20px;
+      width: 20px;
+    }
+
+    .home-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 22px;
+      font-weight: 500;
+      
+      .logo-icon {
+        color: $red;
+        width: 30px;
+        height: 30px;
+      }
+    }
   }
 
   .side-header {
-    padding-top: 0px;
+    padding: 12px 0;
+
+    ul {
+      padding: 12px 0;
+    }
   }
 
   svg {
@@ -62,13 +84,9 @@
     }
   } 
 
-  .signin-li > .signin-btn {
-    padding: 0;
-  }
-
   footer {
     position: absolute;
-    bottom: 34px;
+    bottom: 12px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -78,6 +96,7 @@
     .link-footer {
       border-top: 1px solid $gray;
       border-bottom: 1px solid $gray;
+      padding: 12px 0;
     }
 
     .info-footer {
@@ -85,7 +104,7 @@
       flex-direction: column;
       justify-content: flex-start;
       font-weight: 500;
-
+      height: 140px;
       
       li {
         border: 1px 0 solid $gray;
@@ -109,7 +128,7 @@
     border-bottom: 1px $gray solid;
   }
 
-  :first-child {
-    padding-top: 5px;
+  .signin-text {
+    padding: 15px 0;
   }
 }

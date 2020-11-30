@@ -11,6 +11,13 @@
   z-index: 4;
   top: 0px;
 
+ .profile-icon {
+    margin-right: 0;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+  }
+
   a {
     display: flex;
     justify-content: center;
@@ -20,7 +27,7 @@
   .left-nav {
     display: flex;
     align-items: center;
-
+    z-index: 100;
     .guide-icon {
       margin: auto 16px auto 0;
       padding: 9px;
@@ -66,12 +73,10 @@
   }
 
   .right-nav {
-    margin: auto 0;
-
     .right-nav {
-      width: 250px;
+      width: 200px;
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
     }
     ul {
       display: flex;
