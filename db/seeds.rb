@@ -64,10 +64,13 @@ ActiveRecord::Base.transaction do
 
   videos = videoUrls.map do |url|
     creator = content_creators.sample
+    created_at = rand(Time.new(2020, 10)..Time.now)
     video = Video.new(
       title: Faker::TvShows::BreakingBad.episode,
       description: Faker::TvShows::VentureBros.quote,
-      uploader_id: creator.id
+      uploader_id: creator.id,
+      created_at: created_at,
+      updated_at: created_at
     )
 
     submission = open(url)

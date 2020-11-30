@@ -1,8 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import CommentIndexItem from './comment_index_item';
 import { FaUserCircle } from 'react-icons/fa'
 
-export default class CommentIndex extends React.Component {
+class CommentIndex extends React.Component {
   constructor(props) {
     super(props); 
     this.state = { body: "" }
@@ -10,6 +11,7 @@ export default class CommentIndex extends React.Component {
     this.handleBody = this.handleBody.bind(this)
     this.handleVideoComment = this.handleVideoComment.bind(this)
     this.profileIcon = this.profileIcon.bind(this)
+    this.verifyLogin = this.verifyLogin.bind(this)
   }
 
   componentDidMount() {
@@ -41,6 +43,12 @@ export default class CommentIndex extends React.Component {
     const { video, createVideoComment } = this.props
     this.setState({ body: "" })
     createVideoComment(video.id, this.state)
+  }
+
+  verifyLogin() {
+    const { currentUser, history } = this.props
+    debugger
+    return currentUser ? null : history.push('/signin')
   }
 
   render() {
@@ -77,7 +85,7 @@ export default class CommentIndex extends React.Component {
     return (
       <div className="comments-container">
         <h3>3,735 Comments placeholder</h3>
-        <form onSubmit={this.handleVideoComment}> {/* onClick={ensure_login} */}
+        <form onSubmit={this.handleVideoComment} onClick={this.verifyLogin}> {/* onClick={ensure_login} */}
         <div className="row body-input">
           {this.profileIcon()}
           <input type="text" 
@@ -99,3 +107,5 @@ export default class CommentIndex extends React.Component {
     );
   }
 }
+
+export default withRouter(CommentIndex);
