@@ -10,6 +10,13 @@
       justify-content: flex-start;
       margin-bottom: 10px;
 
+      svg {
+        width: 35px;
+        height: 35px;
+        margin-right: 15px;
+        color: $blue;
+      }
+
       input {
         border-bottom: 1px solid $light-gray;
         width: 100%;  
