@@ -67,7 +67,7 @@ class SideNav extends React.Component {
 
         <footer>
           <ul className="link-footer">
-            <a href="https://github.com/ttran193/wetube" target="_blank">
+            <a href="https://github.com/trieutrue/wetube" target="_blank">
               <li>
                 <FaGithubSquare />Github
               </li>
@@ -80,7 +80,7 @@ class SideNav extends React.Component {
           </ul>
 
           <ul className="info-footer no-hover"> 
-            <a href="https://github.com/ttran193/wetube" target="_blank">
+            <a href="https://github.com/trieutrue/wetube" target="_blank">
               <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
             </a>
 
