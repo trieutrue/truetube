@@ -6,8 +6,41 @@ import { IoMdShareAlt } from 'react-icons/io'
 
 class VideoNav extends React.Component {
   currentUsersVote() {
-    const { currentUser } = this.props
-    
+    const { currentUser, video } = this.props
+    if (currentUser.upvotedVideoIds.includes(video.id)) {
+      return (
+        <>
+          <button className="voted" onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbUp />{video.upvotes}</li>
+          </button>
+          <button onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbDown />{video.downvotes}</li>
+          </button>
+        </>
+      ) 
+    } else if (currentUser.downvotedVideoIds.includes(video.id)) {
+      return (
+        <>
+          <button onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbUp />{video.upvotes}</li>
+          </button>
+          <button  className="voted" onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbDown />{video.downvotes}</li>
+          </button>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <button onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbUp />{video.upvotes}</li>
+          </button>
+          <button onClick={this.handleVote.bind(this)}>
+            <li><MD.MdThumbDown />{video.downvotes}</li>
+          </button>
+        </>        
+      )
+    }
   }
 
   handleVote(e) {
@@ -31,12 +64,7 @@ class VideoNav extends React.Component {
               <div className="right-row">
                 <ul>
                   <div className="likes">
-                    <button onClick={this.handleVote.bind(this)}>
-                      <li><MD.MdThumbUp />{video.upvotes}</li>
-                    </button>
-                    <button onClick={this.handleVote.bind(this)}>
-                      <li><MD.MdThumbDown />{video.downvotes}</li>
-                    </button>
+                    {this.currentUsersVote.bind(this)()}
                   </div >
                   <li><IoMdShareAlt />SHARE</li>
                   <li><MD.MdPlaylistAdd />SAVE</li>

@@ -45,6 +45,10 @@
       justify-content: space-between;
       width: 140px;
       padding: 4px;
+
+      .voted * {
+        color: $form-blue
+      }
     }
 
     ul {
