@@ -21,13 +21,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 22px;
-      font-weight: 500;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
       
       .logo-icon {
         color: $red;
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
       }
     }
   }

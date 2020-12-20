@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { MdVideoCall } from 'react-icons/md'
-import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
+import { FaAngellist, FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { 
   faBars, 
   faUserCircle,
@@ -146,8 +146,14 @@ class MainNav extends React.Component {
             </li>
 
             <li>
-              <a href="https://www.linkedin.com/in/trieu-tran-52339a167/" target="_blank">
+              <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
                 <FaLinkedin className="settings-icon" />
+              </a>
+            </li>
+
+            <li>
+              <a href="https://angel.co/u/trieutran" target="_blank">
+                <FaAngellist />
               </a>
             </li>
   

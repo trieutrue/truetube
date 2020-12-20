@@ -5,7 +5,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
 import { TiHome } from 'react-icons/ti'
 import { ImFire } from 'react-icons/im'
 import { RiVideoLine } from 'react-icons/ri'
-import { FaGithubSquare, FaLinkedin } from 'react-icons/fa'
+import { FaAngellist, FaGithubSquare, FaLinkedin } from 'react-icons/fa'
 import * as MD from 'react-icons/md'
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -69,26 +69,33 @@ class SideNav extends React.Component {
           <ul className="link-footer">
             <a href="https://github.com/trieutrue/TrueTube" target="_blank">
               <li>
-                <FaGithubSquare />Github
+                <FaGithubSquare />GitHub
               </li>
             </a>
-            <a href="https://www.linkedin.com/in/trieu-tran-52339a167/" target="_blank">
+            <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
               <li>
                 <FaLinkedin />LinkedIn
+              </li>
+            </a>
+            <a href="https://angel.co/u/trieutran" target="_blank">
+              <li>
+                <FaAngellist />AngelList
               </li>
             </a>
           </ul>
 
           <ul className="info-footer no-hover"> 
-            <a href="https://github.com/trieutrue/TrueTube" target="_blank">
+            <a href="https://angel.co/u/trieutran" target="_blank">
               <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
             </a>
 
-            <a href="https://www.linkedin.com/in/trieu-tran-52339a167/" target="_blank">
+            <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
               <li>Terms Privacy Policy & Safety <br />How TrueTube works <br />Test new features</li>
             </a>
           </ul>
-          <h6>© 2020 TrueTube</h6>
+          <a href="https://github.com/trieutrue/TrueTube" target="_blank">
+            <h6>© 2020 TrueTube</h6>
+          </a>
         </footer>
       </nav>
     )
