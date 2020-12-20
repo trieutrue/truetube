@@ -1,6 +1,6 @@
 import React from 'react';
-import VideoNav from '../nav/video_nav/video_nav'
-import CommentIndexContainer from '../comments/comment_index_container'
+import VideoNavContainer from '../nav/video_nav/video_nav_container';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 export default class VideoShow extends React.Component {
   componentDidMount() {
@@ -31,7 +31,7 @@ export default class VideoShow extends React.Component {
             <source src={video.videoUrl} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.
           </video>
-          <VideoNav video={video} user={user}/>
+          <VideoNavContainer video={video} user={user}/>
           <CommentIndexContainer match={match}/>
         </div>
 
