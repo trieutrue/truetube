@@ -23,8 +23,6 @@ class Api::CommentsController < ApplicationController
       @comment = Video.find(params[:video_id]).comments.new(comment_params)
     when params[:comment_id]
       @comment = Comment.find(params[:comment_id]).comments.new(comment_params)
-    else
-      @comment = Comment.all
     end
 
     @comment.author_id = current_user.id

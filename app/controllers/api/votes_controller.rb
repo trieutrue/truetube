@@ -1,4 +1,22 @@
 class Api::VotesController < ApplicationController
+  def index 
+    case
+    when params[:video_id]
+      @votes = Vote.where(votable_id: params[:video_id], votable_type: 'Video')
+    when params[:comment_id]
+      @votes = Vote.where(votable_id: params[:comment_id, votable_type: 'Comment'])
+    else
+      @votes = Vote.all
+    end
+
+    render :index
+  end
+
+  def show
+    @vote = Vote.find(params[:id])
+    render :show
+  end
+
   def create
     case
     when params[:video_id]
@@ -11,12 +29,7 @@ class Api::VotesController < ApplicationController
     @vote.voter_id = current_user.id
 
     if @vote.save
-      case
-      when params[:video_id]
-        redirect_to "/api/videos/#{params[:video_id]}" 
-      when params[:comment_id]
-        redirect_to "/api/comments/#{params[:comment_id]}"
-      end
+      render :show
     else
       render json: @vote.errors.full_messages, status: 422
     end
@@ -26,7 +39,7 @@ class Api::VotesController < ApplicationController
     @vote = Vote.find_by(id: params[:id])
     if @vote && current_user.id == @vote.voter_id
       @vote.update(vote_params)
-      render json: { message: 'Success' }
+      render :show
     else
       render json: @vote.errors.full_messages, status: 422
     end
