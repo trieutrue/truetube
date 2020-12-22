@@ -1,5 +1,5 @@
 import * as VideoAPIUtil from '../util/video_api_util';
-import * as VoteAPIUtil from '../util/comment_api_util';
+import * as VoteAPIUtil from '../util/vote_api_util';
 
 export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
@@ -55,6 +55,13 @@ export const updateVideo = videoData => dispatch => {
 export const deleteVideo = videoId => dispatch => {
   return VideoAPIUtil.deleteVideo(videoId).then(
     () => dispatch(removeVideo(videoId)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  )
+}
+
+export const createVideoVote = (videoId, vote) => dispatch => {
+  return VoteAPIUtil.createVideoVote(videoId, vote).then(
+    video => dispatch(receiveVideo(video)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }
