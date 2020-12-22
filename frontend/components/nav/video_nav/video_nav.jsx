@@ -19,8 +19,8 @@ const VideoNav = ({ video, user }) => {
             <div className="right-row">
               <ul>
                 <div className="likes">
-                  <li><MD.MdThumbUp />27K</li>
-                  <li><MD.MdThumbDown />616</li>
+                  <li><MD.MdThumbUp />{video.upvotes}</li>
+                  <li><MD.MdThumbDown />{video.downvotes}</li>
                 </div>
                 <li><IoMdShareAlt />SHARE</li>
                 <li><MD.MdPlaylistAdd />SAVE</li>
