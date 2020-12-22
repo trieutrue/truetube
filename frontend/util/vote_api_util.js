@@ -19,12 +19,15 @@ export const createCommentVote = (commentId, vote) => {
 export const updateVote = vote => {
   return $.ajax({
     method: 'PATCH',
-    url: `/api/comments/${vote.id}`,
+    url: `/api/votes/${vote.id}`,
     data: { vote },
     contentType: 'application/json'
   })
 }
 
 export const deleteVote = voteId => {
-  
+  return $.ajax({
+    method: 'DELETE',
+    url: `/api/votes/${voteId}`
+  })
 }
