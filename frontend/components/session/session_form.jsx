@@ -55,7 +55,7 @@ class SessionForm extends React.Component {
   render() {
     const { formType, errors } = this.props
     const errorsLi = errors ? errors.map((error, idx) => <li key={idx}>{error}</li>) : null
-    const headerText = formType === 'signin' ? 'Sign in' : 'Create your WeTube Account'
+    const headerText = formType === 'signin' ? 'Sign in' : 'Create your TrueTube Account'
     const btnText = formType === 'signin' ? 'Create account' : 'Sign in instead'
     const formLink = formType === 'signin' ? 'signup' : 'signin'
     // const formLink = formType === 'signin' ? <button onClick={this.handleDemoUser}>Demo User</button> : 'signin'
@@ -89,10 +89,10 @@ class SessionForm extends React.Component {
         <header>
           <Link to="/" className="home-btn">
             <FontAwesomeIcon icon={faYoutube} className="logo-icon" />
-            WeTube
+            TrueTube
           </Link>
           <h2>{headerText}</h2>
-          <h4>to continue to WeTube</h4>
+          <h4>to continue to TrueTube</h4>
         </header>
 
         <form onSubmit={this.handleSubmit}>

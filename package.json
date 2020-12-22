@@ -7,7 +7,7 @@
     "postinstall": "webpack --mode=production",
     "start": "webpack --watch --mode=development"
   },
-  "name": "wetube",
+  "name": "truetube",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.12.3",
