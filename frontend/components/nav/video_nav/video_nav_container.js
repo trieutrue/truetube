@@ -6,6 +6,10 @@ import {
   deleteVote
 } from '../../../actions/video_actions';
 
+const mSTP = state => ({
+  currentUser: state.entities.users[state.session.id]
+})
+
 const mDTP = dispatch => {
   return {
     createVideoVote: (videoId, vote) => dispatch(createVideoVote(videoId, vote)),
@@ -14,4 +18,4 @@ const mDTP = dispatch => {
   }
 }
 
-export default connect(null, mDTP)(VideoNav)
+export default connect(mSTP, mDTP)(VideoNav)

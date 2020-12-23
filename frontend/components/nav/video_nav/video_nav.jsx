@@ -5,6 +5,15 @@ import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
 
 class VideoNav extends React.Component {
+  currentUsersVote() {
+    const { currentUser } = this.props
+    
+  }
+
+  handleVote(e) {
+    debugger
+  }
+
   render() {
     const { video, user } = this.props
 
@@ -22,9 +31,13 @@ class VideoNav extends React.Component {
               <div className="right-row">
                 <ul>
                   <div className="likes">
-                    <li><MD.MdThumbUp />{video.upvotes}</li>
-                    <li><MD.MdThumbDown />{video.downvotes}</li>
-                  </div>
+                    <button onClick={this.handleVote.bind(this)}>
+                      <li><MD.MdThumbUp />{video.upvotes}</li>
+                    </button>
+                    <button onClick={this.handleVote.bind(this)}>
+                      <li><MD.MdThumbDown />{video.downvotes}</li>
+                    </button>
+                  </div >
                   <li><IoMdShareAlt />SHARE</li>
                   <li><MD.MdPlaylistAdd />SAVE</li>
                   <li><MD.MdMoreHoriz /></li>
