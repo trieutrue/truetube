@@ -12,6 +12,11 @@ class VideoNav extends React.Component {
     this.handleDeleteVote = this.handleDeleteVote.bind(this)
   }
 
+  componentDidMount() {
+    const { video, fetchVideoVotes } = this.props
+    fetchVideoVotes(video.id)
+  }
+
   // currentUsersVote() {
   //   const { currentUser, video } = this.props
   //   if (currentUser.upvotedVideoIds.includes(video.id)) {
