@@ -14,6 +14,7 @@ class Video < ApplicationRecord
   validate :ensure_submission
 
   has_many :comments, dependent: :destroy
+  has_many :votes, as: :votable
   has_one_attached :submission, dependent: :destroy
   belongs_to :uploader, class_name: :User
 

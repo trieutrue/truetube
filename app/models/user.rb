@@ -22,6 +22,15 @@ class User < ApplicationRecord
 
   has_many :videos, foreign_key: :uploader_id, dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :destroy
+  has_many :votes
+  has_many :voted_videos,
+    through: :votes,
+    source: :votable,
+    source_type: 'Video'
+  has_many :voted_comments,
+    through: :votes,
+    source: :votable,
+    source_type: 'Comment'
   
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)

@@ -39,8 +39,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 22px;
-      font-weight: 500;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
       
       .logo-icon {
         color: $red;
@@ -109,6 +110,7 @@
       height: auto;
       top: 87%;
       background-color: $pure-white;
+      display: none;
 
       li {
         padding: 0 5px;
@@ -128,7 +130,6 @@
       li:hover {
         background-color: $super-light-gray;
       }
-      display: none;
     }
   }
   
