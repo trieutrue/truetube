@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   has_many :videos, foreign_key: :uploader_id, dependent: :destroy
   has_many :comments, foreign_key: :author_id, dependent: :destroy
-  has_many :votes
+  has_many :votes, foreign_key: :voter_id
   has_many :voted_videos,
     through: :votes,
     source: :votable,

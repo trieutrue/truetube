@@ -1,7 +1,7 @@
 class Vote < ApplicationRecord
-  validates :is_voted?, presence: true
-  validates :voter_id, uniqueness: { scope: [:voter_type, :voter_id] }
+  validates :is_upvoted?, presence: true
+  validates :voter_id, uniqueness: { scope: [:votable_type, :votable_id] }
   
   belongs_to :votable, polymorphic: true
-  belongs_to :voter
+  belongs_to :voter, class_name: :User
 end
