@@ -1,3 +1,11 @@
+export const fetchVideoVotes = videoId => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/videos/${videoId}/votes`,
+    contentType: 'application/json'
+  })
+}
+
 export const createVideoVote = (videoId, vote) => {
   return $.ajax({
     method: 'POST',
