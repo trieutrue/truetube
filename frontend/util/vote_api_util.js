@@ -14,6 +14,14 @@ export const fetchCommentVotes = commentId => {
   })
 }
 
+export const fetchVote = voteId => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/comments/${voteId}`,
+    contentType: 'application/json'
+  })
+}
+
 export const createVideoVote = (videoId, vote) => {
   return $.ajax({
     method: 'POST',
