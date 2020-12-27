@@ -93,8 +93,8 @@ class SideNav extends React.Component {
               <li>Terms Privacy Policy & Safety <br />How TrueTube works <br />Test new features</li>
             </a>
           </ul>
-          <a href="https://github.com/trieutrue/TrueTube" target="_blank">
-            <h6>© 2020 TrueTube</h6>
+          <a href="https://github.com/trieutrue/truetube" target="_blank">
+            <h6>© 2021 TrueTube</h6>
           </a>
         </footer>
       </nav>

@@ -140,7 +140,7 @@ class MainNav extends React.Component {
             </li>
     
             <li id="apps-dropdown-btn">
-              <a href="https://github.com/trieutrue/TrueTube" target="_blank">
+              <a href="https://github.com/trieutrue/truetube" target="_blank">
                 <FaGithubSquare className="apps-icon" />
               </a>
             </li>
