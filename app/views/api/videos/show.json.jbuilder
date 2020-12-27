@@ -1,6 +1,6 @@
 json.video do
-  json.partial! 'api/videos/video', video: @video
-  json.extract! @video, :description, :upvotes, :downvotes
+  json.partial! '/api/videos/video', video: @video
+  json.extract! @video, :description
 end
 
 json.user do

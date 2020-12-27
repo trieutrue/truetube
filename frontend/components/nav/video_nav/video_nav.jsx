@@ -17,10 +17,10 @@ class VideoNav extends React.Component {
       return (
         <>
           <button className="voted" onClick={this.handleDeleteVote}>
-            <li><MD.MdThumbUp />{video.upvotes}</li>
+            <li><MD.MdThumbUp />{video.upvoteCount}</li>
           </button>
           <button onClick={this.handleUpdateVote("downvote")}>
-            <li><MD.MdThumbDown />{video.downvotes}</li>
+            <li><MD.MdThumbDown />{video.downvoteCount}</li>
           </button>
         </>
       ) 
@@ -28,10 +28,10 @@ class VideoNav extends React.Component {
       return (
         <>
           <button onClick={this.handleUpdateVote("upvote")}>
-            <li><MD.MdThumbUp />{video.upvotes}</li>
+            <li><MD.MdThumbUp />{video.upvoteCount}</li>
           </button>
           <button  className="voted" onClick={this.handleDeleteVote}>
-            <li><MD.MdThumbDown />{video.downvotes}</li>
+            <li><MD.MdThumbDown />{video.downvoteCount}</li>
           </button>
         </>
       )
@@ -39,10 +39,10 @@ class VideoNav extends React.Component {
       return (
         <>
           <button onClick={this.handleCreateVote("upvote")}>
-            <li><MD.MdThumbUp />{video.upvotes}</li>
+            <li><MD.MdThumbUp />{video.upvoteCount}</li>
           </button>
           <button onClick={this.handleCreateVote("downvote")}>
-            <li><MD.MdThumbDown />{video.downvotes}</li>
+            <li><MD.MdThumbDown />{video.downvoteCount}</li>
           </button>
         </>        
       )
