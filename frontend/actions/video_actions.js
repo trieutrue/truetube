@@ -65,3 +65,10 @@ export const createVideoVote = (videoId, vote) => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }
+
+export const updateVote = vote => dispatch => {
+  return VoteAPIUtil.updateVote(vote).then(
+    video => dispatch(receiveVideo(video)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  )
+}
