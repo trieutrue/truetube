@@ -38,11 +38,15 @@ Rails.application.routes.draw do
     
     resources :videos, except: [:new, :edit] do
       resources :comments, only: [:index, :create]
+      resources :votes, only: [:index, :create]
     end
 
     resources :comments, only: [:show, :update, :destroy] do
       resources :comments, only: [:index, :create]
+      resources :votes, only: [:index, :create]
     end
+
+    resources :votes, only: [:update, :destroy]
   end
 
   root to: 'static_pages#root'
