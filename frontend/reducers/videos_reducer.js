@@ -5,6 +5,7 @@ import {
   RECEIVE_VIDEO,
   REMOVE_VIDEO
 } from '../actions/video_actions'
+import { RECEIVE_VOTE, REMOVE_VOTE } from '../actions/vote_actions';
 
 const videosReducer = (state = {}, action) => {
   Object.freeze(state)
@@ -21,6 +22,10 @@ const videosReducer = (state = {}, action) => {
       return Object.assign({}, state, action.videos)
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, action.videos)
+    case RECEIVE_VOTE:
+      return { ...state, [action.video.id]: action.video }
+    case REMOVE_VOTE:
+      return { ...state, [action.video.id]: action.video }
     default:
       return state;
   }
