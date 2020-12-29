@@ -6,6 +6,14 @@ export const fetchVideoVotes = videoId => {
   })
 }
 
+export const fetchCommentVotes = commentId => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/comments/${commentId}/comments`,
+    contentType: 'application/json'
+  })
+}
+
 export const createVideoVote = (videoId, vote) => {
   return $.ajax({
     method: 'POST',
