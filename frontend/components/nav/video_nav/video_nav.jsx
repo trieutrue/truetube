@@ -5,15 +5,21 @@ import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
 
 class VideoNav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleCreateVote = this.handleCreateVote.bind(this)
+    this.handleUpdateVote = this.handleUpdateVote.bind(this)
+    this.handleDeleteVote = this.handleDeleteVote.bind(this)
+  }
   currentUsersVote() {
     const { currentUser, video } = this.props
     if (currentUser.upvotedVideoIds.includes(video.id)) {
       return (
         <>
-          <button className="voted" onClick={this.handleVote.bind(this)}>
+          <button className="voted" onClick={this.handleDeleteVote}>
             <li><MD.MdThumbUp />{video.upvotes}</li>
           </button>
-          <button onClick={this.handleVote.bind(this)}>
+          <button onClick={this.handleUpdateVote("downvote")}>
             <li><MD.MdThumbDown />{video.downvotes}</li>
           </button>
         </>
@@ -21,10 +27,10 @@ class VideoNav extends React.Component {
     } else if (currentUser.downvotedVideoIds.includes(video.id)) {
       return (
         <>
-          <button onClick={this.handleVote.bind(this)}>
+          <button onClick={this.handleUpdateVote("upvote")}>
             <li><MD.MdThumbUp />{video.upvotes}</li>
           </button>
-          <button  className="voted" onClick={this.handleVote.bind(this)}>
+          <button  className="voted" onClick={this.handleDeleteVote}>
             <li><MD.MdThumbDown />{video.downvotes}</li>
           </button>
         </>
@@ -32,10 +38,10 @@ class VideoNav extends React.Component {
     } else {
       return (
         <>
-          <button onClick={this.handleVote.bind(this)}>
+          <button onClick={this.handleCreateVote("upvote")}>
             <li><MD.MdThumbUp />{video.upvotes}</li>
           </button>
-          <button onClick={this.handleVote.bind(this)}>
+          <button onClick={this.handleCreateVote("downvote")}>
             <li><MD.MdThumbDown />{video.downvotes}</li>
           </button>
         </>        
@@ -43,7 +49,24 @@ class VideoNav extends React.Component {
     }
   }
 
-  handleVote(e) {
+  handleCreateVote(type) {
+    const { createVideoVote } = this.props
+    return e => {
+      createVideoVote
+      debugger
+    }
+  }
+
+  handleUpdateVote(type) {
+    const { updateVote } = this.props
+    return e => {
+      updateVote
+      debugger
+    }
+  }
+
+  handleDeleteVote(e) {
+    const { deleteVote } = this.props
     debugger
   }
 
