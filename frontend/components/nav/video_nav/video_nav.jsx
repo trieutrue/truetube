@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { formatVideoShowDate } from '../../../util/date_util'
 import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
@@ -19,6 +19,18 @@ class VideoNav extends React.Component {
 
   currentUsersVote() {
     const { currentUser, video, votes } = this.props
+
+    if (!currentUser) return (
+      <>
+        <button onClick={() => this.props.history.push('/signin')}>
+          <li><MD.MdThumbUp />{video.upvoteCount}</li>
+        </button>
+        <button onClick={() => this.props.history.push('/signin')}>
+          <li><MD.MdThumbDown />{video.downvoteCount}</li>
+        </button>
+      </>        
+    )
+
     let vote;
     currentUser.voteIds.forEach(voteId => {
       if (votes[voteId] && votes[voteId].votableId === video.id) {
@@ -41,7 +53,7 @@ class VideoNav extends React.Component {
       case true:
         return (
           <>
-            <button className="voted" onClick={this.handleDeleteVote}>
+            <button className="voted" onClick={this.handleDeleteVote(vote.id)}>
               <li><MD.MdThumbUp />{video.upvoteCount}</li>
             </button>
             <button onClick={this.handleUpdateVote("downvote")}>
@@ -55,7 +67,7 @@ class VideoNav extends React.Component {
             <button onClick={this.handleUpdateVote("upvote")}>
               <li><MD.MdThumbUp />{video.upvoteCount}</li>
             </button>
-            <button  className="voted" onClick={this.handleDeleteVote}>
+            <button  className="voted" onClick={this.handleDeleteVote(vote.id)}>
               <li><MD.MdThumbDown />{video.downvoteCount}</li>
             </button>
           </>
@@ -64,24 +76,32 @@ class VideoNav extends React.Component {
   }
 
   handleCreateVote(type) {
-    const { createVideoVote } = this.props
+    const { createVideoVote, video } = this.props
     return e => {
-      createVideoVote
-      debugger
+      if (type === "upvote") {
+        createVideoVote(video.id, { isUpvoted: true })
+      } else if ( type === "downvote") {
+        createVideoVote(video.id, { isUpvoted: false })
+      } 
     }
   }
 
-  handleUpdateVote(type) {
+  handleUpdateVote(vote, type) {
     const { updateVote } = this.props
     return e => {
-      updateVote
-      debugger
-    }
+      if (type === "upvote") {
+        vote.isUpvoted = true
+        updateVote(vote)
+        debugger
+      } else if (type === "downvote") {
+        vote.isUpvoted = false
+        updateVote(vote)
+      } 
+    } 
   }
 
-  handleDeleteVote(e) {
-    const { deleteVote } = this.props
-    debugger
+  handleDeleteVote(voteId) {
+    return () => this.props.deleteVote(voteId)
   }
 
   render() {
@@ -132,4 +152,4 @@ class VideoNav extends React.Component {
   }
 }
 
-export default VideoNav;
+export default withRouter(VideoNav);
