@@ -47,9 +47,10 @@ class Api::VotesController < ApplicationController
 
   def destroy
     @vote = Vote.find_by(id: params[:id])
+    @video = Video.find(@vote.votable_id)
     if @vote && current_user.id == @vote.voter_id
       @vote.destroy!
-      render json: { message: 'Success' }
+      render json: @video
     else
       render json: { message: 'Failure' }
     end

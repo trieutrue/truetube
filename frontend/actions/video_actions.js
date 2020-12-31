@@ -58,26 +58,3 @@ export const deleteVideo = videoId => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }
-
-// thunk actions for upvotes/downvotes
-
-export const createVideoVote = (videoId, vote) => dispatch => {
-  return VoteAPIUtil.createVideoVote(videoId, vote).then(
-    video => dispatch(receiveVideo(video)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
-  )
-}
-
-export const updateVote = vote => dispatch => {
-  return VoteAPIUtil.updateVote(vote).then(
-    video => dispatch(receiveVideo(video)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
-  )
-}
-
-export const deleteVote = voteId => dispatch => {
-  return VoteAPIUtil.deleteVote(voteId).then(
-    video => dispatch(receiveVideo(video)),
-    errors => dispatch(receiveErrors(errors.responseJSON))
-  )
-}
