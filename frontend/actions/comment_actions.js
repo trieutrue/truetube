@@ -44,28 +44,28 @@ export const fetchComment = commentId => dispatch => {
   )
 }
 
-export const createVideoComment = (videoId, comment) => {
+export const createVideoComment = (videoId, comment) => dispatch => {
   return CommentAPIUtil.createVideoComment(videoId, comment).then(
     comment => dispatch(receiveComment(comment)), 
     errors => dispatch(receiveErrors(errors.responeJSON))
   )
 }
 
-export const createChildComment = (commentId, comment) => {
+export const createChildComment = (commentId, comment) => dispatch => {
   return CommentAPIUtil.createChildComment(commentId, comment).then(
     comment => dispatch(receiveComment(comment)),
     errors => dispatch(receiveErrors(errors.responeJSON))
   )
 }
 
-export const updateComment = comment => {
+export const updateComment = comment => dispatch => {
   return CommentAPIUtil.updateComment(comment).then(
     comment => dispatch(receiveComment(comment)),
     errors => dispatch(receiveErrors(errors.responeJSON))
   )
 }
 
-export const deleteComment = commentId => {
+export const deleteComment = commentId => dispatch =>  {
   return CommentAPIUtil.deleteComment(commentId).then(
     () => dispatch(removeComment(commentId)),
     errors => dispatch(receiveErrors(errors.responeJSON))

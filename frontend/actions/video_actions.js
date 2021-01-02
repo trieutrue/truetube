@@ -1,4 +1,5 @@
 import * as VideoAPIUtil from '../util/video_api_util';
+import * as VoteAPIUtil from '../util/comment_api_util';
 
 export const RECEIVE_VIDEOS = "RECEIVE_VIDEOS";
 export const RECEIVE_VIDEO = "RECEIVE_VIDEO";
