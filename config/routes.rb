@@ -11,6 +11,8 @@
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
 #        api_video_comments GET    /api/videos/:video_id/comments(.:format)                                                 api/comments#index {:format=>:json}
 #                           POST   /api/videos/:video_id/comments(.:format)                                                 api/comments#create {:format=>:json}
+#           api_video_votes GET    /api/videos/:video_id/votes(.:format)                                                    api/votes#index {:format=>:json}
+#                           POST   /api/videos/:video_id/votes(.:format)                                                    api/votes#create {:format=>:json}
 #                api_videos GET    /api/videos(.:format)                                                                    api/videos#index {:format=>:json}
 #                           POST   /api/videos(.:format)                                                                    api/videos#create {:format=>:json}
 #                 api_video GET    /api/videos/:id(.:format)                                                                api/videos#show {:format=>:json}
@@ -19,10 +21,15 @@
 #                           DELETE /api/videos/:id(.:format)                                                                api/videos#destroy {:format=>:json}
 #      api_comment_comments GET    /api/comments/:comment_id/comments(.:format)                                             api/comments#index {:format=>:json}
 #                           POST   /api/comments/:comment_id/comments(.:format)                                             api/comments#create {:format=>:json}
+#         api_comment_votes GET    /api/comments/:comment_id/votes(.:format)                                                api/votes#index {:format=>:json}
+#                           POST   /api/comments/:comment_id/votes(.:format)                                                api/votes#create {:format=>:json}
 #               api_comment GET    /api/comments/:id(.:format)                                                              api/comments#show {:format=>:json}
 #                           PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:format=>:json}
 #                           PUT    /api/comments/:id(.:format)                                                              api/comments#update {:format=>:json}
 #                           DELETE /api/comments/:id(.:format)                                                              api/comments#destroy {:format=>:json}
+#                  api_vote PATCH  /api/votes/:id(.:format)                                                                 api/votes#update {:format=>:json}
+#                           PUT    /api/votes/:id(.:format)                                                                 api/votes#update {:format=>:json}
+#                           DELETE /api/votes/:id(.:format)                                                                 api/votes#destroy {:format=>:json}
 #                      root GET    /                                                                                        static_pages#root
 #        rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
 # rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show

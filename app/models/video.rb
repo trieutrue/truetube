@@ -22,6 +22,14 @@ class Video < ApplicationRecord
     errors[:submission] << "must be attached." unless self.submission.attached?
   end
 
+  def upvotes
+    return self.votes.where(is_upvoted?: true).count
+  end
+
+  def downvotes
+    return self.votes.where(is_upvoted?: false).count
+  end
+
   # def ensure_file_type
   #   errors[:submission] << "Invalid file format." unless self.submission.attached?
   # end
