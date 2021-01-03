@@ -21,10 +21,21 @@ class VideoNav extends React.Component {
     const { currentUser, video, votes } = this.props
     let vote;
     currentUser.voteIds.forEach(voteId => {
-      if (votes[voteId].votableId === video.id) {
+      if (votes[voteId] && votes[voteId].votableId === video.id) {
         vote = votes[voteId]
       }
     })
+
+    if (!vote) return (
+      <>
+        <button onClick={this.handleCreateVote("upvote")}>
+          <li><MD.MdThumbUp />{video.upvoteCount}</li>
+        </button>
+        <button onClick={this.handleCreateVote("downvote")}>
+          <li><MD.MdThumbDown />{video.downvoteCount}</li>
+        </button>
+      </>        
+    )
 
     switch (vote.isUpvoted) {
       case true:
@@ -48,17 +59,6 @@ class VideoNav extends React.Component {
               <li><MD.MdThumbDown />{video.downvoteCount}</li>
             </button>
           </>
-        )
-      default:
-        return (
-          <>
-            <button onClick={this.handleCreateVote("upvote")}>
-              <li><MD.MdThumbUp />{video.upvoteCount}</li>
-            </button>
-            <button onClick={this.handleCreateVote("downvote")}>
-              <li><MD.MdThumbDown />{video.downvoteCount}</li>
-            </button>
-          </>        
         )
     }
   }
@@ -101,7 +101,7 @@ class VideoNav extends React.Component {
               <div className="right-row">
                 <ul>
                   <div className="likes">
-                    {/* {this.currentUsersVote.bind(this)()} */}
+                    {this.currentUsersVote.bind(this)()}
                   </div >
                   <li><IoMdShareAlt />SHARE</li>
                   <li><MD.MdPlaylistAdd />SAVE</li>
