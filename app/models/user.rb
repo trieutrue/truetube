@@ -35,14 +35,14 @@ class User < ApplicationRecord
   def upvoted_video_ids
     self.votes
       .select(:votable_id)
-      .where(is_upvoted?: true, votable_type: 'Video')
+      .where(is_upvoted: true, votable_type: 'Video')
       .map { |vote| vote.votable_id }
   end
 
   def downvoted_video_ids
     self.votes
       .select(:votable_id)
-      .where(is_upvoted?: false, votable_type: 'Video')
+      .where(is_upvoted: false, votable_type: 'Video')
       .map { |vote| vote.votable_id }
   end
   

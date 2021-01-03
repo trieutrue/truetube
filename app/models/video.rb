@@ -23,11 +23,11 @@ class Video < ApplicationRecord
   end
 
   def upvoteCount
-    return self.votes.where(is_upvoted?: true).count
+    return self.votes.where(is_upvoted: true).count
   end
 
   def downvoteCount
-    return self.votes.where(is_upvoted?: false).count
+    return self.votes.where(is_upvoted: false).count
   end
 
   # def ensure_file_type

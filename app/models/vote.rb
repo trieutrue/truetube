@@ -3,7 +3,7 @@
 # Table name: votes
 #
 #  id           :bigint           not null, primary key
-#  is_upvoted?  :boolean          not null
+#  is_upvoted  :boolean          not null
 #  voter_id     :integer          not null
 #  votable_type :string           not null
 #  votable_id   :bigint           not null
@@ -11,7 +11,7 @@
 #  updated_at   :datetime         not null
 #
 class Vote < ApplicationRecord
-  validates :is_upvoted?, inclusion: { in: [ true, false ]}
+  validates :is_upvoted, inclusion: { in: [ true, false ]}
   validates :voter_id, uniqueness: { scope: [:votable_type, :votable_id] }
   
   belongs_to :votable, polymorphic: true
