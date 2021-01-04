@@ -11,43 +11,43 @@ class VideoNav extends React.Component {
     this.handleUpdateVote = this.handleUpdateVote.bind(this)
     this.handleDeleteVote = this.handleDeleteVote.bind(this)
   }
-  currentUsersVote() {
-    const { currentUser, video } = this.props
-    if (currentUser.upvotedVideoIds.includes(video.id)) {
-      return (
-        <>
-          <button className="voted" onClick={this.handleDeleteVote}>
-            <li><MD.MdThumbUp />{video.upvoteCount}</li>
-          </button>
-          <button onClick={this.handleUpdateVote("downvote")}>
-            <li><MD.MdThumbDown />{video.downvoteCount}</li>
-          </button>
-        </>
-      ) 
-    } else if (currentUser.downvotedVideoIds.includes(video.id)) {
-      return (
-        <>
-          <button onClick={this.handleUpdateVote("upvote")}>
-            <li><MD.MdThumbUp />{video.upvoteCount}</li>
-          </button>
-          <button  className="voted" onClick={this.handleDeleteVote}>
-            <li><MD.MdThumbDown />{video.downvoteCount}</li>
-          </button>
-        </>
-      )
-    } else {
-      return (
-        <>
-          <button onClick={this.handleCreateVote("upvote")}>
-            <li><MD.MdThumbUp />{video.upvoteCount}</li>
-          </button>
-          <button onClick={this.handleCreateVote("downvote")}>
-            <li><MD.MdThumbDown />{video.downvoteCount}</li>
-          </button>
-        </>        
-      )
-    }
-  }
+  // currentUsersVote() {
+  //   const { currentUser, video } = this.props
+  //   if (currentUser.upvotedVideoIds.includes(video.id)) {
+  //     return (
+  //       <>
+  //         <button className="voted" onClick={this.handleDeleteVote}>
+  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
+  //         </button>
+  //         <button onClick={this.handleUpdateVote("downvote")}>
+  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
+  //         </button>
+  //       </>
+  //     ) 
+  //   } else if (currentUser.downvotedVideoIds.includes(video.id)) {
+  //     return (
+  //       <>
+  //         <button onClick={this.handleUpdateVote("upvote")}>
+  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
+  //         </button>
+  //         <button  className="voted" onClick={this.handleDeleteVote}>
+  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
+  //         </button>
+  //       </>
+  //     )
+  //   } else {
+  //     return (
+  //       <>
+  //         <button onClick={this.handleCreateVote("upvote")}>
+  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
+  //         </button>
+  //         <button onClick={this.handleCreateVote("downvote")}>
+  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
+  //         </button>
+  //       </>        
+  //     )
+  //   }
+  // }
 
   handleCreateVote(type) {
     const { createVideoVote } = this.props
@@ -87,7 +87,7 @@ class VideoNav extends React.Component {
               <div className="right-row">
                 <ul>
                   <div className="likes">
-                    {this.currentUsersVote.bind(this)()}
+                    {/* {this.currentUsersVote.bind(this)()} */}
                   </div >
                   <li><IoMdShareAlt />SHARE</li>
                   <li><MD.MdPlaylistAdd />SAVE</li>
