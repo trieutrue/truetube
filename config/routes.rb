@@ -11,8 +11,7 @@
 #                           POST   /api/session(.:format)                                                                   api/sessions#create {:format=>:json}
 #        api_video_comments GET    /api/videos/:video_id/comments(.:format)                                                 api/comments#index {:format=>:json}
 #                           POST   /api/videos/:video_id/comments(.:format)                                                 api/comments#create {:format=>:json}
-#           api_video_votes GET    /api/videos/:video_id/votes(.:format)                                                    api/votes#index {:format=>:json}
-#                           POST   /api/videos/:video_id/votes(.:format)                                                    api/votes#create {:format=>:json}
+#           api_video_votes POST   /api/videos/:video_id/votes(.:format)                                                    api/votes#create {:format=>:json}
 #                api_videos GET    /api/videos(.:format)                                                                    api/videos#index {:format=>:json}
 #                           POST   /api/videos(.:format)                                                                    api/videos#create {:format=>:json}
 #                 api_video GET    /api/videos/:id(.:format)                                                                api/videos#show {:format=>:json}
@@ -21,8 +20,7 @@
 #                           DELETE /api/videos/:id(.:format)                                                                api/videos#destroy {:format=>:json}
 #      api_comment_comments GET    /api/comments/:comment_id/comments(.:format)                                             api/comments#index {:format=>:json}
 #                           POST   /api/comments/:comment_id/comments(.:format)                                             api/comments#create {:format=>:json}
-#         api_comment_votes GET    /api/comments/:comment_id/votes(.:format)                                                api/votes#index {:format=>:json}
-#                           POST   /api/comments/:comment_id/votes(.:format)                                                api/votes#create {:format=>:json}
+#         api_comment_votes POST   /api/comments/:comment_id/votes(.:format)                                                api/votes#create {:format=>:json}
 #               api_comment GET    /api/comments/:id(.:format)                                                              api/comments#show {:format=>:json}
 #                           PATCH  /api/comments/:id(.:format)                                                              api/comments#update {:format=>:json}
 #                           PUT    /api/comments/:id(.:format)                                                              api/comments#update {:format=>:json}
@@ -45,12 +43,12 @@ Rails.application.routes.draw do
     
     resources :videos, except: [:new, :edit] do
       resources :comments, only: [:index, :create]
-      resources :votes, only: [:index, :create]
+      resources :votes, only: [:create]
     end
 
     resources :comments, only: [:show, :update, :destroy] do
       resources :comments, only: [:index, :create]
-      resources :votes, only: [:index, :create]
+      resources :votes, only: [:create]
     end
 
     resources :votes, only: [:update, :destroy]
