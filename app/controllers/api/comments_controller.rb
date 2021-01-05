@@ -50,7 +50,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find_by(id: params[:id])
     if @comment && current_user.id == @comment.author_id
       @comment.destroy!
-      render json: { message: "Sucess" }
+      render json: { message: "Success" }
     else
       render json: { message: "Failure" }
     end
