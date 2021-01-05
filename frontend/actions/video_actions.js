@@ -72,3 +72,10 @@ export const updateVote = vote => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }
+
+export const deleteVote = voteId => dispatch => {
+  return VoteAPIUtil.deleteVote(voteId).then(
+    video => dispatch(receiveVideo(video)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  )
+}
