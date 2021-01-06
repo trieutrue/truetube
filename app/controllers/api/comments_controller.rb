@@ -2,9 +2,9 @@ class Api::CommentsController < ApplicationController
   def index
     case
     when params[:video_id]
-      @comments = Video.find(params[:video_id]).comments
+      @comments = Comment.where(video_id: params[:video_id])
     when params[:comment_id]
-      @comments = Comment.find(params[:comment_id]).replies
+      @comments = Comment.where(parent_comment_id: params[:comment_id])
     else
       @comments = Comment.all
     end
