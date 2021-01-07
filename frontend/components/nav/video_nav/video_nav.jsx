@@ -17,43 +17,51 @@ class VideoNav extends React.Component {
     fetchVideoVotes(video.id)
   }
 
-  // currentUsersVote() {
-  //   const { currentUser, video } = this.props
-  //   if (currentUser.upvotedVideoIds.includes(video.id)) {
-  //     return (
-  //       <>
-  //         <button className="voted" onClick={this.handleDeleteVote}>
-  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
-  //         </button>
-  //         <button onClick={this.handleUpdateVote("downvote")}>
-  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
-  //         </button>
-  //       </>
-  //     ) 
-  //   } else if (currentUser.downvotedVideoIds.includes(video.id)) {
-  //     return (
-  //       <>
-  //         <button onClick={this.handleUpdateVote("upvote")}>
-  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
-  //         </button>
-  //         <button  className="voted" onClick={this.handleDeleteVote}>
-  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
-  //         </button>
-  //       </>
-  //     )
-  //   } else {
-  //     return (
-  //       <>
-  //         <button onClick={this.handleCreateVote("upvote")}>
-  //           <li><MD.MdThumbUp />{video.upvoteCount}</li>
-  //         </button>
-  //         <button onClick={this.handleCreateVote("downvote")}>
-  //           <li><MD.MdThumbDown />{video.downvoteCount}</li>
-  //         </button>
-  //       </>        
-  //     )
-  //   }
-  // }
+  currentUsersVote() {
+    const { currentUser, video, votes } = this.props
+    let vote;
+    currentUser.voteIds.forEach(voteId => {
+      if (votes[voteId].votableId === video.id) {
+        vote = votes[voteId]
+      }
+    })
+
+    switch (vote.isUpvoted) {
+      case true:
+        return (
+          <>
+            <button className="voted" onClick={this.handleDeleteVote}>
+              <li><MD.MdThumbUp />{video.upvoteCount}</li>
+            </button>
+            <button onClick={this.handleUpdateVote("downvote")}>
+              <li><MD.MdThumbDown />{video.downvoteCount}</li>
+            </button>
+          </>
+        )
+      case false:
+        return (
+          <>
+            <button onClick={this.handleUpdateVote("upvote")}>
+              <li><MD.MdThumbUp />{video.upvoteCount}</li>
+            </button>
+            <button  className="voted" onClick={this.handleDeleteVote}>
+              <li><MD.MdThumbDown />{video.downvoteCount}</li>
+            </button>
+          </>
+        )
+      default:
+        return (
+          <>
+            <button onClick={this.handleCreateVote("upvote")}>
+              <li><MD.MdThumbUp />{video.upvoteCount}</li>
+            </button>
+            <button onClick={this.handleCreateVote("downvote")}>
+              <li><MD.MdThumbDown />{video.downvoteCount}</li>
+            </button>
+          </>        
+        )
+    }
+  }
 
   handleCreateVote(type) {
     const { createVideoVote } = this.props

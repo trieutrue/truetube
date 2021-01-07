@@ -8,7 +8,8 @@ import {
 } from '../../../actions/vote_actions';
 
 const mSTP = state => ({
-  currentUser: state.entities.users[state.session.id]
+  currentUser: state.entities.users[state.session.id],
+  votes: state.entities.votes
 })
 
 const mDTP = dispatch => {
