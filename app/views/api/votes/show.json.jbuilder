@@ -3,5 +3,5 @@ json.vote do
 end
 
 json.video do
-  json.partial! '/api/videos/video'
+  json.partial! '/api/videos/video', video: @video
 end

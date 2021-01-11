@@ -92,7 +92,6 @@ class VideoNav extends React.Component {
       if (type === "upvote") {
         vote.isUpvoted = true
         updateVote(vote)
-        debugger
       } else if (type === "downvote") {
         vote.isUpvoted = false
         updateVote(vote)

@@ -47,7 +47,6 @@ class CommentIndex extends React.Component {
 
   verifyLogin() {
     const { currentUser, history } = this.props
-    debugger
     return currentUser ? null : history.push('/signin')
   }
 

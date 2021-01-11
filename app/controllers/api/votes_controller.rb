@@ -21,9 +21,9 @@ class Api::VotesController < ApplicationController
     case
     when params[:video_id]
       @video = Video.find(params[:video_id])
-      @vote = @video.votes.new(vote_params, votable_type: 'Video')
+      @vote = @video.votes.new(vote_params)
     when params[:comment_id]
-      @vote = Comment.find(params[:comment_id]).votes.new(vote_params, votable_type: 'Comment')
+      @vote = Comment.find(params[:comment_id]).votes.new(vote_params)
     end
 
     @vote.voter_id = current_user.id

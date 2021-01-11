@@ -11,7 +11,7 @@ const receiveVotes = ({ votes }) => ({
 })
 
 const receiveVote = ({ vote, video }) => ({
-  type: RECIEVE_VOTE,
+  type: RECEIVE_VOTE,
   vote,
   video
 })
