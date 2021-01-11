@@ -56,7 +56,7 @@ class VideoNav extends React.Component {
             <button className="voted" onClick={this.handleDeleteVote(vote.id)}>
               <li><MD.MdThumbUp />{video.upvoteCount}</li>
             </button>
-            <button onClick={this.handleUpdateVote("downvote")}>
+            <button onClick={this.handleUpdateVote(vote, "downvote")}>
               <li><MD.MdThumbDown />{video.downvoteCount}</li>
             </button>
           </>
@@ -64,7 +64,7 @@ class VideoNav extends React.Component {
       case false:
         return (
           <>
-            <button onClick={this.handleUpdateVote("upvote")}>
+            <button onClick={this.handleUpdateVote(vote, "upvote")}>
               <li><MD.MdThumbUp />{video.upvoteCount}</li>
             </button>
             <button  className="voted" onClick={this.handleDeleteVote(vote.id)}>

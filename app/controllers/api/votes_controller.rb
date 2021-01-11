@@ -38,6 +38,7 @@ class Api::VotesController < ApplicationController
   def update
     @vote = Vote.find_by(id: params[:id])
     if @vote && current_user.id == @vote.voter_id
+      @video = Video.find(@vote.votable_id)
       @vote.update(vote_params)
       render :show
     else
