@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_050449) do
+ActiveRecord::Schema.define(version: 2021_01_08_210751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(version: 2020_11_20_050449) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "body", null: false
+    t.integer "author_id", null: false
+    t.integer "video_id", null: false
+    t.integer "parent_comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
+    t.index ["video_id"], name: "index_comments_on_video_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "first_name", null: false
@@ -56,6 +68,19 @@ ActiveRecord::Schema.define(version: 2020_11_20_050449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uploader_id"], name: "index_videos_on_uploader_id"
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.boolean "is_upvoted", null: false
+    t.integer "voter_id", null: false
+    t.string "votable_type", null: false
+    t.bigint "votable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["votable_id"], name: "index_votes_on_votable_id"
+    t.index ["votable_type", "votable_id", "voter_id"], name: "index_votes_on_votable_type_and_votable_id_and_voter_id", unique: true
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id"], name: "index_votes_on_voter_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

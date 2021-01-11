@@ -1,18 +1,20 @@
 class Api::VideosController < ApplicationController
   def index
-    # if 
-    # @videos = User.find_by(id: params[:userId]).videos
-    @videos = Video.all.includes(:uploader)
+    if params[:id]
+      @videos = User.find_by(id: params[:userId]).videos
+    else
+      @videos = Video.all.includes(:uploader, :comments)
+    end
+
     render :index
   end
 
   def show
-    @video = Video.find(params[:id])
+    @video = Video.includes(:comments).find(params[:id]) 
     render :show
   end
   
   def create
-    # debugger
     @video = current_user.videos.new(video_params)
 
     if @video.save
@@ -37,7 +39,7 @@ class Api::VideosController < ApplicationController
     @video = Video.find_by(id: params[:id]) 
     if @video && @video.uploader_id == current_user.id
       @video.destroy!
-      render json: {message: "Sucess"}
+      render json: {message: "Success"}
     else
       render json: {message: "Failure"}
     end

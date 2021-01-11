@@ -11,10 +11,23 @@
   z-index: 4;
   top: 0px;
 
+ .profile-icon {
+    margin-right: 0;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .left-nav {
     display: flex;
     align-items: center;
-
+    z-index: 100;
     .guide-icon {
       margin: auto 16px auto 0;
       padding: 9px;
@@ -26,8 +39,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 22px;
-      font-weight: 500;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
       
       .logo-icon {
         color: $red;
@@ -60,8 +74,11 @@
   }
 
   .right-nav {
-    margin: auto 0;
-
+    .right-nav {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+    }
     ul {
       display: flex;
       width: 250px;
@@ -76,8 +93,8 @@
 
     svg {
       overflow: visible;
-      width: 30px;
-      height: 30px;
+      width: 25px;
+      height: 25px;
     }
   }
 
@@ -93,6 +110,7 @@
       height: auto;
       top: 87%;
       background-color: $pure-white;
+      display: none;
 
       li {
         padding: 0 5px;
@@ -112,7 +130,6 @@
       li:hover {
         background-color: $super-light-gray;
       }
-      display: none;
     }
   }
   
@@ -143,10 +160,12 @@
         cursor: auto;
         color: black;
 
-        svg {
+        .profile-icon {
           padding: 12px;
           width: 40px;
           height: 40px;
+          border-radius: 20px;
+          margin-left: 10px;
           cursor: auto;
         }
         

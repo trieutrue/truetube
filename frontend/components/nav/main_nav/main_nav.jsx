@@ -2,13 +2,11 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
+import { MdVideoCall } from 'react-icons/md'
+import { FaAngellist, FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 import { 
   faBars, 
   faUserCircle,
-  faBell,
-  faVideo,
-  faEllipsisV,
-  faTh,
   faSearch,
   faPortrait,
   faSignOutAlt,
@@ -42,23 +40,15 @@ class MainNav extends React.Component {
 
   loggedInDisplay() {
     const { currentUser } = this.props
-    // debugger
     return currentUser ? (
       <>
-        <li>
-          <FontAwesomeIcon icon={faBell} className="bell-icon" />
-        </li>
-
         <li id="user-dropdown-btn" onClick={handleDropMenu}>
-          <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+          <div className="profile-icon">{currentUser.channelName[0]}</div>
           {this.userDropMenu()}
         </li>
       </>
     ) : (
         <>
-          <li>
-            <FontAwesomeIcon icon={faEllipsisV} className="settings-icon" />
-          </li>
           <li>
             <Link to="/signin" className="signin-btn">
               <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
@@ -68,6 +58,7 @@ class MainNav extends React.Component {
         </>
       )
   }
+
   videoDropMenu() {
     const { openModal } = this.props
     return (
@@ -89,13 +80,15 @@ class MainNav extends React.Component {
     return (
       <ul className="users-drop-menu" onClick={e => e.stopPropagation()}>
         <div className="header">
-          <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+          <div className="profile-icon">{currentUser.channelName[0]}</div>
           <h4>{currentUser.channelName}</h4>
         </div>
 
         <li>
-          <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
-          <Link to="/">Your channel</Link>
+          <Link to={`/channel/${currentUser.id}/featured`}>
+            <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
+            Your channel
+          </Link>
         </li>
 
         <li onClick={logout}>
@@ -109,7 +102,6 @@ class MainNav extends React.Component {
   render(){
     const {  openModal, location } = this.props;
     if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
-    // debugger
    
     return (
       <nav className='main-nav'>
@@ -119,7 +111,7 @@ class MainNav extends React.Component {
           </button>
           <Link to="/" className="home-btn">
             <FontAwesomeIcon icon={faYoutube} className="logo-icon"/>
-            WeTube
+            TrueTube
           </Link>
         </nav>
   
@@ -131,9 +123,9 @@ class MainNav extends React.Component {
         </div>
   
         <nav className='right-nav'>
-          <ul>
+          <ul className='right-nav'>
             <li id="video-dropdown-btn" onClick={handleDropMenu}>
-              <FontAwesomeIcon icon={faVideo} className="video-icon" />
+              <MdVideoCall className="video-icon" />
               {/* {this.videoDropMenu()} */}
               <ul className="video-drop-menu">
                 <li onClick={() => openModal('upload')}>
@@ -147,11 +139,25 @@ class MainNav extends React.Component {
               </ul>
             </li>
     
-              <li id="apps-dropdown-btn">
-              <FontAwesomeIcon icon={faTh} className="apps-icon" />
-              </li>
-    
-              {this.loggedInDisplay()}
+            <li id="apps-dropdown-btn">
+              <a href="https://github.com/trieutrue/truetube" target="_blank">
+                <FaGithubSquare className="apps-icon" />
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
+                <FaLinkedin className="settings-icon" />
+              </a>
+            </li>
+
+            <li>
+              <a href="https://angel.co/u/trieutran" target="_blank">
+                <FaAngellist />
+              </a>
+            </li>
+  
+            {this.loggedInDisplay()}
           </ul>
         </nav>
       </nav>

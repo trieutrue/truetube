@@ -20,7 +20,31 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  has_many :videos, foreign_key: :uploader_id
+  has_many :videos, foreign_key: :uploader_id, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
+  has_many :votes, foreign_key: :voter_id
+  has_many :voted_videos,
+    through: :votes,
+    source: :votable,
+    source_type: 'Video'
+  has_many :voted_comments,
+    through: :votes,
+    source: :votable,
+    source_type: 'Comment'
+
+  def upvoted_video_ids
+    self.votes
+      .select(:votable_id)
+      .where(is_upvoted: true, votable_type: 'Video')
+      .map { |vote| vote.votable_id }
+  end
+
+  def downvoted_video_ids
+    self.votes
+      .select(:votable_id)
+      .where(is_upvoted: false, votable_type: 'Video')
+      .map { |vote| vote.votable_id }
+  end
   
   def self.find_by_credentials(email, password)
     @user = User.find_by(email: email)

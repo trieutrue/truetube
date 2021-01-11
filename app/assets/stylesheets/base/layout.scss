@@ -16,10 +16,19 @@ svg {
 }
 
 .profile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 35px;
   width: 35px;
-  background: orange;
+  background: $p-green;
   border-radius: 18px;
+  margin-right: 15px;
+  text-align: center;
+  color: white;
+  font-size: 26px;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .row {

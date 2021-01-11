@@ -1,5 +1,6 @@
 import React from 'react';
-import VideoNav from '../nav/video_nav/video_nav'
+import VideoNavContainer from '../nav/video_nav/video_nav_container';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 export default class VideoShow extends React.Component {
   componentDidMount() {
@@ -21,17 +22,21 @@ export default class VideoShow extends React.Component {
   }
 
   render() {
-    const { video, user } = this.props;
-    // debugger
+    const { video, user, match } = this.props;
     if (!video) return null;
     return (
-      <div className="video-container">
-        <video controls className="screen">
-          <source src={video.videoUrl} type="video/mp4" />
-          Sorry, your browser doesn't support embedded videos.
-        </video>
-        <VideoNav video={video} user={user}/>
-      </div>
+      <>
+        <div className="video-container">
+          <video controls className="screen">
+            <source src={video.videoUrl} type="video/mp4" />
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+          <VideoNavContainer video={video} user={user}/>
+          <CommentIndexContainer match={match}/>
+        </div>
+
+      </>
+
     )
   }
 }
