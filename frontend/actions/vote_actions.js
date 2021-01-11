@@ -17,10 +17,11 @@ const receiveVote = ({ vote, video, user }) => ({
   user
 })
 
-const removeVote = (voteId, video) => ({
+const removeVote = (voteId, { video, user }) => ({
   type: REMOVE_VOTE,
   voteId,
-  video
+  video,
+  user
 })
 
 const receiveErrors = errors => ({
@@ -69,7 +70,7 @@ export const updateVote = vote => dispatch => {
 
 export const deleteVote = voteId => dispatch => {
   return VoteAPIUtil.deleteVote(voteId).then(
-    video => dispatch(removeVote(voteId, video.responseJSON)),
+    response => dispatch(removeVote(voteId, response)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   )
 }

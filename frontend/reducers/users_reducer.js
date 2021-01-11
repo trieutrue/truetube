@@ -2,7 +2,7 @@ import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_VIDEOS, RECEIVE_VIDEO } from '../actions/video_actions';
 import { RECEIVE_USERS, RECEIVE_USER, REMOVE_USER } from '../actions/user_actions';
 import { RECEIVE_COMMENTS } from '../actions/comment_actions'
-import { RECEIVE_VOTE } from '../actions/vote_actions';
+import { RECEIVE_VOTE, REMOVE_VOTE } from '../actions/vote_actions';
 
 export default (state = {}, action) => {
   Object.freeze(state);
@@ -26,6 +26,8 @@ export default (state = {}, action) => {
     case RECEIVE_COMMENTS:
       return Object.assign({}, state, action.users)
     case RECEIVE_VOTE:
+      return { ...state, [action.user.id]: action.user }
+    case REMOVE_VOTE:
       return { ...state, [action.user.id]: action.user }
     default:
       return state;

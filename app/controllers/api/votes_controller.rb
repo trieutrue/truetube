@@ -51,7 +51,7 @@ class Api::VotesController < ApplicationController
     @video = Video.find(@vote.votable_id)
     if @vote && current_user.id == @vote.voter_id
       @vote.destroy!
-      render json: @video
+      render :show
     else
       render json: { message: 'Failure' }
     end
