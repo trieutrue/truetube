@@ -30,6 +30,31 @@ class Video < ApplicationRecord
     return self.votes.where(is_upvoted: false).count
   end
 
+  def self.query_videos(search_params)
+    results = []
+
+    video_ids = Video.where(
+      "title LIKE ?
+      OR description LIKE ?", 
+      "%#{search_params}%",
+      "%#{search_params}%"
+      ).pluck(:id)
+      
+    results += video_ids
+
+    users = User.joins(:videos)
+      .where(
+        "channel_name LIKE ?",
+        "%#{search_params}%"
+      ).group(:id)
+
+    users.each do |user|
+      results += user.video_ids
+    end
+
+    results.uniq
+  end
+
   # def ensure_file_type
   #   errors[:submission] << "Invalid file format." unless self.submission.attached?
   # end
