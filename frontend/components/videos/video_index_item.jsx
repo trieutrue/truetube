@@ -20,7 +20,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
   
   return (
     <li>
-      <Link to={`/videos/${video.id}`} >  
+      <Link to={`/watch/${video.id}`} >  
         <video className="vid-thumbnail" >
           <source src={video.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
