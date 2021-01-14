@@ -22,11 +22,11 @@ class Video < ApplicationRecord
     errors[:submission] << "must be attached." unless self.submission.attached?
   end
 
-  def upvoteCount
+  def upvote_count
     return self.votes.where(is_upvoted: true).count
   end
 
-  def downvoteCount
+  def downvote_count
     return self.votes.where(is_upvoted: false).count
   end
 
