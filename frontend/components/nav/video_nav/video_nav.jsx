@@ -119,9 +119,9 @@ class VideoNav extends React.Component {
 
               <div className="right-row">
                 <ul>
-                  <div className="likes">
+                  <form className="likes">
                     {this.currentUsersVote.bind(this)()}
-                  </div >
+                  </form >
                   <li><IoMdShareAlt />SHARE</li>
                   <li><MD.MdPlaylistAdd />SAVE</li>
                   <li><MD.MdMoreHoriz /></li>
