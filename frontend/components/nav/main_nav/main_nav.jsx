@@ -115,12 +115,14 @@ class MainNav extends React.Component {
           </Link>
         </nav>
   
-        <div id="search-bar-form">
+        <form id="search-bar-form">
           <input type="text" 
             id="search-box" 
             placeholder="Search"/>
-          <FontAwesomeIcon icon={faSearch} className="search-icon" />
-        </div>
+            <button>
+              <FontAwesomeIcon icon={faSearch} className="search-icon" />
+            </button>
+        </form>
   
         <nav className='right-nav'>
           <ul className='right-nav'>
