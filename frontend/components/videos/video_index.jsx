@@ -5,7 +5,7 @@ export default class VideoIndex extends React.Component {
   componentDidMount() {
     const { fetchVideos, match } = this.props
     debugger
-    fetchVideos(match.params.userId)
+    fetchVideos()
   }
 
   render() {
