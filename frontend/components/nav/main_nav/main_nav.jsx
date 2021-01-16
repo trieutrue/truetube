@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { MdVideoCall } from 'react-icons/md'
@@ -36,6 +36,8 @@ class MainNav extends React.Component {
 
     this.loggedInDisplay = this.loggedInDisplay.bind(this)
     this.videoDropMenu = this.videoDropMenu.bind(this)
+    this.handleSearchInput = this.handleSearchInput.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   loggedInDisplay() {
@@ -99,6 +101,15 @@ class MainNav extends React.Component {
     )
   }
 
+  handleSearchInput(e) {
+    this.setState({ searchQuery: e.currentTarget.value })
+  }
+
+  handleSearch(e) {
+    e.preventDefault()
+    this.props.history.push(`/results?search_query=${this.state.searchQuery}`)
+  }
+
   render(){
     const {  openModal, location } = this.props;
     if ( location.pathname === "/signin" || location.pathname === "/signup" ) return null;
@@ -115,10 +126,11 @@ class MainNav extends React.Component {
           </Link>
         </nav>
   
-        <form id="search-bar-form">
+        <form id="search-bar-form" onSubmit={this.handleSearch}>
           <input type="text" 
             id="search-box" 
-            placeholder="Search"/>
+            placeholder="Search"
+            onChange={this.handleSearchInput}/>
             <button>
               <FontAwesomeIcon icon={faSearch} className="search-icon" />
             </button>
