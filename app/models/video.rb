@@ -34,8 +34,8 @@ class Video < ApplicationRecord
     results = []
 
     video_ids = Video.where(
-      "title LIKE ?
-      OR description LIKE ?", 
+      "title ILIKE ?
+      OR description ILIKE ?", 
       "%#{search_params}%",
       "%#{search_params}%"
       ).pluck(:id)
@@ -44,7 +44,7 @@ class Video < ApplicationRecord
 
     users = User.joins(:videos)
       .where(
-        "channel_name LIKE ?",
+        "channel_name ILIKE ?",
         "%#{search_params}%"
       ).group(:id)
 
@@ -52,7 +52,8 @@ class Video < ApplicationRecord
       results += user.video_ids
     end
 
-    results.uniq
+    videos = Video.where(id: results.uniq)
+    videos
   end
 
   # def ensure_file_type
