@@ -1,12 +1,13 @@
-import { fetchSearchQuery } from '../util/video_api_util';
+import * as VideoAPIUtil from '../util/video_api_util';
 
 export const UPDATE_FILTER = "UPDATE_FILTER";
 
-const updateFilter = filter => ({
+const updateFilter = ({ videos, users }) => ({
   type: UPDATE_FILTER,
-  filter
+  videos,
+  users
 })
 
-export const searchVideos = () => dispatch => {
-  return fetchSearchQuery().then(filter => dispatch(updateFilter(filter)))
+export const fetchSearchQuery = searchQuery => dispatch => {
+  return VideoAPIUtil.fetchSearchQuery(searchQuery).then(filter => dispatch(updateFilter(filter)))
 }
