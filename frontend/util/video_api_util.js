@@ -1,8 +1,9 @@
-export const fetchVideos = () => {
+export const fetchVideos = (userId) => {
   return $.ajax({
     method: 'GET',
     url: `/api/videos`,
     contentType: 'application/json',
+    data: { userId }
   })
 }
 
@@ -37,5 +38,13 @@ export const deleteVideo = videoId => {
   return $.ajax({
     method: 'DELETE',
     url: `/api/videos/${videoId}`
+  })
+}
+
+export const fetchSearchQuery = searchParams => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/videos${searchParams}`,
+    contentType: 'application/json'
   })
 }

@@ -22,12 +22,38 @@ class Video < ApplicationRecord
     errors[:submission] << "must be attached." unless self.submission.attached?
   end
 
-  def upvoteCount
+  def upvote_count
     return self.votes.where(is_upvoted: true).count
   end
 
-  def downvoteCount
+  def downvote_count
     return self.votes.where(is_upvoted: false).count
+  end
+
+  def self.query_videos(search_params)
+    results = []
+
+    video_ids = Video.where(
+      "title ILIKE ?
+      OR description ILIKE ?", 
+      "%#{search_params}%",
+      "%#{search_params}%"
+      ).pluck(:id)
+      
+    results += video_ids
+
+    users = User.joins(:videos)
+      .where(
+        "channel_name ILIKE ?",
+        "%#{search_params}%"
+      ).group(:id)
+
+    users.each do |user|
+      results += user.video_ids
+    end
+
+    videos = Video.where(id: results.uniq)
+    videos
   end
 
   # def ensure_file_type

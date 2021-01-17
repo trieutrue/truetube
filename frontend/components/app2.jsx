@@ -17,6 +17,7 @@ const App2 = () => (
 
     <Switch>
       <Route path="/channel/:userId" component={ChannelShowContainer} />
+      <Route path="/results" component={VideoIndexContainer} />
       <Route path="/" component={VideoIndexContainer} />
     </Switch>
 

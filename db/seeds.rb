@@ -118,6 +118,44 @@ ActiveRecord::Base.transaction do
 
     comments << comment
   end
+
+  p 'creating video upvotes'
+  # 10-15% ratio to views
+
+  342.times do |n|
+    video = videos.sample
+    created_at = rand(video.created_at..Time.now)
+
+    vote = Vote.create!(
+      is_upvoted: true,
+      voter_id: users.sample.id,
+      votable_type: 'Video',
+      votable_id: video.id
+      created_at: created_at,
+      updated_at: created_at
+    )
+  end
+
+  p 'creating video downvotes'
+  # 1% ratio to upvotes
+
+  8.times do |n|
+    video = videos.sample
+    created_at = rand(video.created_at..Time.now)
+
+    vote = Vote.create!(
+      is_upvoted: false,
+      voter_id: users.sample.id,
+      votable_type: 'Video',
+      votable_id: video.id
+      created_at: created_at,
+      updated_at: created_at
+    )
+  end
+
+  # p 'creating comment upvotes'
+
+  # p 'creating comment downvotes'
 end
 
   # p 'creating viewers...'
