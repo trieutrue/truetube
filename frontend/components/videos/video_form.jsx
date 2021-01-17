@@ -57,7 +57,7 @@ export default class VideoForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="video-form">
           <div className="form-header">
             <h2>{headerText}</h2>
-            <MD.MdClose />
+            <MD.MdClose onClick={this.props.closeModal}/>
           </div>
           
           {this.state.submissionFile ? (
