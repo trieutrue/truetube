@@ -2,8 +2,8 @@ import React from 'react';
 import VideoNavContainer from '../nav/video_nav/video_nav_container';
 import CommentIndexContainer from '../comments/comment_index_container';
 import VideoIndexContainer from '../videos/video_index_container';
-
-export default class VideoShow extends React.Component {
+import { withRouter } from 'react-router-dom';
+class VideoShow extends React.Component {
   componentDidMount() {
     this.props.fetchVideo(this.props.match.params.videoId)
     const guide = document.getElementById("guide-btn")
@@ -28,7 +28,7 @@ export default class VideoShow extends React.Component {
     return (
       <div className="main-container">
         <div className="video-container">
-          <video controls className="screen">
+          <video key={`video-${video.id}`} controls autoPlay muted className="screen">
             <source src={video.videoUrl} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.
           </video>
@@ -45,3 +45,5 @@ export default class VideoShow extends React.Component {
     )
   }
 }
+
+export default withRouter(VideoShow)
