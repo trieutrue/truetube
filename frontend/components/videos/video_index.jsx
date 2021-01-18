@@ -31,13 +31,13 @@ class VideoIndex extends React.Component {
     const { videos, users, location, currentUser, openModal, deleteVideo, match, filters, video } = this.props;
     let indexVideos;
     if (match.path === "/results") {
-      indexVideos = filters.map(videoId => videos[videoId])
+      indexVideos = [...filters].reverse().map(videoId => videos[videoId])
     } else if (match.path === "/watch/:videoId") {
       let obj = { ...videos }
       delete obj[video.id]
-      indexVideos = Object.values(obj)
+      indexVideos = Object.values(obj).reverse()
     } else {
-      indexVideos = Object.values(videos)
+      indexVideos = Object.values(videos).reverse()
     }
 
     let indexItems = indexVideos.map(video => {

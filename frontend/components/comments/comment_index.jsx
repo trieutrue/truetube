@@ -59,11 +59,9 @@ class CommentIndex extends React.Component {
       updateComment,
       deleteComment,
       currentUser 
-    } = this.props
+    } = this.props 
 
-    const listItems = comments.map(comment => {
-      // if (comment.parentCommentId) { next };
-
+    const listItems = [...comments].reverse().map(comment => {
       return (
         <CommentIndexItem 
           parent={comment}
@@ -84,7 +82,7 @@ class CommentIndex extends React.Component {
     return (
       <div className="comments-container">
         <h3>3,735 Comments placeholder</h3>
-        <form onSubmit={this.handleVideoComment} onClick={this.verifyLogin}> {/* onClick={ensure_login} */}
+        <form onSubmit={this.handleVideoComment} onClick={this.verifyLogin}>
         <div className="row body-input">
           {this.profileIcon()}
           <input type="text" 
