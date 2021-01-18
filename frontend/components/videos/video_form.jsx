@@ -26,12 +26,14 @@ export default class VideoForm extends React.Component {
   }
 
   handleSubmit(e) {
+    const { processForm, closeModal } = this.props
     e.preventDefault();
     const videoData = new FormData();
     videoData.append("video[title]", this.state.title)
     videoData.append("video[description]", this.state.description)
     if (this.state.submissionFile) videoData.append("video[submission]", this.state.submissionFile)
-    this.props.processForm(videoData)
+    closeModal()
+    processForm(videoData)
   }
 
   render() {
