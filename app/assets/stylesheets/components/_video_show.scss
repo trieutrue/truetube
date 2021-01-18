@@ -1,7 +1,7 @@
 .video-container {
   margin-left: 5%;
   margin-top: 58px;
-  padding: 24px 24px 24px 0;
+  padding: 24px 16px 24px 0;
   width: 66%;
   .screen {
     width: 100%;
@@ -106,4 +106,66 @@ button.subscribe-btn {
   align-items: center;
   color: white;
   border-radius: 2px;
+}
+
+.list-index {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 100%;
+  margin-top: 66px;
+  padding: 15px 0;
+  z-index: 0;
+  background-color: $lightest-gray;
+
+
+  li { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 0 5px;
+
+    button {
+      background-color: blue;
+      width: 40px;
+      height: 20px;
+    }
+
+    a {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .vid-thumbnail {
+    width: 41%;
+  }
+
+  .profile-icon {
+    display: none;
+    margin-right: 12px;
+  }
+}
+
+.video-title {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.dot {
+  margin: 0 4px;
+}
+
+.video-info {
+  display: flex;
+  margin-top: 12px;
+
+  .info-box {
+    margin-left: 6px;
+  }
+}
+
+.main-container {
+  display: flex;
 }
