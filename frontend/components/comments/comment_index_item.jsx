@@ -1,5 +1,7 @@
 import React from 'react';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
+import { RiPencilFill, RiFlagFill } from 'react-icons/ri'
+import { FaTrash } from 'react-icons/fa'
 import * as MD from 'react-icons/md';
 
 export default class CommentIndexItem extends React.Component {
@@ -71,12 +73,21 @@ export default class CommentIndexItem extends React.Component {
     const { parent, currentUser } = this.props
     return currentUser && currentUser.id === parent.authorId ? (
       <ul className="comment-dropdown">
-        <li onClick={this.handleEdit}>EDIT</li>
-        <li onClick={this.handleDelete}>DELETE</li>
+        <li onClick={this.handleEdit}>
+          <RiPencilFill />
+          EDIT
+        </li>
+        <li onClick={this.handleDelete}>
+          <FaTrash />  
+          DELETE
+        </li>
       </ul>
     ) : (
       <ul className="comment-dropdown">
-        <li>REPORT</li>
+        <li>
+          <RiFlagFill />
+          REPORT
+        </li>
       </ul>
     )
       
