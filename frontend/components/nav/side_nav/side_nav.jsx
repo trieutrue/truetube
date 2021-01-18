@@ -33,14 +33,27 @@ class SideNav extends React.Component {
     )
   }
 
-  render() {
+  handleGuideBtn(e) {
     const { location } = this.props
-    // if (location.pathname.split("/").includes("videos"))
+    if (location.pathname.split('/').includes('watch')) {
+      debugger
+      this.props.closeModal()
+    } else {
+      debugger
+      const sideNav = e.currentTarget.parentElement.parentElement
+      if (sideNav.className) {
+        sideNav.className = ""
+      } else {
+        sideNav.className = "collapsed"
+      }
+    }
+  }
 
+  render() {
     return (
       <nav id="side-nav">
         <nav className="left-nav">
-          <button id="guide-btn">
+          <button id="guide-btn" onClick={this.handleGuideBtn.bind(this)}>
             <FontAwesomeIcon icon={faBars} className="guide-icon"/>
           </button>
           <Link to="/" className="home-btn">

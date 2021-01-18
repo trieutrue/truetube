@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import SideNav from './side_nav';
+import { closeModal } from '../../../actions/modal_actions';
 
 
 const mSTP = (state, ownProps) => {
@@ -9,4 +10,10 @@ const mSTP = (state, ownProps) => {
   };
 };
 
-export default connect(mSTP)(SideNav)
+const mDTP = dispatch => {
+  return {
+    closeModal: () => dispatch(closeModal())
+  }
+}
+
+export default connect(mSTP, mDTP)(SideNav)
