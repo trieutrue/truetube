@@ -21,7 +21,7 @@ export const formatVideoShowDate = date => {
   return `${month} ${day}, ${year}`;
 };
 
-export const formatVideoIndexDate = (dateFrom, dateTo) => {
+export const formatDate = (dateFrom, dateTo) => {
   const currentDate = new Date(dateTo)
   const prevDate = new Date(dateFrom);
   

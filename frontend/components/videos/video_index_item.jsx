@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
-import { formatVideoIndexDate } from '../../util/date_util'
+import { formatDate } from '../../util/format_util'
 
 const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteVideo, match }) => {
   debugger
@@ -22,7 +22,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
           <div className="row">
             <p>123K views</p>
             <i className="dot">•</i>
-            <p>{formatVideoIndexDate(video.createdAt, Date.now())}</p>
+            <p>{formatDate(video.createdAt, Date.now())}</p>
           </div>
           <Link to={`/channel/${user.id}/featured`} className="channel row">
             <div className="profile-icon">{user.channelName[0]}</div>
@@ -45,7 +45,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
             <div className="row">
               <p>123K views</p>
               <i className="dot">•</i>
-              <p>{formatVideoIndexDate(video.createdAt, Date.now())}</p>
+              <p>{formatDate(video.createdAt, Date.now())}</p>
             </div>
           </div>
         </div>        
