@@ -37,7 +37,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
         <div className="video-info">
           {location.pathname.split("/").includes("channel") ?
             null : <Link to={`/channel/${user.id}/featured`}><div className="profile-icon">{user.channelName[0]}</div></Link>}
-          <div>
+          <div className="info-box">
             <p className="video-title">{video.title}</p>
             {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
             {location.pathname.split("/").includes("channel") ? 

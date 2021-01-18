@@ -28,10 +28,14 @@ class VideoIndex extends React.Component {
   }
 
   render() {
-    const { videos, users, location, currentUser, openModal, deleteVideo, match, filters } = this.props;
+    const { videos, users, location, currentUser, openModal, deleteVideo, match, filters, video } = this.props;
     let indexVideos;
     if (match.path === "/results") {
       indexVideos = filters.map(videoId => videos[videoId])
+    } else if (match.path === "/watch/:videoId") {
+      let obj = { ...videos }
+      delete obj[video.id]
+      indexVideos = Object.values(obj)
     } else {
       indexVideos = Object.values(videos)
     }
@@ -48,26 +52,27 @@ class VideoIndex extends React.Component {
         match={match}
         />
     })
-    
-    const rowIndex = (
-        <ul className="row-index">
-          {indexItems}
-        </ul>
-    )
-
-    const defaultIndex = (
-      <ul className="video-index">
-        {indexItems}
-      </ul>
-    )
 
     debugger
     switch (match.path) {
       case "/results" || "/channel":
-        return rowIndex
+        return (
+          <ul className="row-index">
+            {indexItems}
+          </ul>
+        )
+      case "/watch/:videoId":
+        return (
+          <ul className="list-index">
+            {indexItems}
+          </ul>
+        )
       default:
-        
-        return defaultIndex;
+        return (
+          <ul className="video-index">
+            {indexItems}
+          </ul>
+        );
     }
   }
 }

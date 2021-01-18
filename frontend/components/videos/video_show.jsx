@@ -1,6 +1,7 @@
 import React from 'react';
 import VideoNavContainer from '../nav/video_nav/video_nav_container';
 import CommentIndexContainer from '../comments/comment_index_container';
+import VideoIndexContainer from '../videos/video_index_container';
 
 export default class VideoShow extends React.Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ export default class VideoShow extends React.Component {
     const { video, user, match } = this.props;
     if (!video) return null;
     return (
-      <>
+      <div className="main-container">
         <div className="video-container">
           <video controls className="screen">
             <source src={video.videoUrl} type="video/mp4" />
@@ -35,7 +36,11 @@ export default class VideoShow extends React.Component {
           <CommentIndexContainer match={match}/>
         </div>
 
-      </>
+        <div className="list-container">
+          <VideoIndexContainer video={video} />
+        </div>
+
+      </div>
 
     )
   }
