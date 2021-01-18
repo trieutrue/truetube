@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
-import { formatVideoShowDate } from '../../../util/date_util'
+import { formatVideoShowDate } from '../../../util/format_util';
 import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
 

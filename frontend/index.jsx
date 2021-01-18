@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as VideoAPIUtil from './util/video_api_util';
-import * as DateUtil from './util/date_util';
+import * as DateUtil from './util/format_util';
 
 
 document.addEventListener("DOMContentLoaded", () => {

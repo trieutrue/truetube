@@ -24,26 +24,32 @@ export const formatVideoShowDate = date => {
 export const formatDate = (dateFrom, dateTo) => {
   const currentDate = new Date(dateTo)
   const prevDate = new Date(dateFrom);
-  
+  let time;
   const diffInTime = currentDate.getTime() - prevDate.getTime();
 
   if (diffInTime / (1000 * 60) < 60 ) {
-    return `${Math.floor(diffInTime / (1000 * 60))} minutes ago`
+    time = Math.floor(diffInTime / (1000 * 60))
+    return time === 1 ? `${time} minute ago` : `${time} minutes ago`
   } 
   else if (diffInTime / (1000 * 3600) < 24 ) {
-    return `${Math.floor(diffInTime / (1000 * 3600))} hours ago`
+    time = Math.floor(diffInTime / (1000 * 3600));
+    return time === 1 ? `${time} hour ago` : `${time} hours ago`
   } 
   else if (diffInTime / (1000 * 3600 * 24) < 7 ) {
-    return `${Math.floor(diffInTime / (1000 * 3600 * 24))} days ago`
+    time = Math.floor(diffInTime / (1000 * 3600 * 24))
+    return time === 1 ? `${time} day ago` : `${time} days ago`
   } 
   else if (diffInTime / (1000 * 3600 * 24 * 7) < 5) {
-    return `${Math.floor(diffInTime / (1000 * 3600 * 24 * 7))} weeks ago`
+    time = Math.floor(diffInTime / (1000 * 3600 * 24 * 7))
+    return time === 1 ? `${time} week ago` : `${time} weeks ago`
   } 
   else if (diffInTime / (1000 * 3600 * 24 * 7 * 5) < 8 ) {
-    return `${Math.floor(diffInTime / (1000 * 3600 * 24 * 7 * 5))} months ago`
+    time = Math.floor(diffInTime / (1000 * 3600 * 24 * 7 * 5))
+    return time === 1 ? `${time} month ago` : `${time} months ago`
   } 
   else {
-    return `${currentDate.getFullYear() - prevDate.getFullYear()} years ago`; 
+    time  = currentDate.getFullYear() - prevDate.getFullYear()
+    return time === 1 ? `${time} year ago` : `${time} years ago`; 
   }
 } 
 
