@@ -2,9 +2,10 @@
   margin-left: 5%;
   margin-top: 58px;
   padding: 24px 16px 24px 0;
-  width: 66%;
+  width: 66vw;
+
   .screen {
-    width: 100%;
+    width: 66vw;
   }
 
   
@@ -43,7 +44,7 @@
       border-bottom: 3px solid $dark-gray;
       display: flex;
       justify-content: space-between;
-      width: 140px;
+      width: 9vw;
       padding: 4px;
 
       .voted * {
@@ -75,8 +76,8 @@
     padding-top: 10px;
 
     .profile-icon {
-      width: 45px;
-      height: 45px;
+      width: 3vw;
+      height: 3vw;
       border-radius: 23px;
       margin-right: 18px;
     }
@@ -106,6 +107,10 @@ button.subscribe-btn {
   align-items: center;
   color: white;
   border-radius: 2px;
+}
+
+.list-container {
+  width: 34vw;
 }
 
 .list-index {

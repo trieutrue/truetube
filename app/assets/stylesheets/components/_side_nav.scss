@@ -1,14 +1,18 @@
 #side-nav, .side-nav-modal-child  {
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: fixed;
   top: -6px;
   width: 240px;
-  height: 101vh;
+  max-height: 101vh;
   z-index: 8;
   background: $pure-white;
 
   .left-nav {
     display: flex;
     padding: 15px 15px 0;
+    position: fixed;
+    background-color: $pure-white;
 
     .guide-icon {
       margin: auto 16px auto 0;
@@ -34,7 +38,7 @@
   }
 
   .side-header {
-    padding: 12px 0;
+    padding-top: 6vh;
 
     ul {
       padding: 12px 0;
@@ -72,6 +76,7 @@
 
   .signin-li {
     height: 124px;
+    width: 100%;
     border-top: 1px solid $gray;
     display: flex;
     justify-content: center;
@@ -86,13 +91,7 @@
   } 
 
   footer {
-    position: absolute;
-    bottom: 20px;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    padding-bottom: 3vh;
 
     .link-footer {
       border-top: 1px solid $gray;

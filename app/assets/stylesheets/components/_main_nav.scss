@@ -13,8 +13,8 @@
 
  .profile-icon {
     margin-right: 0;
-    height: 30px;
-    width: 30px;
+    height: 2.5vw;
+    width: 2.5vw;
     font-size: 20px;
   }
 
@@ -45,16 +45,16 @@
       
       .logo-icon {
         color: $red;
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
       }
     }
   }
 
   #search-bar-form {
     display: flex;
-    width: 728px;
-    height: 32px;
+    width: 44vw;
+    height: 4vh;
     margin: auto 0;
     padding: 0 20px;
 
@@ -62,20 +62,20 @@
       border: 1px solid $gray;
       padding: 0 12px;
       font-size: 16px;
-      width: 576px;
+      width: 42vw;
     }
 
     .search-icon {
       border: 1px solid $gray;
       border-left: none;
-      padding: 8px 26px;
+      padding: 6px 20px;
       background-color: $super-light-gray;
     }
   }
 
   .right-nav {
     .right-nav {
-      width: 300px;
+      width: 20vw;
       display: flex;
       justify-content: space-between;
     }
@@ -162,8 +162,8 @@
 
         .profile-icon {
           padding: 12px;
-          width: 40px;
-          height: 40px;
+          width: 3vw;
+          height: 3vw;
           border-radius: 20px;
           margin-left: 10px;
           cursor: auto;
