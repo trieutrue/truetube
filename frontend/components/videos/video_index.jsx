@@ -53,7 +53,6 @@ class VideoIndex extends React.Component {
         />
     })
 
-    debugger
     switch (match.path) {
       case "/results" || "/channel":
         return (

@@ -3,7 +3,6 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import { formatDate } from '../../util/format_util'
 
 const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteVideo, match }) => {
-  debugger
   if (!video) return null;
   let editBtns;
   let videoInfoDiv;
@@ -52,13 +51,23 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       )
     }
   
-
+  const toggleAutoPlay = (e) => {
+    const videoThumbNail = e.currentTarget.getElementsByClassName('vid-thumbnail')[0]
+    if (e.type === "mouseover") {
+      debugger
+      videoThumbNail.play()
+    } else if (e.type === "mouseleave") {
+      debugger
+      videoThumbNail.currentTime = 0
+      videoThumbNail.pause()
+    }
+  }
 
   
   return (
-    <li>
+    <li onMouseOver={toggleAutoPlay} onMouseLeave={toggleAutoPlay}>
       <Link to={`/watch/${video.id}`} >  
-        <video className="vid-thumbnail" >
+        <video muted preload loop key={`video-${video.id}`} className="vid-thumbnail" >
           <source src={video.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>

@@ -36,10 +36,8 @@ class SideNav extends React.Component {
   handleGuideBtn(e) {
     const { location } = this.props
     if (location.pathname.split('/').includes('watch')) {
-      debugger
       this.props.closeModal()
     } else {
-      debugger
       const sideNav = e.currentTarget.parentElement.parentElement
       if (sideNav.className) {
         sideNav.className = ""
