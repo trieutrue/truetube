@@ -7,7 +7,7 @@
   
   json.users do
     json.set! video.uploader_id do
-      json.extract! video.uploader, :id, :channel_name, :email
+      json.partial! 'api/users/user', user: video.uploader
     end
   end
 end
