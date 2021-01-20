@@ -30,5 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
   window.uploadVideo = VideoAPIUtil.uploadVideo;
   window.updateVideo = VideoAPIUtil.updateVideo;
   window.formatDate = DateUtil.formatVideoShowDate;
-  window.diffDates = DateUtil.formatVideoIndexDate;
+  window.diffDates = DateUtil.formatDate;
 })

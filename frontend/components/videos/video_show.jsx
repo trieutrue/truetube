@@ -18,7 +18,6 @@ class VideoShow extends React.Component {
 
   componentWillUnmount() {
     const guide = document.getElementById("guide-btn")
-
     if (!this.callback) guide.removeEventListener("click", this.callback)
   }
 
@@ -28,7 +27,7 @@ class VideoShow extends React.Component {
     return (
       <div className="main-container">
         <div className="video-container">
-          <video key={`video-${video.id}`} controls autoPlay muted className="screen">
+          <video key={`video-${video.id}`} controls autoPlay preload="true" className="screen">
             <source src={video.videoUrl} type="video/mp4" />
             Sorry, your browser doesn't support embedded videos.
           </video>

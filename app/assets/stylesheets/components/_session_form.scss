@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  margin: 100px auto;
+  margin: 100px auto 0;
   height: 504px;
   width: 450px;
   background: $pure-white;
@@ -55,16 +55,24 @@
     padding: 0 15px;
     border-radius: 5px;
     font-size: 16px;
-  }
 
-  .error {
-    border-color: red;
+    &:focus {
+      border: 2px solid $form-blue;
+    }
   }
 
   .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    input {
+      margin-bottom: 4px;
+
+      &:focus {
+        border: 2px solid $form-blue;
+      }
+    }
 
     a {
       color: $form-blue;
@@ -91,6 +99,12 @@
     height: 36px;
     text-align: center;
   }
+
+
+  label {
+    display: none;
+  }
+
 }
 
 
@@ -99,7 +113,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: flex-start;
-  margin: 90px auto 0;
+  margin: 6vh auto 0;
   width: 750px;
   height: 594px;
   background: $pure-white;
@@ -148,24 +162,43 @@
     justify-content: space-between;
     border: 1px solid $login-gray;
     width: 368px;
-    height: 56px;
+    height: 36px;
     margin: 15px 0;
     padding: 0 15px;
     border-radius: 5px;
     font-size: 16px;
+
+    &:focus {
+      border: 2px solid $form-blue;
+    }
   }
 
-  .error {
-    border-color: red;
+  label {
+    display: flex;
+    align-items: center;
+    color: red;
+    animation: shake 0.5s ease;
+
+    svg {
+      color: red;
+      margin-right: 4px;
+    }
   }
+
   .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 12px;
 
     input {
       width: 180px;
-      margin: 0px 0;
+      margin: 0;
+      margin-bottom: 4px;
+      
+      &:focus {
+        border: 2px solid $form-blue
+      }
     }
 
     a {
@@ -182,10 +215,51 @@
       height: 36px;
       text-align: center;
     }
-  }
-
+  }  
 }
 
-.error {
-  border-color: red;
+#email {
+  margin-top: 0;
+}
+
+.error-message {
+  text-align: center;
+  margin: 0 9vw;
+  color: $red;
+  animation: shake 0.5s ease;
+}
+
+.session-container {
+  display: flex;
+  flex-direction: column;
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    color: #757575;
+    font-weight: 500;
+    margin: 16px auto;
+  }
+  
+  .signin-footer {
+    width: 450px;
+
+    * {
+      margin: 0 15px
+    }
+  }
+
+  .signup-footer {
+    width: 750px;
+  
+    * {
+      margin: 0 15px;
+    }
+  }
+}
+
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	10%, 50%, 90% {transform: translateX(-5px);}
+	30%, 70% {transform: translateX(5px);}
 }

@@ -67,7 +67,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
   return (
     <li onMouseOver={toggleAutoPlay} onMouseLeave={toggleAutoPlay}>
       <Link to={`/watch/${video.id}`} >  
-        <video muted preload loop key={`video-${video.id}`} className="vid-thumbnail" >
+        <video muted preload="true" loop key={`video-${video.id}`} className="vid-thumbnail" >
           <source src={video.videoUrl} type="video/mp4" />
           Sorry, your browser doesn't support embedded videos.
         </video>
