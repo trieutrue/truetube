@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { formatVideoShowDate } from '../../../util/format_util';
 import * as MD from 'react-icons/md'
 import { IoMdShareAlt } from 'react-icons/io'
+import { FaUserCircle } from 'react-icons/fa'
 
 class VideoNav extends React.Component {
   constructor(props) {
@@ -15,6 +16,14 @@ class VideoNav extends React.Component {
   componentDidMount() {
     const { video, fetchVideoVotes } = this.props
     fetchVideoVotes(video.id)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { video, fetchVideoVotes, match } = this.props
+
+    if (prevProps.match.url !== match.url) {
+      fetchVideoVotes(video.id)
+    }
   }
 
   currentUsersVote() {
@@ -133,7 +142,7 @@ class VideoNav extends React.Component {
         <div className="info-box">
           <div className="row">
             <div className="left-row">
-              <Link to={`/channel/${user.id}/featured`}><div className="profile-icon">{user.channelName[0]}</div></Link>
+              <Link to={`/channel/${user.id}/featured`}><FaUserCircle className="profile-icon" /></Link>
               <div className="column">
                 <Link to={`/channel/${user.id}/featured`}><h6>{user.channelName}</h6></Link>
                 <p>660K subscribers</p>

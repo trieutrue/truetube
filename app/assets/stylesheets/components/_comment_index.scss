@@ -5,7 +5,14 @@
     margin: 30px 0 20px;
   }
 
+  .column {
+    width: 100%;
+  }
+
+
   form {
+    width: 100%;
+
     .body-input {
       justify-content: flex-start;
       margin-bottom: 10px;
@@ -54,15 +61,48 @@
 
     .channel-name {
       font-weight: 500;
+      font-size: 13px;
+      margin-bottom: 5px;
+
+      span {
+        font-weight: 400;
+        color: $user-menu;
+        margin-left: 4px;
+      }
     }
 
     .comment-dropdown {
       display: none;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background-color: $pure-white;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      border-radius: 4px;
+      width: 9vw;
+      height: auto;
+      padding: 6px 0;
+
+      li {
+        width: 100%;
+        padding: 9px;
+        align-items: center;
+        margin: 0;
+
+
+        &:hover {
+          background-color: $super-light-gray;
+        }
+
+        svg { 
+          margin-right: 4px;
+        }
+      }
     }
 
     .comment-body {
       resize: none;
-      width: 110vh;
+      width: 100%;
     }
 
     .comment-options svg {
@@ -71,6 +111,14 @@
     }
   }
 
+  .likes {
+    p {
+      margin: 0 4px;
+    }
 
+    button {
+      margin-left: 12px;
+    }
+  }
 
 }

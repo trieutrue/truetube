@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
-import { formatDate } from '../../util/format_util'
+import { formatDate } from '../../util/format_util';
+import { FaUserCircle } from 'react-icons/fa';
 
 const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteVideo, match }) => {
   if (!video) return null;
@@ -24,7 +25,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
             <p>{formatDate(video.createdAt, Date.now())}</p>
           </div>
           <Link to={`/channel/${user.id}/featured`} className="channel row">
-            <div className="profile-icon">{user.channelName[0]}</div>
+            <FaUserCircle className="profile-icon" />
             <p>{user.channelName}</p>
           </Link>
           <p>{video.description}</p>
@@ -35,7 +36,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       videoInfoDiv = (
         <div className="video-info">
           {location.pathname.split("/").includes("channel") ?
-            null : <Link to={`/channel/${user.id}/featured`}><div className="profile-icon">{user.channelName[0]}</div></Link>}
+            null : <Link to={`/channel/${user.id}/featured`}><FaUserCircle className="profile-icon"/></Link>}
           <div className="info-box">
             <p className="video-title">{video.title}</p>
             {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
@@ -54,10 +55,8 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
   const toggleAutoPlay = (e) => {
     const videoThumbNail = e.currentTarget.getElementsByClassName('vid-thumbnail')[0]
     if (e.type === "mouseover") {
-      debugger
       videoThumbNail.play()
     } else if (e.type === "mouseleave") {
-      debugger
       videoThumbNail.currentTime = 0
       videoThumbNail.pause()
     }

@@ -10,13 +10,19 @@ class CommentIndex extends React.Component {
 
     this.handleBody = this.handleBody.bind(this)
     this.handleVideoComment = this.handleVideoComment.bind(this)
-    this.profileIcon = this.profileIcon.bind(this)
     this.verifyLogin = this.verifyLogin.bind(this)
   }
 
   componentDidMount() {
-    const {video, fetchVideoComments } = this.props
+    const { video, fetchVideoComments } = this.props
     fetchVideoComments(video.id)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { video, fetchVideoComments, match } = this.props
+    if (prevProps.match.url !== match.url) {
+      fetchVideoComments(video.id)
+    }
   }
 
   renderBtns(e) {
@@ -29,11 +35,6 @@ class CommentIndex extends React.Component {
     )
   }
 
-  profileIcon() {
-    const { currentUser } = this.props
-    return currentUser ? 
-      <div className="profile-icon">{currentUser.channelName[0]}</div> : <FaUserCircle />
-  }
   handleBody(e) {
     this.setState({ body: e.currentTarget.value})
   }
@@ -58,33 +59,36 @@ class CommentIndex extends React.Component {
       createChildComment,
       updateComment,
       deleteComment,
-      currentUser 
+      currentUser,
+      video 
     } = this.props 
 
-    const listItems = [...comments].reverse().map(comment => {
-      return (
-        <CommentIndexItem 
-          parent={comment}
-          comments={comments} 
-          users={users} 
-          fetchChildComments={fetchChildComments}
-          createChildComment={createChildComment}
-          updateComment={updateComment}
-          deleteComment={deleteComment}
-          currentUser={currentUser}
-          key={`comment${comment.id}`}
-        />
-      )
+    const listItems = [...comments].reverse()
+      .filter(comment => comment.videoId === video.id)
+      .map(comment => {
+        return (
+          <CommentIndexItem 
+            parent={comment}
+            comments={comments} 
+            users={users} 
+            fetchChildComments={fetchChildComments}
+            createChildComment={createChildComment}
+            updateComment={updateComment}
+            deleteComment={deleteComment}
+            currentUser={currentUser}
+            key={`comment${comment.id}`}
+          />
+        )
     })
 
     const disabled = this.state.body ? false : true
-
+    debugger
     return (
-      <div className="comments-container">
-        <h3>3,735 Comments placeholder</h3>
+      <div key={`video-comments-${video.id}`} className="comments-container">
+        <h3>{listItems.length} Comments</h3>
         <form onSubmit={this.handleVideoComment} onClick={this.verifyLogin}>
         <div className="row body-input">
-          {this.profileIcon()}
+          <FaUserCircle className="profile-icon" />
           <input type="text" 
             value={this.state.body} 
             onChange={this.handleBody}

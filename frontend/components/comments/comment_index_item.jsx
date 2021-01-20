@@ -1,8 +1,9 @@
 import React from 'react';
 import { HiOutlineDotsVertical } from 'react-icons/hi';
 import { RiPencilFill, RiFlagFill } from 'react-icons/ri'
-import { FaTrash } from 'react-icons/fa'
+import { FaTrash, FaUserCircle } from 'react-icons/fa'
 import * as MD from 'react-icons/md';
+import { formatDate } from '../../util/format_util';
 
 export default class CommentIndexItem extends React.Component {
   constructor(props) {
@@ -75,22 +76,21 @@ export default class CommentIndexItem extends React.Component {
       <ul className="comment-dropdown">
         <li onClick={this.handleEdit}>
           <RiPencilFill />
-          EDIT
+          Edit
         </li>
         <li onClick={this.handleDelete}>
           <FaTrash />  
-          DELETE
+          Delete
         </li>
       </ul>
     ) : (
       <ul className="comment-dropdown">
         <li>
           <RiFlagFill />
-          REPORT
+          Report
         </li>
       </ul>
     )
-      
   }
 
   render() {
@@ -103,9 +103,17 @@ export default class CommentIndexItem extends React.Component {
     return (
       <>
         <li>
-          <div className="profile-icon">{users[parent.authorId].channelName[0]}</div>
+          <div>
+            <FaUserCircle className="profile-icon" />
+          </div>
           <div className="column">
-            <h5 className="channel-name">{users[parent.authorId].channelName} {edited}</h5>
+            <h5 className="channel-name">
+              {users[parent.authorId].channelName} 
+              <span>
+                {formatDate(parent.createdAt, Date.now())} {edited}
+              </span>
+            
+            </h5>
             <div className="row">
               {/* <p>{parent.body}</p> */}
               <form onSubmit={this.handleUpdate}>
@@ -125,7 +133,7 @@ export default class CommentIndexItem extends React.Component {
               </button>
             </div>
 
-            <div className="row">
+            <div className="likes row">
               <MD.MdThumbUp />
               <p>4</p>
               <MD.MdThumbDown />

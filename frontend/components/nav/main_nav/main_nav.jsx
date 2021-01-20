@@ -3,7 +3,7 @@ import { Link, Redirect, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { MdVideoCall } from 'react-icons/md'
-import { FaAngellist, FaGithubSquare, FaLinkedin } from 'react-icons/fa';
+import { FaAngellist, FaGithubSquare, FaLinkedin, FaUserCircle } from 'react-icons/fa';
 import { 
   faBars, 
   faUserCircle,
@@ -45,7 +45,7 @@ class MainNav extends React.Component {
     return currentUser ? (
       <>
         <li id="user-dropdown-btn" onClick={handleDropMenu}>
-          <div className="profile-icon">{currentUser.channelName[0]}</div>
+          <FaUserCircle className="profile-icon" />
           {this.userDropMenu()}
         </li>
       </>
@@ -53,7 +53,7 @@ class MainNav extends React.Component {
         <>
           <li>
             <Link to="/signin" className="signin-btn">
-              <FontAwesomeIcon icon={faUserCircle} className="user-icon" />
+              <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
               <strong>SIGN IN</strong>
             </Link>
           </li>
@@ -82,7 +82,7 @@ class MainNav extends React.Component {
     return (
       <ul className="users-drop-menu" onClick={e => e.stopPropagation()}>
         <div className="header">
-          <div className="profile-icon">{currentUser.channelName[0]}</div>
+          <FaUserCircle className="profile-icon" />
           <h4>{currentUser.channelName}</h4>
         </div>
 
