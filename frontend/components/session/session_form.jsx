@@ -31,7 +31,6 @@ class SessionForm extends React.Component {
     }
 
     return (e) => {
-      e.preventDefault()
       e.currentTarget.className = ""
       this.setState({ [type]: e.target.value })
     }
@@ -60,12 +59,16 @@ class SessionForm extends React.Component {
       const error = errors[i];
       const errorType = error.split(" ")[0].toLowerCase()
       if (errorType === field) {
+        document.getElementById(errorType).className = "errors"
         return (
           <label key={`${errorType}-${this.state.count}`} htmlFor={field}>
             <AiFillExclamationCircle /> {error}
           </label>
         )
       } else if (!field && errorType === "there") {
+        document.getElementById("email").className = "errors"
+        document.getElementById("password").className = "errors"
+
         return (
           <p key={this.state.count} className="error-message">{error}</p>
         )
