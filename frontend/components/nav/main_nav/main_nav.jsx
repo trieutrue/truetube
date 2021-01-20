@@ -86,12 +86,12 @@ class MainNav extends React.Component {
           <h4>{currentUser.channelName}</h4>
         </div>
 
-        <li>
+        {/* <li>
           <Link to={`/channel/${currentUser.id}/featured`}>
             <FontAwesomeIcon icon={faPortrait} className="channel-icon" />
             Your channel
           </Link>
-        </li>
+        </li> */}
 
         <li onClick={logout}>
           <FontAwesomeIcon icon={faSignOutAlt} className="signout-icon" />
@@ -138,19 +138,8 @@ class MainNav extends React.Component {
   
         <nav className='right-nav'>
           <ul className='right-nav'>
-            <li id="video-dropdown-btn" onClick={handleDropMenu}>
+            <li id="video-dropdown-btn" onClick={() => openModal('upload')}>
               <MdVideoCall className="video-icon" />
-              {/* {this.videoDropMenu()} */}
-              <ul className="video-drop-menu">
-                <li onClick={() => openModal('upload')}>
-                  <FontAwesomeIcon icon={faFileVideo} className="upload-icon" />
-                  <Link to="/">Upload video</Link>
-                </li>
-                <li>
-                  <FontAwesomeIcon icon={faRss} className="live-icon" />
-                  <Link to="/">Go live</Link>
-                </li>
-              </ul>
             </li>
     
             <li id="apps-dropdown-btn">

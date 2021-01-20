@@ -12,6 +12,11 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
 class SideNav extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { collapsed: false }
+  }
 
   subHeader() {
     const { currentUser } = this.props
@@ -38,18 +43,38 @@ class SideNav extends React.Component {
     if (location.pathname.split('/').includes('watch')) {
       this.props.closeModal()
     } else {
-      const sideNav = e.currentTarget.parentElement.parentElement
-      if (sideNav.className) {
-        sideNav.className = ""
-      } else {
-        sideNav.className = "collapsed"
-      }
+      const videoIndex = document.getElementById("video-index")
+      debugger
+      !this.state.collapsed ? videoIndex.className = "collapsed" : videoIndex.className = ""
+      this.state.collapsed ? this.setState({ collapsed: false }) : this.setState({ collapsed: true })
     }
   }
 
+  renderInfoFooter() {
+    return this.state.collapsed ? null : (
+      <>
+        <ul className="info-footer no-hover"> 
+          <a href="https://angel.co/u/trieutran" target="_blank">
+            <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
+          </a>
+
+          <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
+            <li>Terms Privacy Policy & Safety <br />How TrueTube works <br />Test new features</li>
+          </a>
+        </ul>
+
+        <a href="https://github.com/trieutrue/truetube" target="_blank">
+          <h6>© 2021 TrueTube</h6>
+        </a>
+      </>
+    )
+  }
+
   render() {
+    const navClass = this.state.collapsed ? "collapsed" : "";
+    const likedTitle = this.state.collapsed ? "Liked" : "Liked videos"
     return (
-      <nav id="side-nav">
+      <nav className={navClass} id="side-nav">
         <nav className="left-nav">
           <button id="guide-btn" onClick={this.handleGuideBtn.bind(this)}>
             <FontAwesomeIcon icon={faBars} className="guide-icon"/>
@@ -65,15 +90,17 @@ class SideNav extends React.Component {
             <Link to="/">
               <li><TiHome />Home</li>
             </Link>
-            <li><ImFire />Trending</li>
-            <li><MD.MdSubscriptions />Subscriptions</li>
+            <li><MD.MdThumbUp />{likedTitle}</li> 
+            {/* update filters */}
+            {/* <li><ImFire />Trending</li> */}
+            {/* <li><MD.MdSubscriptions />Subscriptions</li> */}
           </ul>
 
-          <ul>
+          {/* <ul>
             <li><MD.MdVideoLibrary />Library</li>
             <li><MD.MdHistory />History</li>
             {this.subHeader()}
-          </ul>
+          </ul> */}
         </header>
 
         <footer>
@@ -95,18 +122,7 @@ class SideNav extends React.Component {
             </a>
           </ul>
 
-          <ul className="info-footer no-hover"> 
-            <a href="https://angel.co/u/trieutran" target="_blank">
-              <li>About Press Copyright <br />Contact us Creators <br />Advertise Developers</li>
-            </a>
-
-            <a href="https://www.linkedin.com/in/trieutrue/" target="_blank">
-              <li>Terms Privacy Policy & Safety <br />How TrueTube works <br />Test new features</li>
-            </a>
-          </ul>
-          <a href="https://github.com/trieutrue/truetube" target="_blank">
-            <h6>© 2021 TrueTube</h6>
-          </a>
+          {this.renderInfoFooter()}
         </footer>
       </nav>
     )

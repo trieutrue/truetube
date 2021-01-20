@@ -93,6 +93,8 @@
 
   footer {
     padding-bottom: 3vh;
+    position: absolute;
+    bottom: 0;
 
     .link-footer {
       border-top: 1px solid $gray;
@@ -131,5 +133,28 @@
 
   .signin-text {
     padding: 15px 0;
+  }
+}
+
+#side-nav.collapsed {
+  width: 75px;
+
+  li {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    font-size: 10px;
+  }
+
+  svg {
+    padding: 4px;
+  }
+
+  ul {
+    border: none;
+  }
+
+  .link-footer {
+    width: 75px;
   }
 }

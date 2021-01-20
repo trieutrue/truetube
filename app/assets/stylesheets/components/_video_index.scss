@@ -1,4 +1,4 @@
-.video-index {
+#video-index {
   display: flex;
   flex-wrap: wrap;
   width: auto;
@@ -48,7 +48,7 @@
   margin-top: 12px;
 }
 
-.row-index {
+#row-index {
   display: flex;
   flex-direction: column;
   width: 80vw;
@@ -103,10 +103,12 @@
   }
 
   .profile-icon {
-    width: 2vw;
-    height: 2vw;
     margin-right: 5px;
     font-size: 18px;
     padding: 1px;
   }
+}
+
+#video-index.collapsed {
+  margin-left: 75px;
 }

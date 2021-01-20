@@ -36,12 +36,12 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       videoInfoDiv = (
         <div className="video-info">
           {location.pathname.split("/").includes("channel") ?
-            null : <Link to={`/channel/${user.id}/featured`}><FaUserCircle className="profile-icon"/></Link>}
+            null : <FaUserCircle className="profile-icon"/>}
           <div className="info-box">
             <p className="video-title">{video.title}</p>
             {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
             {location.pathname.split("/").includes("channel") ? 
-              null : <Link to={`/channel/${user.id}/featured`}><p>{user.channelName}</p></Link> }
+              null : <p>{user.channelName}</p> }
             <div className="row">
               <p>123K views</p>
               <i className="dot">•</i>

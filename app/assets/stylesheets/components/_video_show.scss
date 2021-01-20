@@ -76,8 +76,6 @@
     padding-top: 10px;
 
     .profile-icon {
-      width: 3vw;
-      height: 3vw;
       border-radius: 23px;
       margin-right: 18px;
     }
@@ -113,7 +111,7 @@ button.subscribe-btn {
   width: 34vw;
 }
 
-.list-index {
+#list-index {
   display: flex;
   flex-direction: column;
   width: auto;

@@ -56,19 +56,19 @@ class VideoIndex extends React.Component {
     switch (match.path) {
       case "/results" || "/channel":
         return (
-          <ul className="row-index">
+          <ul id="row-index">
             {indexItems}
           </ul>
         )
       case "/watch/:videoId":
         return (
-          <ul className="list-index">
+          <ul id="list-index">
             {indexItems}
           </ul>
         )
       default:
         return (
-          <ul className="video-index">
+          <ul id="video-index">
             {indexItems}
           </ul>
         );
