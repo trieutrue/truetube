@@ -146,7 +146,7 @@ ActiveRecord::Base.transaction do
       is_upvoted: false,
       voter_id: users.sample.id,
       votable_type: 'Video',
-      votable_id: video.id
+      votable_id: video.id,
       created_at: created_at,
       updated_at: created_at
     )
