@@ -54,7 +54,6 @@ ActiveRecord::Base.transaction do
     "https://we-tube-seed.s3.amazonaws.com/mountain.mp4",
     "https://we-tube-seed.s3.amazonaws.com/telephone.mp4", #smallest
     "https://we-tube-seed.s3.amazonaws.com/tide.mp4",
-    "https://we-tube-seed.s3.amazonaws.com/traditional-music.mp4",
     "https://we-tube-seed.s3.amazonaws.com/waterfall.mp4",
     "https://we-tube-seed.s3.amazonaws.com/wind-chimes.mp4"
   ]
