@@ -18,7 +18,7 @@ class VideoIndex extends React.Component {
   handleThunkActions() {
     const { fetchVideos, fetchSearchQuery, location, match } = this.props
       switch (match.path) {
-      case "/results" || "/channel":
+      case "/results":
         fetchSearchQuery(location.search)
         break;
       default:
@@ -30,16 +30,21 @@ class VideoIndex extends React.Component {
   render() {
     const { videos, users, location, currentUser, openModal, deleteVideo, match, filters, video } = this.props;
     let indexVideos;
+    if (!Object.keys(videos)) return null;
     if (match.path === "/results") {
       indexVideos = [...filters].reverse().map(videoId => videos[videoId])
     } else if (match.path === "/watch/:videoId") {
       let obj = { ...videos }
       delete obj[video.id]
       indexVideos = Object.values(obj).reverse()
+    } else if (match.path === "/channel/:userId/videos") {
+      indexVideos = currentUser.videoIds.map(videoId => videos[videoId])
+    } else if (match.path === "/playlist/liked") {
+      indexVideos = currentUser.upvotedVideoIds.map(videoId => videos[videoId])
     } else {
       indexVideos = Object.values(videos).reverse()
     }
-
+    if (!indexVideos.length) return null;
     let indexItems = indexVideos.map(video => {
       return <VideoIndexItem video={video} 
         className="video-container"
@@ -54,21 +59,33 @@ class VideoIndex extends React.Component {
     })
 
     switch (match.path) {
-      case "/results" || "/channel":
+      case "/results":
         return (
-          <ul id="row-index">
+          <ul key="results" id="row-index">
+            {indexItems}
+          </ul>
+        )
+      case "/channel/:userId/videos":
+        return (
+          <ul key="channel" id="row-index">
+            {indexItems}
+          </ul>
+        )
+      case "/playlist/liked":
+        return (
+          <ul key="playlist" id="row-index">
             {indexItems}
           </ul>
         )
       case "/watch/:videoId":
         return (
-          <ul id="list-index">
+          <ul key="watch" id="list-index">
             {indexItems}
           </ul>
         )
       default:
         return (
-          <ul id="video-index">
+          <ul key="home" id="video-index">
             {indexItems}
           </ul>
         );

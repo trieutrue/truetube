@@ -98,7 +98,7 @@ class VideoForm extends React.Component {
 
             </div>
           ) : (
-            <div className="upload-section">
+            <div className="upload-section" onDrop={this.handleFile}>
               <input type="file" 
                 accept="video/*"
                 id="actual-btn"
@@ -108,9 +108,9 @@ class VideoForm extends React.Component {
                 <div className="upload-background">
                   <MD.MdFileUpload className="upload-icon"/>
                 </div>
-                <h5>Drag and drop video file to upload</h5>
+                <h5>Select a file to upload</h5>
                 <h6>Your videos will be private until you publish them.</h6>
-              <label for="actual-btn" className="blue-btn">SELECT FILE</label>
+              <label htmlFor="actual-btn" className="blue-btn">SELECT FILE</label>
             </div>
           ) }
           <div hidden={hidden} className="flex-end">

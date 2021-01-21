@@ -15,7 +15,24 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
         <button className="delete-btn" onClick={() => deleteVideo(video.id)}>Delete</button>
       </>
       )
-    } else if (match.path === "/results") {
+      videoInfoDiv = (
+        <div className="video-info">
+          <p className="video-title">{video.title}</p>
+          <div className="row">
+            {/* <p>123K views</p>
+            <i className="dot">•</i> */}
+            <p>{formatDate(video.createdAt, Date.now())}</p>
+          </div>
+          <Link to={`/channel/${user.id}/featured`} className="channel row">
+            <FaUserCircle className="profile-icon" />
+            <p>{user.channelName}</p>
+          </Link>
+          <p>{video.description}</p>
+        </div>
+      )
+    } else if (match.path === "/results" || 
+      match.path === "/channel/:userId/videos" || 
+      match.path === "/playlist/liked") {
       videoInfoDiv = (
         <div className="video-info">
           <p className="video-title">{video.title}</p>
@@ -35,13 +52,15 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       editBtns = null
       videoInfoDiv = (
         <div className="video-info">
-          {location.pathname.split("/").includes("channel") ?
-            null : <FaUserCircle className="profile-icon"/>}
+          {/* {location.pathname.split("/").includes("channel") ?
+            null :} */}
+          <FaUserCircle className="profile-icon"/>
           <div className="info-box">
             <p className="video-title">{video.title}</p>
             {/* <Link to={`/channel/${user.id}`}>{user.channelName}</Link> */}
-            {location.pathname.split("/").includes("channel") ? 
-              null : <p>{user.channelName}</p> }
+            {/* {location.pathname.split("/").includes("channel") ? 
+              null : } */}
+            <p>{user.channelName}</p> 
             <div className="row">
               {/* <p>123K views</p> */}
               {/* <i className="dot">•</i> */}

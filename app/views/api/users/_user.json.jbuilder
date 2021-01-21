@@ -1,1 +1,1 @@
-json.extract! user, :id, :email, :channel_name, :vote_ids
+json.extract! user, :id, :email, :channel_name, :vote_ids, :video_ids, :upvoted_video_ids
