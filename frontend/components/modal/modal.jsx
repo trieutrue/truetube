@@ -13,7 +13,6 @@ const Modal = ({ modal, closeModal, loggedIn, location }) => {
 
   const locationUrl = location.pathname.split("/")
   const videoId = parseInt(locationUrl[locationUrl.length - 1])
-  debugger
   switch (modal) {
     case 'upload':
       return loggedIn ? (

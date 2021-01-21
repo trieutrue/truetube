@@ -118,13 +118,12 @@ class VideoNav extends React.Component {
       e.preventDefault()
       history.push("/")
       deleteVideo(videoId)
-      debugger
     }
   }
  
   renderBtns() {
     const { currentUser, video, openModal } = this.props
-    if ( video.id ) return null
+    if ( !video || !currentUser || !video.id ) return null
     return currentUser.id === video.uploaderId ? (
       <div className="right-row">
         <button onClick={() => openModal('edit')}>EDIT</button>

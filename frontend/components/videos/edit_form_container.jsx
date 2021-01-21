@@ -4,7 +4,6 @@ import { closeModal } from '../../actions/modal_actions';
 import VideoForm from './video_form';
 
 const mSTP = (state, ownProps) => {
-  debugger
   return {
     videoData: state.entities.videos[ownProps.videoId],
     formType: 'edit'

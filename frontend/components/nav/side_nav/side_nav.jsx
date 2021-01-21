@@ -39,7 +39,7 @@ class SideNav extends React.Component {
           <li className="signin-li no-hover" >
             <p className="signin-text">Sign in to like videos, comment, and subscribe.</p>
             <Link to="/signin" className="signin-btn">
-              <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
+              <FontAwesomeIcon icon={faUserCircle} />
               <strong>SIGN IN</strong>
             </Link>
           </li>

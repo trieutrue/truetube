@@ -82,7 +82,6 @@ class CommentIndex extends React.Component {
     })
 
     const disabled = this.state.body ? false : true
-    debugger
     return (
       <div key={`video-comments-${video.id}`} className="comments-container">
         <h3>{listItems.length} Comments</h3>
