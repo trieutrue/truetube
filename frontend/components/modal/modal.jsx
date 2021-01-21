@@ -2,7 +2,8 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import UploadFormContainer from '../videos/upload_form_container'
+import UploadFormContainer from '../videos/upload_form_container';
+import EditFormContainer from '../videos/edit_form_container';
 import SideNavContainer from '../nav/side_nav/side_nav_container';
 
 const Modal = ({ modal, closeModal, loggedIn, location }) => {
@@ -10,6 +11,9 @@ const Modal = ({ modal, closeModal, loggedIn, location }) => {
     return null;
   }
 
+  const locationUrl = location.pathname.split("/")
+  const videoId = parseInt(locationUrl[locationUrl.length - 1])
+  debugger
   switch (modal) {
     case 'upload':
       return loggedIn ? (
@@ -21,6 +25,16 @@ const Modal = ({ modal, closeModal, loggedIn, location }) => {
         ) : (
         <Redirect to="/signin" />
       )
+    case 'edit':
+          return loggedIn ? (
+            <div className="modal-background" onClick={closeModal}>
+              <div className="modal-child" onClick={e => e.stopPropagation()}> 
+                <EditFormContainer videoId={videoId} />
+              </div>
+            </div>
+          ) : (
+            <Redirect to="/signin" />
+          )
     case 'sidenav':
       return location.pathname.split("/").includes("watch") ? (
           <div className="modal-background" onClick={closeModal}>

@@ -1,8 +1,9 @@
 import React from 'react';
 import * as MD from 'react-icons/md'
+import { withRouter } from 'react-router-dom';
 
 
-export default class VideoForm extends React.Component {
+class VideoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.videoData
@@ -32,16 +33,17 @@ export default class VideoForm extends React.Component {
     videoData.append("video[title]", this.state.title)
     videoData.append("video[description]", this.state.description)
     if (this.state.submissionFile) videoData.append("video[submission]", this.state.submissionFile)
+    if (this.state.videoUrl) videoData.id = this.state.id
     closeModal()
     processForm(videoData)
   }
 
   render() {
-    const { errors } = this.props;
-    const { title, description, submissionUrl, submissionFile } = this.state;
+    const { title, description, submissionUrl, submissionFile, videoUrl } = this.state;
+
     const headerText = title ? title : "Upload file"
     const isComplete = title ? false : true;
-    const hidden = submissionFile ? false : true
+    const hidden = submissionFile || videoUrl ? false : true
     const preview = submissionUrl ? ( 
       <div className="video-container column">
         <video controls>
@@ -54,6 +56,15 @@ export default class VideoForm extends React.Component {
       </div>
     ) : ( null )
 
+    const editPreview = videoUrl ?  (
+      <div className="video-container column">
+        <video controls>
+          <source src={videoUrl}/>
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+      </div>
+    ) : null
+
     return (
       <>
         <form onSubmit={this.handleSubmit} className="video-form">
@@ -62,7 +73,7 @@ export default class VideoForm extends React.Component {
             <MD.MdClose onClick={this.props.closeModal}/>
           </div>
           
-          {this.state.submissionFile ? (
+          {(this.state.submissionFile || this.state.videoUrl) ? (
             <div className="info-section">
 
               <div className="info-container column">
@@ -82,8 +93,8 @@ export default class VideoForm extends React.Component {
                 </label>
               </div>
 
-
               {preview}
+              {editPreview}
 
             </div>
           ) : (
@@ -111,3 +122,5 @@ export default class VideoForm extends React.Component {
 
   }
 }
+
+export default withRouter(VideoForm)

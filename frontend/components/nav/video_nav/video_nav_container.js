@@ -6,6 +6,7 @@ import {
   updateVote,
   deleteVote
 } from '../../../actions/vote_actions';
+import { openModal } from '../../../actions/modal_actions';
 
 const mSTP = state => ({
   currentUser: state.entities.users[state.session.id],
@@ -17,7 +18,8 @@ const mDTP = dispatch => {
     fetchVideoVotes: videoId => dispatch(fetchVideoVotes(videoId)),
     createVideoVote: (videoId, vote) => dispatch(createVideoVote(videoId, vote)),
     updateVote: vote => dispatch(updateVote(vote)),
-    deleteVote: voteId => dispatch(deleteVote(voteId))
+    deleteVote: voteId => dispatch(deleteVote(voteId)),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 

@@ -112,6 +112,26 @@ class VideoNav extends React.Component {
     return () => this.props.deleteVote(voteId)
   }
 
+  handleDeleteVideo(videoId) {
+    const { deleteVideo, history } = this.props
+    return e => {
+      e.preventDefault()
+      history.push("/")
+      deleteVideo(videoId)
+      debugger
+    }
+  }
+ 
+  renderBtns() {
+    const { currentUser, video, openModal } = this.props
+    return currentUser.id === video.uploaderId ? (
+      <>
+        <button onClick={() => openModal('edit')}>EDIT</button>
+        <button onClick={this.handleDeleteVideo(video.id)}>DELETE</button>
+      </>
+    ) : null
+  }
+
   render() {
     const { video, user } = this.props
 
@@ -142,14 +162,18 @@ class VideoNav extends React.Component {
         <div className="info-box">
           <div className="row">
             <div className="left-row">
-              <Link to={`/channel/${user.id}/featured`}><FaUserCircle className="profile-icon" /></Link>
+              {/* <Link to={`/channel/${user.id}/featured`}> */}
+                <FaUserCircle className="profile-icon" />
+              {/* </Link> */}
               <div className="column">
-                <Link to={`/channel/${user.id}/featured`}><h6>{user.channelName}</h6></Link>
-                <p>660K subscribers</p>
+                {/* <Link to={`/channel/${user.id}/featured`}> */}
+                  <h6>{user.channelName}</h6>
+                {/* </Link> */}
+                {/* <p>660K subscribers</p> */}
               </div>
             </div>
 
-            <button className="subscribe-btn">SUBSCRIBE</button>
+            {this.renderBtns()}
           </div>
           <p className="description">{video.description}</p>
         </div>
