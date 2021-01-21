@@ -17,6 +17,8 @@ const App2 = () => (
 
     <Switch>
       {/* <Route path="/channel/:userId" component={ChannelShowContainer} /> */}
+      <ProtectedRoute path="/channel/:userId/videos" component={VideoIndexContainer} />
+      <ProtectedRoute path="/playlist/liked" component={VideoIndexContainer} />
       <Route path="/results" component={VideoIndexContainer} />
       <Route path="/" component={VideoIndexContainer} />
     </Switch>
