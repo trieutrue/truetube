@@ -20,8 +20,8 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
         <div className="video-info">
           <p className="video-title">{video.title}</p>
           <div className="row">
-            <p>123K views</p>
-            <i className="dot">•</i>
+            {/* <p>123K views</p>
+            <i className="dot">•</i> */}
             <p>{formatDate(video.createdAt, Date.now())}</p>
           </div>
           <Link to={`/channel/${user.id}/featured`} className="channel row">
@@ -43,8 +43,8 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
             {location.pathname.split("/").includes("channel") ? 
               null : <p>{user.channelName}</p> }
             <div className="row">
-              <p>123K views</p>
-              <i className="dot">•</i>
+              {/* <p>123K views</p> */}
+              {/* <i className="dot">•</i> */}
               <p>{formatDate(video.createdAt, Date.now())}</p>
             </div>
           </div>

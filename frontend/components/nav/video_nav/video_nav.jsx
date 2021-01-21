@@ -124,6 +124,7 @@ class VideoNav extends React.Component {
  
   renderBtns() {
     const { currentUser, video, openModal } = this.props
+    if ( video.id ) return null
     return currentUser.id === video.uploaderId ? (
       <div className="right-row">
         <button onClick={() => openModal('edit')}>EDIT</button>
@@ -141,8 +142,8 @@ class VideoNav extends React.Component {
           <h1>{video.title}</h1> 
           <div className="row nav-bar">
               <div className="left-row">
-                <p>123,285 views</p>
-                <i className="dot">•</i>
+                {/* <p>123,285 views</p>
+                <i className="dot">•</i> */}
                 <p>{formatVideoShowDate(video.createdAt)}</p>
               </div>
 
