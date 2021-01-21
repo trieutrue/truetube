@@ -73,6 +73,7 @@ class SideNav extends React.Component {
   render() {
     const navClass = this.state.collapsed ? "collapsed" : "";
     const likedTitle = this.state.collapsed ? "Liked" : "Liked videos"
+    const likedBtn = this.props.currentUser ? <li><MD.MdThumbUp />{likedTitle}</li> : null
     return (
       <nav className={navClass} id="side-nav">
         <nav className="left-nav">
@@ -90,7 +91,7 @@ class SideNav extends React.Component {
             <Link to="/">
               <li><TiHome />Home</li>
             </Link>
-            <li><MD.MdThumbUp />{likedTitle}</li> 
+            {likedBtn}
             {/* update filters */}
             {/* <li><ImFire />Trending</li> */}
             {/* <li><MD.MdSubscriptions />Subscriptions</li> */}

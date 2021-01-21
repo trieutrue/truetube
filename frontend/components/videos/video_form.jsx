@@ -110,11 +110,11 @@ class VideoForm extends React.Component {
                 </div>
                 <h5>Drag and drop video file to upload</h5>
                 <h6>Your videos will be private until you publish them.</h6>
-              <label for="actual-btn" class="blue-btn">SELECT FILE</label>
+              <label for="actual-btn" className="blue-btn">SELECT FILE</label>
             </div>
           ) }
           <div hidden={hidden} className="flex-end">
-            <button hidden={hidden} disabled={isComplete} class="save-btn">SAVE</button>
+            <button hidden={hidden} disabled={isComplete} className="save-btn">SAVE</button>
           </div>
         </form>
       </>

@@ -133,12 +133,12 @@ export default class CommentIndexItem extends React.Component {
               </button>
             </div>
 
-            <div className="likes row">
+            {/* <div className="likes row">
               <MD.MdThumbUp />
               <p>4</p>
               <MD.MdThumbDown />
-              <button>REPLY</button> {/* onClick={renderForm} */}
-            </div>
+              <button>REPLY</button> onClick={renderForm}
+            </div> */}
           </div>
 
           {/* if parent has children render a link to view child comments*/}
