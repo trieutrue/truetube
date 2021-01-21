@@ -125,10 +125,10 @@ class VideoNav extends React.Component {
   renderBtns() {
     const { currentUser, video, openModal } = this.props
     return currentUser.id === video.uploaderId ? (
-      <>
+      <div className="right-row">
         <button onClick={() => openModal('edit')}>EDIT</button>
         <button onClick={this.handleDeleteVideo(video.id)}>DELETE</button>
-      </>
+      </div>
     ) : null
   }
 
