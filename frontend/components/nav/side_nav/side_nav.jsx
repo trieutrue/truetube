@@ -20,22 +20,32 @@ class SideNav extends React.Component {
 
   subHeader() {
     const { currentUser } = this.props
-    return currentUser ? (
-      <>
-        <li><RiVideoLine />Watch later</li>
-        <li><MD.MdThumbUp />Liked videos</li>
-      </>
-    ) : (
-      <>
-        <li className="signin-li no-hover" >
-          <p className="signin-text">Sign in to like videos, comment, and subscribe.</p>
-          <Link to="/signin" className="signin-btn">
-            <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
-            <strong>SIGN IN</strong>
+    if (currentUser) {
+      return (
+        <>
+          <Link to={`/channel/${currentUser.id}/videos`}>
+            <li><RiVideoLine />Your videos</li>
           </Link>
-        </li>
-      </>
-    )
+  
+          <Link to={`/playlist/liked`}>
+            <li><MD.MdThumbUp />Liked videos</li>
+          </Link>
+        </>
+      ) 
+    } else {
+      if (this.state.collapsed) return null;
+      return (
+        <>
+          <li className="signin-li no-hover" >
+            <p className="signin-text">Sign in to like videos, comment, and subscribe.</p>
+            <Link to="/signin" className="signin-btn">
+              <FontAwesomeIcon icon={faUserCircle} className="profile-icon" />
+              <strong>SIGN IN</strong>
+            </Link>
+          </li>
+        </>
+      )
+    }
   }
 
   handleGuideBtn(e) {
@@ -44,7 +54,6 @@ class SideNav extends React.Component {
       this.props.closeModal()
     } else {
       const videoIndex = document.getElementById("video-index")
-      debugger
       !this.state.collapsed ? videoIndex.className = "collapsed" : videoIndex.className = ""
       this.state.collapsed ? this.setState({ collapsed: false }) : this.setState({ collapsed: true })
     }
@@ -73,7 +82,6 @@ class SideNav extends React.Component {
   render() {
     const navClass = this.state.collapsed ? "collapsed" : "";
     const likedTitle = this.state.collapsed ? "Liked" : "Liked videos"
-    const likedBtn = this.props.currentUser ? <li><MD.MdThumbUp />{likedTitle}</li> : null
     return (
       <nav className={navClass} id="side-nav">
         <nav className="left-nav">
@@ -91,7 +99,7 @@ class SideNav extends React.Component {
             <Link to="/">
               <li><TiHome />Home</li>
             </Link>
-            {likedBtn}
+            {this.subHeader()}
             {/* update filters */}
             {/* <li><ImFire />Trending</li> */}
             {/* <li><MD.MdSubscriptions />Subscriptions</li> */}
