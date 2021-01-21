@@ -13,8 +13,8 @@ require 'open-uri'
 
 ActiveRecord::Base.transaction do
   #View.destroy_all
-  #Vote.destroy_all
-  #Comment.destroy_all
+  Vote.destroy_all
+  Comment.destroy_all
   Video.destroy_all
   User.destroy_all
 
@@ -129,7 +129,7 @@ ActiveRecord::Base.transaction do
       is_upvoted: true,
       voter_id: users.sample.id,
       votable_type: 'Video',
-      votable_id: video.id
+      votable_id: video.id,
       created_at: created_at,
       updated_at: created_at
     )
