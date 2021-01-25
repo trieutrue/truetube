@@ -74,10 +74,10 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
   const toggleAutoPlay = (e) => {
     const videoThumbNail = e.currentTarget.getElementsByClassName('vid-thumbnail')[0]
     if (e.type === "mouseover") {
-      videoThumbNail.play()
+      videoThumbNail
     } else if (e.type === "mouseleave") {
       videoThumbNail.currentTime = 0
-      videoThumbNail.pause()
+      videoThumbNail
     }
   }
 
