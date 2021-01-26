@@ -78,7 +78,9 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       playPromise = videoThumbNail.play();
 
     } else if (e.type === "mouseleave" ) {
-      if (videoThumbNail.currentTime > 0 && !videoThumbNail.paused && !videoThumbNail.ended && video.readyState > 2) {
+      debugger
+      if (videoThumbNail.currentTime > 0 && !videoThumbNail.paused && !videoThumbNail.ended && videoThumbNail.readyState > 2) {
+        debugger
         videoThumbNail.currentTime = 0
         videoThumbNail.pause()
       }
