@@ -73,11 +73,15 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
   
   const toggleAutoPlay = (e) => {
     const videoThumbNail = e.currentTarget.getElementsByClassName('vid-thumbnail')[0]
+    let playPromise;
     if (e.type === "mouseover") {
-      videoThumbNail
-    } else if (e.type === "mouseleave") {
-      videoThumbNail.currentTime = 0
-      videoThumbNail
+      playPromise = videoThumbNail.play();
+
+    } else if (e.type === "mouseleave" ) {
+      if (videoThumbNail.currentTime > 0 && !videoThumbNail.paused && !videoThumbNail.ended && video.readyState > 2) {
+        videoThumbNail.currentTime = 0
+        videoThumbNail.pause()
+      }
     }
   }
 
