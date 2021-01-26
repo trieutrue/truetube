@@ -35,8 +35,7 @@ class VideoIndex extends React.Component {
   filterIndexItems() {
     const { videos, users, location, currentUser, openModal, deleteVideo, match, filters, video } = this.props;
     let indexVideos = [];
-    if (!Object.keys(videos)) return indexVideos;
-    
+    if (!Object.keys(videos).length) return indexVideos;
     switch (match.path) {
       case "/results":
         indexVideos = [...filters].reverse().map(videoId => videos[videoId])
