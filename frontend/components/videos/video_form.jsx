@@ -18,6 +18,9 @@ class VideoForm extends React.Component {
 
   handleFile(e) {
     const file = e.currentTarget.files[0]
+    file.size > 15000000 ?  this.setState({ error: "File size too large." }) : this.setState({ error: "" })
+    if (file.size > 15000000) return
+    debugger
     const fileReader = new FileReader();
     const title = file.name.split(".")[0]
     fileReader.onloadend = () => {
@@ -34,8 +37,8 @@ class VideoForm extends React.Component {
     videoData.append("video[description]", this.state.description)
     if (this.state.submissionFile) videoData.append("video[submission]", this.state.submissionFile)
     if (this.state.videoUrl) videoData.id = this.state.id
-    closeModal()
     processForm(videoData)
+      .then(() => closeModal())
   }
 
   render() {
@@ -110,6 +113,7 @@ class VideoForm extends React.Component {
                 </div>
                 <h5>Select a file to upload</h5>
                 <h6>Your videos will be private until you publish them.</h6>
+                <h6 className="err" key={Math.random()}>{this.state.error}</h6>
               <label htmlFor="actual-btn" className="blue-btn">SELECT FILE</label>
             </div>
           ) }

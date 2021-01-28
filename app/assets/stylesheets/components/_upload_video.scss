@@ -45,10 +45,6 @@
     padding: 16%;
   }
 
-  .info-secton {
-    
-  }
-
   .upload-icon {
     width: 75px;
     height: 75px;
@@ -97,8 +93,14 @@
 
   h6 {
     font-size: 13px;
-    margin-bottom: 30px;
     color: $dark-gray;
+  }
+
+  .err {
+    color: red;
+    margin-top: 4px;
+    margin-bottom: 30px;
+    animation: shake 0.5s ease;
   }
 
   .info-section {
@@ -155,4 +157,9 @@
     padding: 8px;
     border-top: 1px solid $light-gray;
   }
+}
+
+
+.err {
+  color: red;
 }
