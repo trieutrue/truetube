@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import configureStore from './store/store';
 import Root from './components/root';
-import * as VideoAPIUtil from './util/video_api_util';
-import * as DateUtil from './util/format_util';
 
+ReactGA.initialize("G-ZX4XFTR87H")
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -23,12 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root)
-
-  //Testing
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.uploadVideo = VideoAPIUtil.uploadVideo;
-  window.updateVideo = VideoAPIUtil.updateVideo;
-  window.formatDate = DateUtil.formatVideoShowDate;
-  window.diffDates = DateUtil.formatDate;
 })
