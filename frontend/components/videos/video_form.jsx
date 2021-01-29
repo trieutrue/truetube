@@ -1,5 +1,6 @@
 import React from 'react';
 import * as MD from 'react-icons/md'
+import { RiLoader4Fill } from 'react-icons/ri'
 import { withRouter } from 'react-router-dom';
 
 
@@ -18,9 +19,8 @@ class VideoForm extends React.Component {
 
   handleFile(e) {
     const file = e.currentTarget.files[0]
-    file.size > 15000000 ?  this.setState({ error: "File size too large." }) : this.setState({ error: "" })
-    if (file.size > 15000000) return
-    debugger
+    file.size > 100000000 ?  this.setState({ error: "File size too large." }) : this.setState({ error: "" })
+    if (file.size > 100000000) return
     const fileReader = new FileReader();
     const title = file.name.split(".")[0]
     fileReader.onloadend = () => {
@@ -30,23 +30,27 @@ class VideoForm extends React.Component {
   }
 
   handleSubmit(e) {
-    const { processForm, closeModal } = this.props
+    const { processForm, closeModal, errors } = this.props
     e.preventDefault();
     const videoData = new FormData();
     videoData.append("video[title]", this.state.title)
     videoData.append("video[description]", this.state.description)
     if (this.state.submissionFile) videoData.append("video[submission]", this.state.submissionFile)
     if (this.state.videoUrl) videoData.id = this.state.id
+
+
+    errors.length ? this.setState({ isLoading: false }) : this.setState({ isLoading: true })
     processForm(videoData)
       .then(() => closeModal())
   }
 
   render() {
-    const { title, description, submissionUrl, submissionFile, videoUrl } = this.state;
+    const { title, description, submissionUrl, submissionFile, videoUrl, isLoading } = this.state;
 
     const headerText = title ? title : "Upload file"
     const isComplete = title ? false : true;
     const hidden = submissionFile || videoUrl ? false : true
+    const loading = isLoading ? <RiLoader4Fill className="spin" /> : <span>SAVE</span>
     const preview = submissionUrl ? ( 
       <div className="video-container column">
         <video controls>
@@ -118,7 +122,7 @@ class VideoForm extends React.Component {
             </div>
           ) }
           <div hidden={hidden} className="flex-end">
-            <button hidden={hidden} disabled={isComplete} className="save-btn">SAVE</button>
+            <button key={Math.random()} hidden={hidden} disabled={isComplete} className="save-btn">{loading}</button>
           </div>
         </form>
       </>

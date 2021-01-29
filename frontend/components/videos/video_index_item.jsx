@@ -78,9 +78,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
       playPromise = videoThumbNail.play();
 
     } else if (e.type === "mouseleave" ) {
-      debugger
       if (videoThumbNail.currentTime > 0 && !videoThumbNail.paused && !videoThumbNail.ended && videoThumbNail.readyState > 2) {
-        debugger
         videoThumbNail.currentTime = 0
         videoThumbNail.pause()
       }
@@ -89,7 +87,7 @@ const VideoIndexItem = ({ video, user, location, currentUser, openModal, deleteV
 
   
   return (
-    <li onMouseOver={toggleAutoPlay} onMouseLeave={toggleAutoPlay}>
+    <li>
       <Link to={`/watch/${video.id}`} >  
         <video muted preload="true" loop key={`video-${video.id}`} className="vid-thumbnail" >
           <source src={video.videoUrl} type="video/mp4" />

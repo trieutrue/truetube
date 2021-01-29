@@ -67,7 +67,11 @@
     border-radius: 2px;
     cursor: pointer;
     text-align: center;
-    padding: 10px 16px;
+    height: 2.25em;
+
+    span {
+      padding: 0 16px;
+    }
   }
 
   .save-btn:disabled {
@@ -159,7 +163,14 @@
   }
 }
 
+.spin {
+  animation: spin 2s linear infinite;
+  color: white;
+  width: 5em;
+  height: 2.25em;
+}
 
-.err {
-  color: red;
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
