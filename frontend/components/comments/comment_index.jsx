@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import CommentIndexItem from './comment_index_item';
+import CommentIndexItem from './comment_index_item_container';
 import { FaUserCircle } from 'react-icons/fa'
 
 class CommentIndex extends React.Component {
@@ -52,16 +52,7 @@ class CommentIndex extends React.Component {
   }
 
   render() {
-    const { 
-      comments, 
-      users, 
-      fetchChildComments, 
-      createChildComment,
-      updateComment,
-      deleteComment,
-      currentUser,
-      video 
-    } = this.props 
+    const { comments, video } = this.props 
 
     const listItems = [...comments].reverse()
       .filter(comment => comment.videoId === video.id)
@@ -70,12 +61,6 @@ class CommentIndex extends React.Component {
           <CommentIndexItem 
             parent={comment}
             comments={comments} 
-            users={users} 
-            fetchChildComments={fetchChildComments}
-            createChildComment={createChildComment}
-            updateComment={updateComment}
-            deleteComment={deleteComment}
-            currentUser={currentUser}
             key={`comment${comment.id}`}
           />
         )
