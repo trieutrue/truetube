@@ -53,7 +53,8 @@ class SideNav extends React.Component {
     if (location.pathname.split('/').includes('watch')) {
       this.props.closeModal()
     } else {
-      const videoIndex = document.getElementById("video-index")
+      const videoIndex = document.getElementById("video-index") || document.getElementById("row-index") || document.getElementById("list-index")
+      debugger
       !this.state.collapsed ? videoIndex.className = "collapsed" : videoIndex.className = ""
       this.state.collapsed ? this.setState({ collapsed: false }) : this.setState({ collapsed: true })
     }
