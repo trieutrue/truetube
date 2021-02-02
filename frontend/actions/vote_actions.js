@@ -42,9 +42,8 @@ export const fetchCommentVotes = commentId => dispatch => {
 }
 
 export const fetchVote = voteId => dispatch => {
-  return VoteAPIUtil.fetchVote(voteId).then(
-    response => dispatch(receiveVote(response))
-  )
+  return VoteAPIUtil.fetchVote(voteId)
+    .then(response => dispatch(receiveVote(response)))
 }
 
 export const createVideoVote = (videoId, vote) => dispatch => {
