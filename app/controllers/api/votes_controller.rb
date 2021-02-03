@@ -23,6 +23,7 @@ class Api::VotesController < ApplicationController
       @video = Video.find(params[:video_id])
       @vote = @video.votes.new(vote_params)
     when params[:comment_id]
+      @comment = Comment.find(params[:comment_id])
       @vote = Comment.find(params[:comment_id]).votes.new(vote_params)
     end
 
@@ -38,8 +39,12 @@ class Api::VotesController < ApplicationController
   def update
     @vote = Vote.find_by(id: params[:id])
     if @vote && current_user.id == @vote.voter_id
-      @video = Video.find(@vote.votable_id)
       @vote.update(vote_params)
+      if @vote.votable_type == "Video"
+        @video = Video.find(@vote.votable_id)
+      elsif @vote.votable_type == "Comment"
+        @comment = Comment.find(@vote.votable_id)
+      end
       render :show
     else
       render json: @vote.errors.full_messages, status: 422
@@ -48,9 +53,13 @@ class Api::VotesController < ApplicationController
 
   def destroy
     @vote = Vote.find_by(id: params[:id])
-    @video = Video.find(@vote.votable_id)
     if @vote && current_user.id == @vote.voter_id
       @vote.destroy!
+      if @vote.votable_type == "Video"
+        @video = Video.find(@vote.votable_id)
+      elsif @vote.votable_type == "Comment"
+        @comment = Comment.find(@vote.votable_id)
+      end
       render :show
     else
       render json: { message: 'Failure' }
