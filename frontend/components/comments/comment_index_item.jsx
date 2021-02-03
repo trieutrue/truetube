@@ -19,7 +19,8 @@ export default class CommentIndexItem extends React.Component {
   }
 
   componentDidMount() {
-    const {fetchChildComments, parent } = this.props
+    const {fetchChildComments, fetchCommentVotes, parent } = this.props
+    fetchCommentVotes(parent.id)
     if (parent.replyIds.length) { fetchChildComments(parent.id) }
   }
 
@@ -68,6 +69,34 @@ export default class CommentIndexItem extends React.Component {
     e.stopPropagation();
     const { updateComment } = this.props
     updateComment(this.state)
+  }
+
+  handleCreateVote(type) {
+    const { createCommentVote, parent } = this.props
+    return e => {
+      if (type === "upvote") {
+        createCommentVote(parent.id, { isUpvoted: true })
+      } else if (type === "downvote") {
+        createCommentVote(parent.id, { isUpvoted: false })
+      }
+    }
+  }
+
+  handleUpdateVote(vote, type) {
+    const { updateVote } = this.props
+    return e => {
+      if (type === "upvote") {
+        vote.isUpvoted = true
+        updateVote(vote)
+      } else if (type === "downvote") {
+        vote.isUpvoted = false
+        updateVote(vote)
+      }
+    }
+  }
+
+  handleDeleteVote(voteId) {
+    return () => this.props.deleteVote(voteId)
   }
 
   optionsDropMenu() {
