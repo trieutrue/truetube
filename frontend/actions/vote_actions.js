@@ -10,17 +10,19 @@ const receiveVotes = ({ votes }) => ({
   votes
 })
 
-const receiveVote = ({ vote, video, user }) => ({
+const receiveVote = ({ vote, video, user, comment }) => ({
   type: RECEIVE_VOTE,
   vote,
   video,
+  comment,
   user
 })
 
-const removeVote = (voteId, { video, user }) => ({
+const removeVote = (voteId, { video, user, comment }) => ({
   type: REMOVE_VOTE,
   voteId,
   video,
+  comment,
   user
 })
 
