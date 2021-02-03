@@ -17,4 +17,8 @@ class Comment < ApplicationRecord
   has_many :votes, as: :votable
   belongs_to :author, class_name: :User
   belongs_to :video
+
+  def vote_count
+    self.votes.where(is_upvoted: true).count - self.votes.where(is_upvoted: false).count
+  end
 end
