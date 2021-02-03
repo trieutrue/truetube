@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
   def index
     case
     when params[:video_id]
-      @comments = Comment.where(video_id: params[:video_id]).includes(:author, :vote_count)
+      @comments = Comment.where(video_id: params[:video_id]).includes(:author)
     when params[:comment_id]
       @comments = Comment.where(parent_comment_id: params[:comment_id]).includes(:author)
     else
