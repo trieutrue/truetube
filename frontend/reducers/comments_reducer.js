@@ -4,6 +4,8 @@ import {
   REMOVE_COMMENT
 } from '../actions/comment_actions'
 
+import { RECEIVE_VOTE, REMOVE_VOTE } from '../actions/vote_actions'
+
 const commentsReducer = (state = {}, action) => {
   Object.freeze(state);
   const newState = { ...state }
@@ -15,6 +17,11 @@ const commentsReducer = (state = {}, action) => {
     case REMOVE_COMMENT:
       delete newState[action.commentId]
       return newState
+    case RECEIVE_VOTE:
+      debugger
+      return action.comment ? { ...state, [action.comment.id]: action.comment } : state
+    case REMOVE_VOTE:
+      return action.comment ? { ...state, [action.comment.id]: action.comment } : state
     default:
       return state;
   }

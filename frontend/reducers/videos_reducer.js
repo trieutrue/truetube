@@ -24,9 +24,9 @@ const videosReducer = (state = {}, action) => {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, state, action.videos)
     case RECEIVE_VOTE:
-      return { ...state, [action.video.id]: action.video }
+      return action.video ? { ...state, [action.video.id]: action.video } : state
     case REMOVE_VOTE:
-      return { ...state, [action.video.id]: action.video }
+      return action.video ? { ...state, [action.video.id]: action.video } : state
     case UPDATE_FILTER:
       return Object.assign({}, state, action.videos)
     default:
