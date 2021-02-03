@@ -4,8 +4,9 @@ import { RiPencilFill, RiFlagFill } from 'react-icons/ri'
 import { FaTrash, FaUserCircle } from 'react-icons/fa'
 import * as MD from 'react-icons/md';
 import { formatDate } from '../../util/format_util';
+import { withRouter } from 'react-router-dom';
 
-export default class CommentIndexItem extends React.Component {
+class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { ...this.props.parent, hidden: true }
@@ -20,8 +21,16 @@ export default class CommentIndexItem extends React.Component {
 
   componentDidMount() {
     const {fetchChildComments, fetchCommentVotes, parent } = this.props
-    fetchCommentVotes(parent.id)
-    if (parent.replyIds.length) { fetchChildComments(parent.id) }
+    if (parent.voteCount) fetchCommentVotes(parent.id)
+    // if (parent.replyIds.length) { fetchChildComments(parent.id) }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { parent, fetchCommentVotes, match } = this.props;
+
+    if (prevProps.match.url !== match.url) {
+      fetchCommentVotes(parent.id)
+    }
   }
 
   
@@ -99,6 +108,67 @@ export default class CommentIndexItem extends React.Component {
     return () => this.props.deleteVote(voteId)
   }
 
+  currentUsersVote() {
+    const { currentUser, parent, votes } = this.props;
+    if (!currentUser) return (
+      <>
+        <button onClick={() => this.props.history.push('/signin')}>
+          <MD.MdThumbUp />
+        </button>
+        <p>{parent.voteCount}</p>
+        <button onClick={() => this.props.history.push('/signin')}>
+          <MD.MdThumbDown />
+        </button>
+      </>
+    )
+
+    let vote;
+    currentUser.voteIds.forEach(voteId => {
+      if (votes[voteId] && votes[voteId].votableId === parent.id) {
+        vote = votes[voteId]
+      }
+    })
+
+    if (!vote) return (
+      <>
+        <button onClick={this.handleCreateVote("upvote")}>
+          <MD.MdThumbUp />
+        </button>
+        <p>{parent.voteCount}</p>
+        <button onClick={this.handleCreateVote("downvote")}>
+          <MD.MdThumbDown />
+        </button>
+      </>
+    )
+    
+    switch (vote.isUpvoted) {
+      case true:
+        return (
+          <>
+            <button className="voted" onClick={this.handleDeleteVote(vote.id)}>
+              <MD.MdThumbUp />
+            </button>
+            <p>{parent.voteCount}</p>
+            <button onClick={this.handleUpdateVote(vote, "downvote")}>
+              <MD.MdThumbDown />
+            </button>
+          </>
+        )
+      case false:
+        return (
+          <>
+            <button onClick={this.handleUpdateVote(vote, "upvote")}>
+              <MD.MdThumbUp />
+            </button>
+            <p>{parent.voteCount}</p>
+            <button className="voted" onClick={this.handleDeleteVote(vote.id)}>
+              <MD.MdThumbDown />
+            </button>
+          </>
+        )
+    }
+  }
+
   optionsDropMenu() {
     const { parent, currentUser } = this.props
     return currentUser && currentUser.id === parent.authorId ? (
@@ -163,9 +233,7 @@ export default class CommentIndexItem extends React.Component {
             </div>
 
             <div className="likes row">
-              <MD.MdThumbUp />
-              <p>4</p>
-              <MD.MdThumbDown />
+              {this.currentUsersVote()}
               {/* <button>REPLY</button> onClick={renderForm} */}
             </div>
           </div>
@@ -176,3 +244,5 @@ export default class CommentIndexItem extends React.Component {
     )
   } 
 }
+
+export default withRouter(CommentIndexItem)
