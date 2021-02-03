@@ -7,7 +7,6 @@ export const fetchVideoVotes = videoId => {
 }
 
 export const fetchCommentVotes = commentId => {
-  debugger
   return $.ajax({
     method: 'GET',
     url: `/api/comments/${commentId}/votes`,

@@ -17,7 +17,8 @@ import {
 const mSTP = state => {
   return {
     users: state.entities.users,
-    currentUser: state.entities.users[state.session.id]
+    currentUser: state.entities.users[state.session.id],
+    votes: state.entities.votes
   }
 }
 
