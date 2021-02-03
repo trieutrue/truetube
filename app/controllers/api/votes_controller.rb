@@ -4,7 +4,7 @@ class Api::VotesController < ApplicationController
     when params[:video_id]
       @votes = Vote.where(votable_id: params[:video_id], votable_type: 'Video')
     when params[:comment_id]
-      @votes = Vote.where(votable_id: params[:comment_id, votable_type: 'Comment'])
+      @votes = Vote.where(votable_id: params[:comment_id], votable_type: 'Comment')
     else
       @votes = Vote.all
     end
