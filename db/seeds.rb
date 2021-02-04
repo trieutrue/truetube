@@ -125,16 +125,14 @@ ActiveRecord::Base.transaction do
     video = videos.sample
     created_at = rand(video.created_at..Time.now)
     voter_id = users.sample.id
-    if !Vote.find_by(voter_id: voter_id)
-      Vote.create!(
-        is_upvoted: true,
-        voter_id: voter_id,
-        votable_type: 'Video',
-        votable_id: video.id,
-        created_at: created_at,
-        updated_at: created_at
-      )
-    end
+    Vote.create(
+      is_upvoted: true,
+      voter_id: voter_id,
+      votable_type: 'Video',
+      votable_id: video.id,
+      created_at: created_at,
+      updated_at: created_at
+    )
   end
 
   p 'creating video downvotes...'
@@ -144,21 +142,46 @@ ActiveRecord::Base.transaction do
     video = videos.sample
     created_at = rand(video.created_at..Time.now)
     voter_id = users.sample.id
-    if !Vote.find_by(voter_id: voter_id)
-      Vote.create!(
-        is_upvoted: false,
-        voter_id: voter_id,
-        votable_type: 'Video',
-        votable_id: video.id,
-        created_at: created_at,
-        updated_at: created_at
-      )
-    end
+    Vote.create(
+      is_upvoted: false,
+      voter_id: voter_id,
+      votable_type: 'Video',
+      votable_id: video.id,
+      created_at: created_at,
+      updated_at: created_at
+    )
   end
 
-  # p 'creating comment upvotes'
+  p 'creating comment upvotes'
 
-  # p 'creating comment downvotes'
+  90.times do 
+    comment = comments.sample
+    created_at = rand(comment.created_at..Time.now)
+    voter_id = users.sample.id
+    Vote.create(
+      is_upvoted: true,
+      voter_id: voter_id,
+      votable_type: 'Comment',
+      votable_id: comment.id,
+      created_at: created_at,
+      updated_at: created_at
+    )
+  end
+    
+  p 'creating comment downvotes'
+  9.times do 
+    comment = comments.sample
+    created_at = rand(comment.created_at..Time.now)
+    voter_id = users.sample.id
+    Vote.create(
+      is_upvoted: true,
+      voter_id: voter_id,
+      votable_type: 'Comment',
+      votable_id: comment.id,
+      created_at: created_at,
+      updated_at: created_at
+    )
+  end
 end
 
   # p 'creating viewers...'
