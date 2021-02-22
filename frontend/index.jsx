@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactGA from 'react-ga';
+import ReactGA, { initialize } from 'react-ga';
 import configureStore from './store/store';
 import Root from './components/root';
 
-ReactGA.initialize("G-ZX4XFTR87H")
-ReactGA.pageview(window.location.pathname + window.location.search)
+
+function initializeReactGA() {
+    ReactGA.initialize('G-ZX4XFTR87H');
+    ReactGA.pageview('/homepage');
+}
+
+initializeReactGA()
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
