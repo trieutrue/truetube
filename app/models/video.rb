@@ -31,28 +31,17 @@ class Video < ApplicationRecord
   end
 
   def self.query_videos(search_params)
-    results = []
-
-    video_ids = Video.where(
-      "title ILIKE ?
-      OR description ILIKE ?", 
-      "%#{search_params}%",
-      "%#{search_params}%"
-      ).pluck(:id)
-      
-    results += video_ids
-
-    users = User.joins(:videos)
+    videos = Video.joins(:uploader)
       .where(
-        "channel_name ILIKE ?",
-        "%#{search_params}%"
+        "title ILIKE ?
+        OR description ILIKE ?
+        OR channel_name ILIKE ?",
+
+        "%#{search_params}%", 
+        "%#{search_params}%",
+        "%#{search_params}%",
       ).group(:id)
-
-    users.each do |user|
-      results += user.video_ids
-    end
-
-    videos = Video.where(id: results.uniq)
+      
     videos
   end
 
